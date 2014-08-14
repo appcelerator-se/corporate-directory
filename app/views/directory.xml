@@ -1,0 +1,38 @@
+<Alloy>
+	<View id="wrapper" class="vgroup" title="Directory">
+		<SearchBar id="searchBar" platform="ios" class="search" onBookmark="onBookmarkClick" onFocus="onSearchFocus" onCancel="onSearchCancel"  onChange="onSearchChange" />
+		<ListView id="listView" defaultItemTemplate="userTemplate" onItemclick="onItemClick">
+			<Templates>
+				
+				<ItemTemplate id="userTemplate" name="userTemplate" class="template">
+					<View class="left">
+						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
+						<View class="vgroup left size">
+							<Label id="userName" bindId="userName" class="title" />
+							<Label id="userEmail" bindId="userEmail" class="subtitle" />
+							<Label id="userCompany" bindId="userCompany" class="subtitle" />
+						</View>
+						<View class="gray-line bottom"/>
+					</View>
+				</ItemTemplate>
+				
+				
+				<ItemTemplate id="favoriteTemplate" name="favoriteTemplate" class="template">
+					<View class="left">
+						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
+						<View class="vgroup left size">
+							<Label id="userName" bindId="userName" class="title" />
+							<Label id="userEmail" bindId="userEmail" class="subtitle" />
+							<Label id="userCompany" bindId="userCompany" class="subtitle" />
+						</View>
+						<Label class="favorite" />
+						<View class="gray-line bottom"/>
+					</View>
+				</ItemTemplate>	
+			</Templates>
+			<ListSection></ListSection>
+			<SearchView ns="Ti.UI.Android" id="searchBar" platform="android" hintText="Search" />
+		</ListView>
+			 	
+	</View>
+</Alloy>

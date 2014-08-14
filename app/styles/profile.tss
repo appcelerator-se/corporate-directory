@@ -1,0 +1,60 @@
+"ScrollableView":{
+	showPagingControl: true
+}
+
+".container":{
+	backgroundColor: "#fff"
+}
+
+".icon-button":{
+	height: 60,
+	width: 60,
+	color: "#C41230",
+	borderRadius: 30,
+	borderWidth: 1,
+	borderColor: "#C41230",
+	textAlign: "center",
+	font:{
+		fontSize: 24 
+	},
+	backgroundColor: "#22C41230"
+}
+
+
+"#profilePicture[formFactor=handheld]":{
+	height: 125,
+	width: 125,
+	borderRadius: 63,
+	borderWidth: 1,
+	borderColor: "#22C41230"
+}
+
+"#about":{
+	width: Ti.UI.SIZE
+}
+
+"ScrollableView[formFactor=handheld]":{
+	height: "45%",
+	pagingControlColor: 'transparent'
+}
+
+"Label":{
+	autoLink: Ti.UI.AUTOLINK_ALL
+}
+
+"#addBookmarkBtn[platform=android]":{
+	backgroundColor: 'transparent',
+	color: "#C41230",
+	borderWidth:0
+}
+
+"#mapview":{
+	enableZoomControls: false,
+	compassEnabled: false
+}
+
+"#fromHQ":{
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	textAlign:"right"
+}

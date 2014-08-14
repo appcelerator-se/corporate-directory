@@ -1,0 +1,87 @@
+
+/**
+ * 	Style for The User Template
+ */
+".template":{
+	height: 100,
+	width: Ti.UI.FILL
+},
+
+".top":{
+	top:20
+},
+
+".left":{
+	left:10
+},
+
+".right":{
+	right:10
+}
+
+".vgroup":{
+	layout:'vertical',
+},
+
+".hgroup":{
+	layout:'horizontal'
+},
+
+".size":{
+	height: Ti.UI.SIZE,
+	width: Ti.UI.SIZE
+},
+
+".favorite":{
+	font:{
+		fontSize: 20,
+		fontFamily:"icomoon",
+	},
+	text:"\uf02e",
+	color:"#038BC8",
+	right: 10,
+	top:-2
+},
+
+".title":{
+	font:{
+		fontSize: 14
+	},
+	left: 85,
+	color: "#444"
+},
+
+".subtitle":{
+	font:{
+		fontSize: 10
+	},
+	left: 85,
+	height: 20,
+	color: "#666"
+},
+
+".avatar":{
+	border: 1,
+	borderColor: "#acacac",
+	height: 75,
+	width: Ti.UI.SIZE,
+	top: 12,
+	left: 0,
+	borderRadius: 35
+},
+
+".search":{
+	backgroundColor: "#fff",
+	borderWidth:0,
+	tintColor: "#C41230",
+	hintText: "Search"
+},
+
+".search[platform=android]":{
+	color: "#666"
+}
+
+".search[platform=ios]":{
+	barColor: "#fff",
+	showBookmark:true
+}

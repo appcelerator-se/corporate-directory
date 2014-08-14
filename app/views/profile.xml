@@ -1,0 +1,102 @@
+<Alloy>
+	<View class="container fill" title="Profile">
+		<View class="vgroup buffer">
+			<View class="vgroup span-width bottom-buffer">
+				<View class="span-width">
+					<Widget id="emailBtn" src="net.hoyohoyo.iconiclabel" icon="icon-envelope" class="icon-button left-buffer"/>
+					<ImageView id="profilePicture" class="top-buffer no-touch" />
+					<Widget id="callBtn" src="net.hoyohoyo.iconiclabel" icon="icon-phone" class="icon-button right-buffer"/>
+				</View>
+				<View class="vgroup size">
+					<Label id="name" class='h3 red top-buffer no-touch' >Kelly Smith</Label>
+					<Label id="job" class='h5 gray no-touch' >Account Rep</Label>
+					<Label id="company" class='h5 gray no-touch' >Appcelerator, Inc</Label>
+				</View>
+			</View>
+			<Button id="addBookmarkBtn" class="span-width h4" onClick="toggleBookmark">+ Add to Bookmarks</Button>
+			<!-- -->
+			<ScrollableView class="top-buffer" formFactor="handheld" pagingControlHeight="20">
+				<View class="vgroup size top-buffer">
+					<View class='hgroup span-width'>
+						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-qrcode" />
+						<Label class="h3 red left-buffer right-buffer">Contact Info</Label>
+					</View>
+					<View class='hgroup size top-buffer left-buffer'>
+						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />
+						<Label id="phone" class="h5 gray left-buffer right-buffer">512-555-1212</Label>
+					</View>
+					<View class='hgroup size top-buffer left-buffer'>
+						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-envelope-alt" />
+						<Label id="email" class="h5 gray left-buffer right-buffer">kelly.smith@appcelerator.com</Label>
+					</View>
+					<View class='hgroup size top-buffer left-buffer'>
+						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-comment" />
+						<Label id="im" class="h5 gray left-buffer right-buffer">kelly.smith</Label>
+					</View>
+				</View>
+				<View class="vgroup size top-buffer" >
+					<View class='hgroup span-width'>
+						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-info-sign" />
+						<Label class="h3 red left-buffer right-buffer">About</Label>
+					</View>
+					<ScrollView class="size">
+						<Label id="about" class="gray normal-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Label>
+					</ScrollView>
+				</View>
+				<View class="vgroup size top-buffer">
+					<View class='hgroup span-width'>
+						<Widget class="red icon left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-map-marker" />
+						<Label class="h3 red left-buffer">Location</Label>
+						<Label class="h6 gray right-buffer bottom" id="fromHQ" />
+					</View>
+					<Module id="mapview" module="ti.map" method="createView" class='buffer border-dark-thick no-touch' />
+				</View>
+			</ScrollableView>
+			
+			<!-- TABLET VIEW>
+			<View class="buffer vgroup" formFactor="tablet">
+				<View class="size">
+					<View id="contactInfo" class="vgroup size top-buffer">
+						<View class='hgroup redbkg size'>
+							<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-qrcode" />
+							<Label class="h3 red  left-buffer right-buffer">Contact Info</Label>
+						</View>
+						<View class='hgroup size top-buffer left-buffer'>
+							<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />
+							<Label class="red  left-buffer right-buffer">512-555-1212</Label>
+						</View>
+						<View class='hgroup size top-buffer left-buffer'>
+							<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-envelope-alt" />
+							<Label class="red  left-buffer right-buffer">kelly.smith@appcelerator.com</Label>
+						</View>
+						<View class='hgroup size top-buffer left-buffer'>
+							<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-comment" />
+							<Label class=" left-buffer right-buffer">kelly.smith</Label>
+						</View>
+					</View>
+					<View id="about" class="vgroup size top-buffer right-buffer" >
+						<View class='hgroup redbkg size'>
+							<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-info-sign" />
+							<Label class="h3 red left-buffer right-buffer">About</Label>
+						</View>
+						<Label id="profileBio" class="normal-text red left-buffer right-buffer top-buffer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Label>
+					</View>
+				</View>
+				<View id="location" class="vgroup size top-buffer bottonm-buffer">
+					<View class='hgroup redbkg span-width'>
+						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-map-marker" />
+						<Label class="h3 red left-buffer right-buffer">Location</Label>
+					</View>
+					<View  ns="Ti.Map"
+						id="mapview" 
+						class='buffer border-dark-thick'
+						mapType="Ti.Map.STANDARD_TYPE"> 
+
+						
+
+					</View>
+				</View>
+			</View>-->
+		</View>
+	</View>
+</Alloy>

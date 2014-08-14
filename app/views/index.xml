@@ -1,0 +1,19 @@
+<Alloy>
+	    <!-- Anddroid Window -->
+	<Window id="nav" platform="android" class="container">
+		 <LeftNavButton>
+		 	<Label id="logo" />
+		 </LeftNavButton>
+		 <Require src="directory" />
+	</Window>
+	
+    <!-- iOS Window -->
+    <NavigationWindow id="nav" platform="ios" class="container">
+    	<Window title="Directory" class="wrapper">
+    		<LeftNavButton>
+			 	<Label id="logo" />
+			 </LeftNavButton>
+    		<Require src="directory" />
+    	</Window>
+    </NavigationWindow>
+</Alloy>
