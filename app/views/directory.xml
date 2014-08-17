@@ -1,9 +1,34 @@
 <Alloy>
+	<!--
+		This view wraps all of the child views/lists etc. Creates a base layout, vertically aligned.
+	-->
 	<View id="wrapper" class="vgroup" title="Directory">
+		
+		<!--
+		If you would like the searchbar to scroll up with the listView, you can move this line before the last
+		</ListView> tag. However for our implementation, we want the searchBar to be present at all times so we have moved
+		it outside of the ListView tags.
+		-->
 		<SearchBar id="searchBar" platform="ios" class="search" onBookmark="onBookmarkClick" onFocus="onSearchFocus" onCancel="onSearchCancel"  onChange="onSearchChange" />
+		
+		<!--
+			To create a more customized searchView for Android, we are creating a custom view that ties back to the listView
+			through the onChange event.
+		-->
+		<View platform="android" class="size hgroup">
+			<Label class="icon-search left-buffer" />
+			<TextField id="searchBar" class="search" onChange="onSearchChange" />
+			<Label id="closeBtn" class="icon-close right-buffer" onClick="onSearchCancel" />
+		</View>
+		
+		<!--
+			The Directory list. 
+			This listView leverages two ListItem templates to denote regular contacts and those that are bookmarked.
+		-->
 		<ListView id="listView" defaultItemTemplate="userTemplate" onItemclick="onItemClick">
 			<Templates>
 				
+				<!-- UserTemplate - this is the default ListItem template -->
 				<ItemTemplate id="userTemplate" name="userTemplate" class="template">
 					<View class="left">
 						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
@@ -16,7 +41,7 @@
 					</View>
 				</ItemTemplate>
 				
-				
+				<!-- favoriteTemplate - this is the ListItem template for contacts that have been bookmarked -->
 				<ItemTemplate id="favoriteTemplate" name="favoriteTemplate" class="template">
 					<View class="left">
 						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
@@ -30,9 +55,7 @@
 					</View>
 				</ItemTemplate>	
 			</Templates>
-			<ListSection></ListSection>
-			<SearchView ns="Ti.UI.Android" id="searchBar" platform="android" hintText="Search" />
+			
 		</ListView>
-			 	
 	</View>
 </Alloy>

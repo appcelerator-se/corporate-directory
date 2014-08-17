@@ -3,5 +3,9 @@
 <!-- Generated with http://android-holo-colors.com -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-  
+  <style name="Appcelerator" parent="@style/_Appcelerator"/>
+
+  <style name="_Appcelerator" parent="Theme.AppCompat.Light" />
+ 
+
 </resources>

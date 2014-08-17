@@ -2,13 +2,13 @@ var _args = arguments[0] || {};
 var App = Alloy.Globals.App;
 
 var users = null;
-var alpha
+var indexes = [];
 
 /** 
  * Methods 
  */
 function init(){
-	Ti.API.info('INIT');
+	
 	var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory + "userData/data.json"); 
 	users = JSON.parse(file.read().text).users;
 	
@@ -25,11 +25,14 @@ function init(){
 		 * Group the data by first letter of last name to make it easier to create 
 		 * sections
 		 */
+		
 		var userGroups  = _.groupBy(users, function(item){
 		 	return item.lastName.charAt(0);
 		});
 		
-		var sections = [];		
+		indexes = [];
+		var sections = [];
+        
 		_.each(userGroups, function(group){
 
 
@@ -40,7 +43,13 @@ function init(){
 			 * if not lets exit
 			 */
 			if(dataToAdd.length < 1) return;
-
+			
+			
+		
+			indexes.push({
+				index: indexes.length,
+				title: group[0].lastName.charAt(0)
+			});
 
 			/**
 			 * Create a HeaderView
@@ -76,7 +85,21 @@ function init(){
 			sections.push(section);
 		});
 
+		/**
+		 * Update ListView
+		 */
+		Ti.API.info(indexes);
+		$.listView.tintColor = "#666";
 		$.listView.sections = sections;
+		
+		$.wrapper.addEventListener("swipe", function(e){
+			if(e.direction === "left"){
+				$.listView.sectionIndexTitles = indexes;
+			}
+			if(e.direction === "right"){
+				$.listView.sectionIndexTitles = null;
+			}
+		});
 	}
 	
 	if(_args.title){
@@ -202,14 +225,42 @@ if(OS_IOS){
 	};
 }
 else if(OS_ANDROID){
-	
+	/**
+	 * Handles the SearchBar OnChange event
+	 * 
+	 * @description On iOS we want the search bar to always be on top, so we use the onchange event to tie it back
+	 * 				to the ListView
+	 * 
+	 * @param {Object} Event data passed to the function
+	 */
+	onSearchChange = function onChange(e){
+		if($.searchBar.value !==''){
+			$.closeBtn.visible = true;
+		}
+		else{
+			$.closeBtn.visible = false;
+		}
+		
+		$.listView.searchText = $.searchBar.value;
+	};
 	/**
 	 * Hides the keyboard when the cancel button is clicked
 	 * 
 	 * @param {Object} Event data passed to the function
 	 */
 	onSearchCancel = function onCancel(e){
+		$.closeBtn.visible = false;
+		$.searchBar.value = '';
 		$.searchBar.blur();
+	};
+	/**
+	 * Hides the keyboard when the cancel button is clicked
+	 * 
+	 * @param {Object} Event data passed to the function
+	 */
+	onSearchFocus = function onCancel(e){
+		
+		
 	};
 }
 

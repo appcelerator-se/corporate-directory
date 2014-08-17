@@ -98,6 +98,7 @@ Alloy.Globals.App = {
 			        color: "#C41230"
 			   },
 			   fullscreen: OS_ANDROID ? true : null,
+			   backgroundColor:"#fff",
 			   navTintColor: "C41230"
 			});
 			win.add(view);

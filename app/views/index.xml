@@ -1,9 +1,13 @@
 <Alloy>
-	    <!-- Anddroid Window -->
+	    <!-- Android Window -->
 	<Window id="nav" platform="android" class="container">
-		 <LeftNavButton>
-		 	<Label id="logo" />
-		 </LeftNavButton>
+		
+		<!-- 
+		Menu Item to open the bookmarks view
+		-->
+		<Menu id="menu" platform="android">
+            <MenuItem id="bookmarkBtn" title="Bookmarks" icon="/images/bookmark.png" onClick="onBookmarkClick" showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM"/>
+        </Menu>
 		 <Require src="directory" />
 	</Window>
 	

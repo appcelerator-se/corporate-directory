@@ -74,14 +74,35 @@
 	backgroundColor: "#fff",
 	borderWidth:0,
 	tintColor: "#C41230",
-	hintText: "Search"
-},
-
-".search[platform=android]":{
-	color: "#666"
-}
-
-".search[platform=ios]":{
+	hintText: "Search",
 	barColor: "#fff",
 	showBookmark:true
+},
+
+"#searchBar[platform=android]":{
+	height: 40,
+	left: 10,
+	width: "76%"
+},
+
+".icon-search":{
+	font:{
+		fontFamily:"icomoon",
+		fontSize:24,
+	},
+	text: "\uf002",
+	color: "#999",
+	width:"7%",
+},
+
+".icon-close":{
+	font:{
+		fontFamily:"icomoon",
+		fontSize:24,
+	},
+	text: "\uf057",
+	color: "#999",
+	height: 40,
+	width:"7%",
+	visible: false
 }
