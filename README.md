@@ -1,14 +1,34 @@
-Corporate Directory App
+[titanium-badge]:http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png
+[expanded-app]:https://github.com/appcelerator-se/corporate-directory/blob/master/screenshots/directory-expanded.png?raw=true
+
+Corporate Directory App [![Appcelerator Titanium](http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png)](http://appcelerator.com/titanium/)
 =======================
 
-Thi is a sample application for Appcelerator Titanium.
+![][expanded-app]
 
 
+Everyone needs to have quick and easy access to their business contacts. This corporate directory application showcases how you can easily build a high quality, cross platform application using the Appcelerator Mobile Platform.
 
-Getting Help
+Key App Features
+----------------
++ A master / detail application using a customized ListView
++ Searchable List including Indexes (iOS only)
++ Native Navigation Patterns using NavigationWindow for iOS and standard Windows for Android
++ Includes native hooks to Maps, Email and Phone applications
++ Loading data from local Filesystem
+
+Quick Start
+-----------
++ Clone this repository to your local development machine.
++ Open **Appcelerator Studio** and from the menu select _File -> Import..._
++ In the **Import** dialog that opens, make sure the you expand the _Appcelerator_ folder and select _Existing Mobile Project_
++ Browse to your cloned repository and click _Finish_
+
+
+Get Help
 ------------
 
-There are a number of ways to get help with Titanium.
+There are a number of ways to get help with the Appcelerator Mobile Platform.
 
 ### Official Documentation, Tutorials and Videos
 
@@ -44,18 +64,6 @@ companies that require additional level of assistance through training or commer
 need special licensing or want additional levels of capabilities.  Please visit the
 [Appcelerator Website](http://www.appcelerator.com) for more information about Appcelerator or
 email [info@appcelerator.com](mailto:info@appcelerator.com).
-
-
-
-Contributing
-------------
-
-Titanium is an open source project.  Titanium wouldn't be where it is now without contributions by the community. Please consider forking Titanium to improve, enhance or fix issues. If you feel like the community will benefit from your fork, please open a pull request. 
-
-To protect the interests of the Titanium contributors, Appcelerator, customers and end users we require contributors to sign a Contributors License Agreement (CLA) before we pull the changes into the main repository. Our CLA is simple and straightforward - it requires that the contributions you make to any Appcelerator open source project are properly licensed and that you have the legal authority to make those changes. This helps us significantly reduce future legal risk for everyone involved. It is easy, helps everyone, takes only a few minutes, and only needs to be completed once. 
-
-[You can digitally sign the CLA](http://bit.ly/app_cla) online. Please indicate your email address in your first pull request so that we can make sure that will locate your CLA.  Once you've submitted it, you no longer need to send one for subsequent submissions.
-
 
 
 Legal Stuff
