@@ -7,7 +7,7 @@
     <property name="acs-api-key-development" type="string">JSwQpYGYlKncUrbOgJtG2EkPkbNH4LUg</property>
     <id>com.appcelerator.directory</id>
     <name>Directory</name>
-    <version>1.1</version>
+    <version>1.2</version>
     <publisher>bgrantges</publisher>
     <url>http://</url>
     <description>undefined</description>
