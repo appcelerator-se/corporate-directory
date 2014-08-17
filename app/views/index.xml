@@ -1,6 +1,6 @@
 <Alloy>
-	    <!-- Android Window -->
-	<Window id="nav" platform="android" class="container">
+	    <!-- App Window -->
+	<Window id="nav" class="container">
 		
 		<!-- 
 		Menu Item to open the bookmarks view
