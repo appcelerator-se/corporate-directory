@@ -5,11 +5,11 @@
 	exitOnClose: true
 },
 ".container[platform=ios]":{
-	navTintColor: "#ae331f"
+	navTintColor: "#C41230"
 },
 "#wrapper":{
 	titleAttributes:  {
-        color: "#ae331f"
+        color: "#C41230"
    },
    hideShadow: true,
    borderColor: "#fff",
