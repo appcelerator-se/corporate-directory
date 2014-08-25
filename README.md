@@ -26,7 +26,7 @@ Key App Features
 + Model / View binding on the Profile Page
 + Uses Alloy Models to sync sample data to the SQLite database
 
-_Note: The data-binding branch does not create ListViewSections in the directory view.
+_Note: The data-binding branch does not create ListViewSections in the directory view._
 
 Quick Start
 -----------
