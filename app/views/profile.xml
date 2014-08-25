@@ -32,7 +32,7 @@
 				- About View, a blurb of text about the user
 				- MapView shows an annotation of where the user is located
 			-->
-			<ScrollableView class="top-buffer" formFactor="handheld" pagingControlHeight="20">
+			<ScrollableView class="top-buffer" pagingControlHeight="20">
 				
 				<!-- Information View -->
 				<View class="vgroup size top-buffer">

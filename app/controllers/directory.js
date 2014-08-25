@@ -147,11 +147,6 @@ function init(){
 		});
 
 		/**
-		 * Update the ListView 
-		 */
-		$.listView.tintColor = "#666";
-		
-		/**
 		 * Add the ListViewSections and data elements created above to the ListView
 		 */
 		$.listView.sections = sections;
@@ -186,7 +181,7 @@ function init(){
 	if(_args.restrictBookmarks){
 		$.searchBar.showBookmark = false;
 	}
-}
+};
 
 /**
  *	Convert an array of data from a JSON file into a format that can be added to the ListView

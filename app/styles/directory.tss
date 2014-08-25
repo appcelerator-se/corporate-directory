@@ -79,13 +79,7 @@
 	showBookmark:true
 },
 
-"#searchBar[platform=android]":{
-	height: 40,
-	left: 10,
-	width: "76%"
-},
-
-".icon-search":{
+".icon-search[platform=android]":{
 	font:{
 		fontFamily:"icomoon",
 		fontSize:24,
@@ -95,7 +89,7 @@
 	width:"7%",
 },
 
-".icon-close":{
+".icon-close[platform=android]":{
 	font:{
 		fontFamily:"icomoon",
 		fontSize:24,
@@ -105,4 +99,14 @@
 	height: 40,
 	width:"7%",
 	visible: false
+},
+
+"#searchBar[platform=android]":{
+	height: 40,
+	left: 10,
+	width: "76%"
+},
+
+"#listView":{
+	tintColor: "#666"
 }

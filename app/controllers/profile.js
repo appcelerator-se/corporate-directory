@@ -32,95 +32,83 @@ var _args = arguments[0] || {},
 	bookmarks = null;
 
 /**
- * Function to initialize the View
+ * Check for passed in properties of the contact, and update the 
+ * Label text and ImageView image values as required
  */
-function init(){
+$.profilePicture.image = _args.photo;
+$.name.text = _args.firstName + " " + _args.lastName;
+$.company.text = _args.company;
+$.phone.text = _args.phone;
+$.email.text = _args.email;
+$.im.text = _args.im || _args.firstName+"."+_args.lastName;
+$.about.text = _args.about;
+
+/**
+ * FUN! How far away is the contact from your Headquarters! This is calculated using
+ * functions from the lib/utilities.js. The HQ is defined in Alloy.js
+ */
+var distanceFromAppcelerator = Math.floor($U.getDistanceFromLatLonInMiles(_args.latitude, _args.longitude, 37.389505, -122.050252));
+$.fromHQ.text = distanceFromAppcelerator + " miles from HQ";
+
+/**
+ * Add Event Handlers to the IconLabels Widgets
+ */
+$.emailBtn.icon.addEventListener('click', emailContact);
+$.callBtn.icon.addEventListener('click', callContact);
+
+
+/**
+ * Set the Map Region for the Map Module so that it is at the right zoom level
+ * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Modules.Map
+ */
+if(!OS_ANDROID){
 	
-	/**
-	 * Check for passed in properties of the contact, and update the 
-	 * Label text and ImageView image values as required
-	 */
-	$.profilePicture.image = _args.photo;
-	$.name.text = _args.firstName + " " + _args.lastName;
-	$.company.text = _args.company;
-	$.phone.text = _args.phone;
-	$.email.text = _args.email;
-	$.im.text = _args.im || _args.firstName+"."+_args.lastName;
-	$.about.text = _args.about;
-	
-	/**
-	 * FUN! How far away is the contact from your Headquarters! This is calculated using
-	 * functions from the lib/utilities.js. The HQ is defined in Alloy.js
-	 */
-	var distanceFromAppcelerator = Math.floor($U.getDistanceFromLatLonInMiles(_args.latitude, _args.longitude, 37.389505, -122.050252));
-	$.fromHQ.text = distanceFromAppcelerator + " miles from HQ";
-	
-	/**
-	 * Add Event Handlers to the IconLabels Widgets
-	 */
-	$.emailBtn.icon.addEventListener('click', emailContact);
-	$.callBtn.icon.addEventListener('click', callContact);
-	
-	
-	/**
-	 * Set the Map Region for the Map Module so that it is at the right zoom level
-	 * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Modules.Map
-	 */
-	if(!OS_ANDROID){
-		
-		$.mapview.setRegion({
-			latitude: _args.latitude || 30.631256,
-			longitude: _args.longitude || -97.675422,
-			latitudeDelta:2,
-			longitudeDelta:2,
-		});
-		
-	}
-	else {
-		
-		/**
-		 * Android leverages a zoom / tilt property to adjust the view so we 
-		 * branched the code accordingly
-		 */
-		$.mapview.setRegion({
-			latitude: _args.latitude || 30.631256,
-			longitude: _args.longitude || -97.675422,
-			zoom: 6,
-			tilt:45
-		});
-	}
-	
-	/**
-	 * Create the Map Annotation to the latitude and longitude assigned to the user.
-	 */
-	var mapAnnotation = Map.createAnnotation({
-	    latitude: _args.latitude || 30.631256,
-	    longitude: _args.longitude || -97.675422,
-	    pincolor: Map.ANNOTATION_RED,
+	$.mapview.setRegion({
+		latitude: _args.latitude || 30.631256,
+		longitude: _args.longitude || -97.675422,
+		latitudeDelta:2,
+		longitudeDelta:2,
 	});
 	
-	/**
-	 * Add the Map Annotation to the MapView
-	 */
-	$.mapview.addAnnotation(mapAnnotation);
+}
+else {
 	
 	/**
-	 * Get the Bookmarks from Ti.App.Properties
+	 * Android leverages a zoom / tilt property to adjust the view so we 
+	 * branched the code accordingly
 	 */
-	bookmarks = Ti.App.Properties.getList("bookmarks", []);
-	
-	/**
-	 * Check that the contact is not already a bookmark, and update the bookmarks button
-	 * title as required.
-	 */
-	isBookmark(_args.id) && $.addBookmarkBtn.setTitle("- Remove From Bookmarks");
+	$.mapview.setRegion({
+		latitude: _args.latitude || 30.631256,
+		longitude: _args.longitude || -97.675422,
+		zoom: 6,
+		tilt:45
+	});
 }
 
 /**
- * Initialize the View
+ * Create the Map Annotation to the latitude and longitude assigned to the user.
  */
-init();
+var mapAnnotation = Map.createAnnotation({
+    latitude: _args.latitude || 30.631256,
+    longitude: _args.longitude || -97.675422,
+    pincolor: Map.ANNOTATION_RED,
+});
 
+/**
+ * Add the Map Annotation to the MapView
+ */
+$.mapview.addAnnotation(mapAnnotation);
+
+/**
+ * Get the Bookmarks from Ti.App.Properties
+ */
+bookmarks = Ti.App.Properties.getList("bookmarks", []);
+
+/**
+ * Check that the contact is not already a bookmark, and update the bookmarks button
+ * title as required.
+ */
+isBookmark(_args.id) && $.addBookmarkBtn.setTitle("- Remove From Bookmarks");
 
 /**
  * Determines if the passed in ID of the contact currently exists in the bookmarks array. 

@@ -1,5 +1,9 @@
 "ScrollableView":{
-	showPagingControl: true
+	showPagingControl: true,
+}
+
+"ScrollableView[platform=ios]":{
+	pagingControlColor: "#C41230"
 }
 
 ".container":{
@@ -21,7 +25,7 @@
 }
 
 
-"#profilePicture[formFactor=handheld]":{
+"#profilePicture":{
 	height: 125,
 	width: 125,
 	borderRadius: 63,
@@ -33,7 +37,7 @@
 	width: Ti.UI.SIZE
 }
 
-"ScrollableView[formFactor=handheld]":{
+"ScrollableView":{
 	height: "45%",
 	pagingControlColor: 'transparent'
 }
