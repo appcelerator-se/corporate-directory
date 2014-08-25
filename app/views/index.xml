@@ -1,5 +1,5 @@
 <Alloy>
-	    <!-- App Window -->
+	    <!-- Default App Window -->
 	<Window id="nav" class="container">
 		
 		<!-- 
