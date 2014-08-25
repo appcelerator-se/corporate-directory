@@ -12,7 +12,7 @@ Everyone needs to have quick and easy access to their business contacts. This co
 Key App Features 
 ----------------
 
-#### Master Branch
+#### master Branch
 + A master / detail application using a customized ListView
 + Searchable List
 + ListViewSections created based on last name initial
