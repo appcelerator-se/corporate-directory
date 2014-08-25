@@ -9,21 +9,33 @@ Corporate Directory App [![Appcelerator Titanium](http://www-static.appcelerator
 
 Everyone needs to have quick and easy access to their business contacts. This corporate directory application showcases how you can easily build a high quality, cross platform application using the Appcelerator Mobile Platform.
 
-Key App Features
+Key App Features 
 ----------------
+
+#### master Branch
 + A master / detail application using a customized ListView
-+ Searchable List including Indexes (iOS only)
++ Searchable List
++ ListViewSections created based on last name initial
++ ListView Indexes (iOS only)
 + Native Navigation Patterns using NavigationWindow for iOS and standard Windows for Android
 + Includes native hooks to Maps, Email and Phone applications
 + Loading data from local Filesystem
 
+#### data-binding Branch
++ Collection data binding to ListView
++ Model / View binding on the Profile Page
++ Uses Alloy Models to sync sample data to the SQLite database
+
+_Note: The data-binding branch does not create ListViewSections in the directory view._
+
 Quick Start
 -----------
-+ Clone this repository to your local development machine.
 + Open **Appcelerator Studio** and from the menu select _File -> Import..._
-+ In the **Import** dialog that opens, make sure the you expand the _Appcelerator_ folder and select _Existing Mobile Project_
-+ Browse to your cloned repository and click _Finish_
++ In the **Import** dialog that opens, make sure the you expand the _Git_ folder and select _Git Repository as New Project_
++ Click the **URI** radio button option and paste URL of this repository into the text field
++ Click _Finish_
 
+_Note: By default this project will be downloaded and cloned into your existing workspace_
 
 Get Help
 ------------
