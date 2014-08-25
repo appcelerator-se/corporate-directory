@@ -19,11 +19,12 @@ Key App Features
 
 Quick Start
 -----------
-+ Clone this repository to your local development machine.
 + Open **Appcelerator Studio** and from the menu select _File -> Import..._
-+ In the **Import** dialog that opens, make sure the you expand the _Appcelerator_ folder and select _Existing Mobile Project_
-+ Browse to your cloned repository and click _Finish_
++ In the **Import** dialog that opens, make sure the you expand the _Git_ folder and select _Git Repository as New Project_
++ Click the **URI** radio button option and paste URL of this repository into the text field
++ Click _Finish_
 
+_Note: By default this project will be downloaded and cloned into your existing workspace_
 
 Get Help
 ------------
