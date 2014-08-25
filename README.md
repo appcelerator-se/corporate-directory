@@ -9,13 +9,24 @@ Corporate Directory App [![Appcelerator Titanium](http://www-static.appcelerator
 
 Everyone needs to have quick and easy access to their business contacts. This corporate directory application showcases how you can easily build a high quality, cross platform application using the Appcelerator Mobile Platform.
 
-Key App Features
+Key App Features 
 ----------------
+
+#### Master Branch
 + A master / detail application using a customized ListView
-+ Searchable List including Indexes (iOS only)
++ Searchable List
++ ListViewSections created based on last name initial
++ ListView Indexes (iOS only)
 + Native Navigation Patterns using NavigationWindow for iOS and standard Windows for Android
 + Includes native hooks to Maps, Email and Phone applications
 + Loading data from local Filesystem
+
+#### data-binding Branch
++ Collection data binding to ListView
++ Model / View binding on the Profile Page
++ Uses Alloy Models to sync sample data to the SQLite database
+
+_Note: The data-binding branch does not create ListViewSections in the directory view.
 
 Quick Start
 -----------
