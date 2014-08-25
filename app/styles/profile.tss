@@ -3,6 +3,7 @@
 }
 
 "ScrollableView[platform=ios]":{
+	showPagingControl: true,
 	pagingControlColor: "#C41230"
 }
 
