@@ -1,151 +1,50 @@
 var _args = arguments[0] || {};
 var App = Alloy.Globals.App;
 
-var users = null;
-var indexes = [];
+users = Alloy.Collections.user;
 
-/** 
- * Methods 
+users.comparator = function(contact) {
+  return contact.get('lastName');
+};
+
+users.fetch();
+
+/**
+ * Setup listener for data refresh event
  */
-function init(){
-	
-	var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory + "userData/data.json"); 
-	users = JSON.parse(file.read().text).users;
-	
-	/**
-	 * Sort by Last Name
-	 */
-	users = _.sortBy(users, function(user){
-		return user.lastName
-	})
-	
-	if(users) {
-		
-		/**
-		 * Group the data by first letter of last name to make it easier to create 
-		 * sections
-		 */
-		
-		var userGroups  = _.groupBy(users, function(item){
-		 	return item.lastName.charAt(0);
-		});
-		
-		indexes = [];
-		var sections = [];
-        
-		_.each(userGroups, function(group){
+Ti.App.addEventListener('refresh-data', function(){
+	users.fetch();
+});
 
-
-			var dataToAdd = preprocessForListView(group);
-
-			/**
-			 * Check to make sure that there is data to add to the table,
-			 * if not lets exit
-			 */
-			if(dataToAdd.length < 1) return;
-			
-			
-		
-			indexes.push({
-				index: indexes.length,
-				title: group[0].lastName.charAt(0)
-			});
-
-			/**
-			 * Create a HeaderView
-			 */
-
-			 var sectionHeader = Ti.UI.createView({
-			 	backgroundColor: "#ececec",
-			 	width: Ti.UI.FIll,
-			 	height: 30
-			 });
-
-			 var sectionLabel = Ti.UI.createLabel({
-			 	text: group[0].lastName.charAt(0),
-			 	left: 20,
-			 	font:{
-			 		fontSize: 20
-			 	},
-			 	color: "#666"
-			 });
-			 sectionHeader.add(sectionLabel);
-
-			/**
-			 * Create a new Section
-			 */
-			 var section = Ti.UI.createListSection({
-				headerView: sectionHeader
-			});
-
-			/**
-			 * Add Data to the Table
-			 */
-			section.items = dataToAdd;
-			sections.push(section);
-		});
-
-		/**
-		 * Update ListView
-		 */
-		Ti.API.info(indexes);
-		$.listView.tintColor = "#666";
-		$.listView.sections = sections;
-		
-		$.wrapper.addEventListener("swipe", function(e){
-			if(e.direction === "left"){
-				$.listView.sectionIndexTitles = indexes;
-			}
-			if(e.direction === "right"){
-				$.listView.sectionIndexTitles = null;
-			}
-		});
-	}
-	
-	if(_args.title){
-		$.wrapper.title = _args.title;
-	}
-	
-	if(_args.restrictBookmarks){
-		$.searchBar.showBookmark = false;
-	}
+/**
+ * Update the Window title if needed
+ */
+if(_args.title){
+	$.wrapper.title = _args.title;
 }
 
 /**
- *	Convert a list of data from a JSON file into a format that can be added to the ListView
- * 	@param {Object} Raw data elements from the JSON file.
+ * If we are looking at the window in bookmarks mode - then 
+ * hide the bookmark icon
  */
-var preprocessForListView = function(rawData) {
+if(_args.restrictBookmarks){
+	$.searchBar.showBookmark = false;
+}
+
+
+function listViewTransform(m){
 	
-	var bookmarks = Ti.App.Properties.getList("bookmarks", []);
+	var $M = m.toJSON();
+	$M.template = $M.favorite ? "favoriteTemplate" : "userTemplate";
+	$M.name = $M.firstName + " " +$M.lastName;
+	$M.searchText = [$M.firstName, $M.lastName, $M.company, $M.email].join(" ");	
+	return $M;
 	
-	if(_args.restrictBookmarks) {
-		rawData = _.filter(rawData, function(item){
-			return _.find(bookmarks, function(bookmark){
-				return item.id === bookmark;
-			});
-		});
-	}
-	
-	return _.map(rawData, function(item) {
-		
-		var isBookmark = _.find(bookmarks, function(bookmark){
-			return item.id === bookmark;
-		});
-		
-		return {
-			template: isBookmark ? "favoriteTemplate" : "userTemplate",
-			properties: {
-				searchableText: item.name + ' ' + item.company + ' ' + item.email,
-				user: item,
-			},
-			userName: {text: item.firstName+" "+item.lastName},
-			userCompany: {text: item.company},
-			userPhoto: {image: item.photo},
-			userEmail: {text: item.email} 
-		};
-	});	
-};
+}
+
+function listViewFilter(c){
+	return !_args.restrictBookmarks ?  c.models :  c.where({ favorite: 1 });	
+}
 
 /**
  * This function handles the click events for the rows in the ListView.
@@ -154,10 +53,12 @@ var preprocessForListView = function(rawData) {
  * 
  * @param {Object} Event data passed to the function
  */
-function onItemClick(e){
+function onItemClick(e){ 
 	
 	var item = $.listView.sections[e.sectionIndex].items[e.itemIndex];
-	Alloy.Globals.App.Navigator.open("profile", item.properties.user);
+	Ti.API.info(item.properties.contactId);
+	var contact = users.get(item.properties.contactId).toJSON(); 
+	App.Navigator.open("profile", contact);
 }
 
 /**
@@ -262,21 +163,4 @@ else if(OS_ANDROID){
 		
 		
 	};
-}
-
-/**
- * Initialize View
- */
-
-init();
-
-/**
- * Listen for the refresh event, and re-initialize
- */
-Ti.App.addEventListener("refresh-data", function(e){
-	Ti.API.info('REFRESH DATA');
-	
-	$.listView.sections[0].items = null;
-	init();
-});
-
+};

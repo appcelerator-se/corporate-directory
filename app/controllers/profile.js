@@ -2,16 +2,27 @@ var _args = arguments[0] || {},
 	App = Alloy.Globals.App,
 	Map = require('ti.map'),
 	$U = require('utilities'),
-	bookmarks = null;
+	$M = Alloy.Models.user;
 
+
+/**
+ * Update the Model/View binding
+ */
+for(var prop in _args){
+	Ti.API.info("KEY: "+prop+", VALUE: "+_args[prop]);
+	$M.set(prop, _args[prop]);
+};
+
+/**
+ * A couple of transformations for the model to align with the Data on the page
+ */
+$M.set("name", _args.firstName+" "+_args.lastName);
+$M.set("im", _args.firstName.toLowerCase()+"."+_args.lastName.toLowerCase());
+
+/**
+ * Initialize the View
+ */
 function init(){
-	$.profilePicture.image = _args.photo;
-	$.name.text = _args.firstName + " " + _args.lastName;
-	$.company.text = _args.company;
-	$.phone.text = _args.phone;
-	$.email.text = _args.email;
-	$.im.text = _args.im || _args.firstName+"."+_args.lastName;
-	$.about.text = _args.about;
 	
 	var distanceFromAppcelerator = Math.floor($U.getDistanceFromLatLonInMiles(_args.latitude, _args.longitude, 37.389505, -122.050252));
 	$.fromHQ.text = distanceFromAppcelerator + " miles from HQ";
@@ -22,6 +33,11 @@ function init(){
 	$.emailBtn.icon.addEventListener('click', emailContact);
 	$.callBtn.icon.addEventListener('click', callContact);
 	
+	
+	/**
+	 * Set the Map Region for the Map Module so that it is at the right zoom level
+	 * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Modules.Map
+	 */
 	if(!OS_ANDROID){
 		
 		$.mapview.setRegion({
@@ -42,6 +58,9 @@ function init(){
 		});
 	}
 	
+	/**
+	 * Set Map Annotation
+	 */
 	var mapAnnotation = Map.createAnnotation({
 	    latitude: _args.latitude || 30.631256,
 	    longitude: _args.longitude || -97.675422,
@@ -52,100 +71,29 @@ function init(){
 	/**
 	 * Check that the contact is not already a bookmark
 	 */
-	bookmarks = Ti.App.Properties.getList("bookmarks", []);
-	
-	
-	isBookmark(_args.id) && $.addBookmarkBtn.setTitle("- Remove From Bookmarks");
+	_args.favorite && $.addBookmarkBtn.setTitle("- Remove From Bookmarks");
 }
-
-function mapAdjustRegion(e){
-	
-}
-
-function isBookmark(id){
-	return _.find(bookmarks, function(mark){
-		return id === mark;
-	});
-}
-
-/*function addContact(e) {
-	
-	Ti.API.info('Saving contact...');
-	
-	var performAddressBookFunction = function(){
-		var workAddress1 = {
-		  'CountryCode': 'us',
-		  'Street':  '440 N. Bernardo Avenue',
-		  'City': 'Mountain View',
-		  'State': 'California',
-		  'Country': 'United States',
-		  'ZIP': '94043'
-		};
-		
-		Ti.Contacts.createPerson({
-			firstName : 'Kelly',
-			lastName : 'Smith',
-			organization: 'Appcelerator, Inc.',
-			image: $.profilePicture.toBlob(),
-			email: {
-				work:['kelly.smith@appcelerator.com']
-			}, 
-			phone: {
-				mobile:['512-555-1212']
-			},
-			address : {
-				work : [workAddress1]
-			},
-			instantMessage:{
-				home:[
-					{
-						service: 'Skype',
-						username: 'kelly.smith'
-					},
-				]
-			}
-		});
-		alert('Contact saved');
-		
-		/*
-		Ti.Analytics.featureEvent(app.profile.saveContact)
-		 
-	};
-	
-	/*
-	 * IOS requires permission grantgs on iOS6 and above
-	
-	if(OS_IOS){
-		
-		var addressBookDisallowed = function(){
-			Ti.API.error("ERROR STORING CONTACT - PERMISSION DENIED");
-		};
-		
-		if (Ti.Contacts.contactsAuthorization == Ti.Contacts.AUTHORIZATION_AUTHORIZED){
-		    performAddressBookFunction();
-		} else if (Ti.Contacts.contactsAuthorization == Ti.Contacts.AUTHORIZATION_UNKNOWN){
-		    Ti.Contacts.requestAuthorization(function(e){
-		        if (e.success) {
-		            performAddressBookFunction();
-		        } else {
-		            addressBookDisallowed();
-		        }
-		    });
-		} else {
-		    addressBookDisallowed();
-		}
-	}
-	else if(OS_ANDROID){ // ANDROID HAS PERMISSIONS IN THE MANIFEST
-		performAddressBookFunction();
-	}
-};*/
+init();
 
 /**
  * Function to Email the Contact using the native email tool
  */
 function emailContact() {
+	
+	/**
+	 * Create an Email Dialog
+	 * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Titanium.UI.EmailDialog
+	 */
 	var emailDialog = Ti.UI.createEmailDialog();
-	emailDialog.toRecipients = [_args.email];
+	
+	/**
+	 * Setup the Email Dialog information, in this case just the recipients field
+	 */
+	emailDialog.toRecipients = [$M.email];
+	
+	/**
+	 * Once we have created and setup the Email Dialog, lets open the view
+	 */
 	emailDialog.open();
 };
 
@@ -154,45 +102,75 @@ function emailContact() {
  */
 function callContact(){
 	
-	//var p = _args.phone.replace(/[^0-9]+/g, '');
+	/**
+	 * Before we send the phone number to the platform for handling, lets first verify
+	 * with the user they meant to call the contact with an Alert Dialog
+	 * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Titanium.UI.AlertDialog
+	 */
 	var dialog = Ti.UI.createAlertDialog({
 	    cancel: 0,
 	    buttonNames: ['Cancel', 'Ok'],
 	    message: "Are you sure you want to call "+_args.firstName+" at "+_args.phone
 	});
+	
+	/**
+	 * Event Handler associated with clicking the Alert Dialog, this handles the 
+	 * actual call to the platform to make the phone call
+	 */
 	dialog.addEventListener('click', function(e){
 	    if (e.index !== e.source.cancel){
-	      Ti.Platform.openURL("tel:+15125551212");
+	    
+	      // IF WE ARE BUILDING FOR DEVELOPMENT PURPOSES - TRY CALLING A FAKE NUMBER
+	      if(ENV_DEV){
+	      	Ti.Platform.openURL("tel:+15125551212");
+	      }
+	      // ELSE IF WE ARE BUILDING PRODUCTION - THEN USE THE LISTED NUMBER
+	      else if(ENV_PRODUCTION){
+	      	Ti.Platform.openURL("tel:"+_args.phone);
+	      }
 	    }  
 	});
-	dialog.show();
 	
-	 
-}
+	/**
+	 * After everything is setup, we show the Alert Dialog to the User
+	 */
+	dialog.show();	
+};
 
 /**
- * Add Bookmark
+ * Set/Unset the favorite flag on the contact
  */
-function toggleBookmark(){
+function toggleFavorite(){ 
 	
-	Ti.API.info(bookmarks);
-	
-	if(!isBookmark(_args.id)){
-		bookmarks.push(_args.id);
+	/**
+	 * If the Model is a favorite already
+	 */
+	if($M.get('favorite')){		
+		
+		/**
+		 * Set the Model property for Favorite to false, and update the 
+		 * button title for favorites
+		 */
+		$M.set('favorite', false);
+	    $.addBookmarkBtn.setTitle("+ Add To Bookmarks");	
+	}
+	else{	
+		
+		/**
+		 * Else set the favorite property to true, and update the button title
+		 * accordingly
+		 */
+		$M.set('favorite', true);
 	    $.addBookmarkBtn.setTitle("- Remove From Bookmarks");
 	}
-	else{
 	
-		bookmarks = _.difference(bookmarks, [_args.id]);
-	    $.addBookmarkBtn.setTitle("+ Add To Bookmarks"); 
-	}
+	/**
+	 * Save the updated modedl to the database.
+	 */
+	$M.save(); 
 	
-	Ti.API.info(bookmarks);
-	
-	Ti.App.Properties.setList("bookmarks", bookmarks);
-	Ti.App.fireEvent("refresh-data");
-	
-	
-}
-
-init();
+	/**
+	 * Fire event to trigger a data refresh in the directory view
+	 */
+	Ti.App.fireEvent('refresh-data');
+};

@@ -6,6 +6,8 @@ Alloy.Globals.App.init({
 
 $.nav.open();
 
+//Alloy.Globals.App.handleRoute(); 
+
 
 
 /**

@@ -1,19 +1,21 @@
 <Alloy>
+	<Model id="$M" src="user" /> 
+	
 	<View class="container fill" title="Profile">
 		<View class="vgroup buffer">
 			<View class="vgroup span-width bottom-buffer">
 				<View class="span-width">
 					<Widget id="emailBtn" src="net.hoyohoyo.iconiclabel" icon="icon-envelope" class="icon-button left-buffer"/>
-					<ImageView id="profilePicture" class="top-buffer no-touch" />
+					<ImageView id="profilePicture" class="top-buffer no-touch" image="{user.photo}"/>
 					<Widget id="callBtn" src="net.hoyohoyo.iconiclabel" icon="icon-phone" class="icon-button right-buffer"/>
 				</View>
 				<View class="vgroup size">
-					<Label id="name" class='h3 red top-buffer no-touch' >Kelly Smith</Label>
-					<Label id="job" class='h5 gray no-touch' >Account Rep</Label>
-					<Label id="company" class='h5 gray no-touch' >Appcelerator, Inc</Label>
+					<Label id="name" class='h3 red top-buffer no-touch' text="{user.name}" />
+					<Label id="job" class='h5 gray no-touch' text="{user.title}" />
+					<Label id="company" class='h5 gray no-touch' text="{user.company}" />
 				</View>
 			</View>
-			<Button id="addBookmarkBtn" class="span-width h4" onClick="toggleBookmark">+ Add to Bookmarks</Button>
+			<Button id="addBookmarkBtn" class="span-width h4" onClick="toggleFavorite">+ Add to Bookmarks</Button>
 			<!-- -->
 			<ScrollableView class="top-buffer" formFactor="handheld" pagingControlHeight="20">
 				<View class="vgroup size top-buffer">
@@ -23,15 +25,15 @@
 					</View>
 					<View class='hgroup size top-buffer left-buffer'>
 						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />
-						<Label id="phone" class="h5 gray left-buffer right-buffer">512-555-1212</Label>
+						<Label id="phone" class="h5 gray left-buffer right-buffer" text="{user.phone}" />
 					</View>
 					<View class='hgroup size top-buffer left-buffer'>
 						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-envelope-alt" />
-						<Label id="email" class="h5 gray left-buffer right-buffer">kelly.smith@appcelerator.com</Label>
+						<Label id="email" class="h5 gray left-buffer right-buffer" text="{user.email}" />
 					</View>
 					<View class='hgroup size top-buffer left-buffer'>
 						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-comment" />
-						<Label id="im" class="h5 gray left-buffer right-buffer">kelly.smith</Label>
+						<Label id="im" class="h5 gray left-buffer right-buffer" text="{user.im}" />
 					</View>
 				</View>
 				<View class="vgroup size top-buffer" >
@@ -40,7 +42,7 @@
 						<Label class="h3 red left-buffer right-buffer">About</Label>
 					</View>
 					<ScrollView class="size">
-						<Label id="about" class="gray normal-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Label>
+						<Label id="about" class="gray normal-text" text="{user.about}" />
 					</ScrollView>
 				</View>
 				<View class="vgroup size top-buffer">

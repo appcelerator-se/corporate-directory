@@ -1,4 +1,5 @@
 <Alloy>
+	<Collection src='user'/>
 	<!--
 		This view wraps all of the child views/lists etc. Creates a base layout, vertically aligned.
 	-->
@@ -18,7 +19,7 @@
 		<View platform="android" class="size hgroup">
 			<Label class="icon-search left-buffer" />
 			<TextField id="searchBar" class="search" onChange="onSearchChange" />
-			<Label id="closeBtn" class="icon-close right-buffer" onClick="onSearchCancel" />
+			<Label id="closeBtn" class="icon-close right-buffer" onClick="onSearchCancel" /> 
 		</View>
 		
 		<!--
@@ -53,9 +54,12 @@
 						<Label class="favorite" />
 						<View class="gray-line bottom"/>
 					</View>
-				</ItemTemplate>	
+				</ItemTemplate>
 			</Templates>
 			
+			<ListSection id="section" dataCollection="user" dataTransform="listViewTransform" dataFilter="listViewFilter"> 
+				<ListItem template="{template}" contactId="{alloy_id}" searchableText="{searchText}" userName:text="{name}" userCompany:text="{company}" userEmail:text="{email}" userPhoto:image="{photo}" />
+			</ListSection>
 		</ListView>
 	</View>
 </Alloy>

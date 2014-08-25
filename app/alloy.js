@@ -180,74 +180,73 @@ Alloy.Globals.App = {
 	 */
 	init: function(params) {
 		
+		/**
+		 * First Run - load JSON data into the sqlite database
+		 */
+		var isDataLoaded = Ti.App.Properties.getBool('data-loaded', false);
+		if(!isDataLoaded){
+			this.loadData();
+		}
+		
 		if(OS_IOS && params.navGroup){
 			this.Navigator.navGroup = params.navGroup;
 		}
 		
-		//RESET SWITCH
-		//Ti.App.Properties.setList("bookmarks", []);
+		Ti.App.addEventListener("resume", this.onAppResume);
+		Ti.App.addEventListener("resumed", this.onAppResume); 
 		
 	},
 	
-	/**
-	 * authorize
-	 */
-	authorize: function(){
-		var loginWidget = Alloy.createWidget('com.appcelerator.login', null, {
-		   loginCallback: function(e){ 
-		   	Ti.API.info(JSON.stringify(e));
-		   		
-		   		/**
-		   		 * Login User to the Appcelerator Cloud 
-		   		 * username:admin
-		   		 * password:admin
-		   		 */
-			   	Cloud.Users.login({
-				    login: e.username,
-				    password: e.password
-				}, function (e) {
-				    Ti.API.info(JSON.stringify(e));
-				    /** Start the app **/
-		    		$.index.open();
-				});	
-		   
-		  
-		    
-		  },
-		   createCallback: function(e){ 
-				Ti.API.info(JSON.stringify(e));
-			/*
-			   Cloud.Users.create({
-				    email: ,
-				    first_name: 'test_firstname',
-				    last_name: 'test_lastname',
-				    password: 'test_password',
-				    password_confirmation: 'test_password'
-				}, function (e) {
-				    if (e.success) {
-				        var user = e.users[0];
-				        alert('Success:\n' +
-				            'id: ' + user.id + '\n' +
-				            'sessionId: ' + Cloud.sessionId + '\n' +
-				            'first name: ' + user.first_name + '\n' +
-				            'last name: ' + user.last_name);
-				    } else {
-				        alert('Error:\n' +
-				            ((e.error && e.message) || JSON.stringify(e)));
-				    }
-				});
-		   */
-		    
-		    /** Start the app **/
-		    $.index.open();
-		  },
-		   remindCallback: function(e){ /*Do something here*/ }
+	loadData: function(){
+				
+		var file = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory + "userData/data.json"); 
+		data = JSON.parse(file.read().text).users; 
+		
+		_.each(data, function(user){
+			var model = Alloy.createModel("user", { 
+				"contactId": user.id,
+			    "favorite": user.favorite,
+			    "firstName": user.firstName,
+			    "lastName": user.lastName,
+			    "company": user.company,
+			    "email": user.email,
+			    "phone": user.phone,
+			    "latitude": user.latitude,
+			    "longitude": user.longitude,
+			    "photo": user.photo,
+			    "about": user.about
+			});
+			model.save();
 		});
 		
-		/**
-		 * Open the widget 
-		 */
-		loginWidget.open();
+		  
+		data = null;
+		file = null;
+		
+		Ti.App.Properties.setBool('data-loaded', true);
+		 
+	},
+	
+	/**
+	 * Fired when the application comes out of a resumed state
+ 	 * @param {Object} params
+	 */
+	onAppResume: function(params){
+		handleRoute();
+	},
+	
+	handleRoute: function(){
+		
+		//var args = Ti.App.getArguments();
+		
+		var args = {
+			url: "directory://contacts/53e5868724a25992582407aa?"
+		};
+		var elems = args.url.split("/");
+		Ti.API.info(elems);
+		
+		this.Navigator.open("profile", {id:elems[3]});
+		
 	}
 };
 

@@ -1,29 +1,26 @@
 exports.definition = {
 	config: {
 		columns: {
-		    "guid": "text",
-		    "picture": "text",
-		    "name": "text",
+		    "contactId": "text",
+		    "favorite": "integer",
+		    "firstName": "text",
+		    "lastName": "text",
 		    "company": "text",
 		    "email": "text",
-		    "phone": "text",
-		    "address": "text",
-		    "about": "text",
-		    "favorite": "int"
+		    "phone": "text", 
+		    "latitude": "real",
+		    "longitude": "real",
+		    "photo": "text",
+		    "about": "text"
 		},
 		adapter: {
 			type: "sql",
-			collection_name: "users"
+			collection_name: "user"
 		}
 	},
 	extendModel: function(Model) {
 		_.extend(Model.prototype, {
 			// extended functions and properties go here
-			save: function(model){
-				Ti.API.info(model);
-				
-				return model;
-			}
 		});
 
 		return Model;
