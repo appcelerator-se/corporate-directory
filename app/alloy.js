@@ -87,7 +87,8 @@ Alloy.Globals.App = {
 		 */
 		open: function(controller, payload){
 	
-			var view = Alloy.createController(controller, payload || {}).getView()
+			var $C = Alloy.createController(controller, payload || {});
+			var view = $C.getView();
 			
 			/**
 			 * Wrap all child views within a window
@@ -101,6 +102,14 @@ Alloy.Globals.App = {
 			   backgroundColor:"#fff",
 			   navTintColor: "C41230"
 			});
+			
+			win.addEventListener('close', function(e){
+				if($C.destroy){
+				 	$C.destroy();
+				 	Ti.API.info('CLEANUP MODEL VIEW BINDING');
+				}
+			});
+			
 			win.add(view);
 			
 			if (OS_ANDROID){
