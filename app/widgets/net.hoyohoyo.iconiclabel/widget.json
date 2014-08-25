@@ -1,0 +1,13 @@
+{
+	"id": "net.hoyohoyo.iconiclabel",
+	"name": "net.hoyohoyo.iconiclabel",
+	"description" : "Alloy widget using TiIconicFont (developed by @k0sukey).",
+	"author": "Keigo AOKI",
+	"version": "1.3",
+	"copyright":"Copyright (c) 2012",
+	"license":"Apache License, Version 2.0",
+	"min-alloy-version": "1.0",
+	"min-titanium-version":"2.1",
+	"tags":"utility,icon,font,label",
+	"platforms":"ios,android"
+}

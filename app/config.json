@@ -1,7 +1,5 @@
 {
-  "global": {
-  	"debug":true
-  },
+  "global": {},
   "env:development": {},
   "env:test": {},
   "env:production": {},
@@ -10,7 +8,6 @@
   "os:android": {},
   "os:blackberry": {},
   "dependencies": {
-    "net.hoyohoyo.iconiclabel": "1.3",
-    "com.appcelerator.login": "2.1"
+    "net.hoyohoyo.iconiclabel": "1.3"
   }
 }

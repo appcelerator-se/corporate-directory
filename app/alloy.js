@@ -187,67 +187,6 @@ Alloy.Globals.App = {
 		//RESET SWITCH
 		//Ti.App.Properties.setList("bookmarks", []);
 		
-	},
-	
-	/**
-	 * authorize
-	 */
-	authorize: function(){
-		var loginWidget = Alloy.createWidget('com.appcelerator.login', null, {
-		   loginCallback: function(e){ 
-		   	Ti.API.info(JSON.stringify(e));
-		   		
-		   		/**
-		   		 * Login User to the Appcelerator Cloud 
-		   		 * username:admin
-		   		 * password:admin
-		   		 */
-			   	Cloud.Users.login({
-				    login: e.username,
-				    password: e.password
-				}, function (e) {
-				    Ti.API.info(JSON.stringify(e));
-				    /** Start the app **/
-		    		$.index.open();
-				});	
-		   
-		  
-		    
-		  },
-		   createCallback: function(e){ 
-				Ti.API.info(JSON.stringify(e));
-			/*
-			   Cloud.Users.create({
-				    email: ,
-				    first_name: 'test_firstname',
-				    last_name: 'test_lastname',
-				    password: 'test_password',
-				    password_confirmation: 'test_password'
-				}, function (e) {
-				    if (e.success) {
-				        var user = e.users[0];
-				        alert('Success:\n' +
-				            'id: ' + user.id + '\n' +
-				            'sessionId: ' + Cloud.sessionId + '\n' +
-				            'first name: ' + user.first_name + '\n' +
-				            'last name: ' + user.last_name);
-				    } else {
-				        alert('Error:\n' +
-				            ((e.error && e.message) || JSON.stringify(e)));
-				    }
-				});
-		   */
-		    
-		    /** Start the app **/
-		    $.index.open();
-		  },
-		   remindCallback: function(e){ /*Do something here*/ }
-		});
-		
-		/**
-		 * Open the widget 
-		 */
-		loginWidget.open();
 	}
 };
 

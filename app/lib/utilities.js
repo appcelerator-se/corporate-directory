@@ -28,16 +28,24 @@ exports.getDistanceFromLatLonInKm = getDistanceFromLatLonInKm;
  * @param {Float} lat2
  * @param {Float} lon2
  */
-
 function getDistanceFromLatLonInMiles(lat1,lon1,lat2,lon2) {
   return kilometersToMiles(getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2));
 }
 exports.getDistanceFromLatLonInMiles = getDistanceFromLatLonInMiles;
 
+
+/**
+ * Simple function to convert degrees to radians
+ * @param {Float} deg
+ */
 function deg2rad(deg) {
   return deg * (Math.PI/180);
 }
 
+/**
+ * Simple function to convert kilometers to miles
+ * @param {Float} km
+ */
 function kilometersToMiles(km){
 	return km / 1.609344;
 }
