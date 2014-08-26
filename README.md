@@ -1,5 +1,6 @@
 [titanium-badge]:http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png
 [expanded-app]:https://github.com/appcelerator-se/corporate-directory/blob/master/screenshots/directory-expanded.png?raw=true
+[app-navigation-gif]:https://github.com/appcelerator-se/corporate-directory/blob/master/screenshots/app-navigation-animated.gif?raw=true
 [add-bookmark-gif]:https://github.com/appcelerator-se/corporate-directory/blob/master/screenshots/add-bookmark-animated.gif?raw=true
 [bookmark-indicator]:https://github.com/appcelerator-se/corporate-directory/blob/master/screenshots/bookmark-indicator.png?raw=true
 
@@ -43,8 +44,18 @@ App Navigation
 --------------
 While the Directory app seems pretty full featured, its primarily a basic master / detail view application. 
 
+![Directory App Navigation][app-navigation-gif]
+
 + MasterView => Directory Listing
+    + View Contacts in Searchable List
+    + Access Bookmarks
+    + Quick Index Search - swipe left to reveal List Index (iOS Only)
+    
 + DetailView => Profile View
+    + View Contact information
+    + Add/Remove Contact as Bookmark
+    + One Click to Email
+    + One Click to Call
 
 There is also one other view, for viewing your bookmarked contacts, but as you can see in the code we are actually _re-using_ the same Directory Listing as the MasterView, and just filtering the contacts based on which ones are bookmarks. This is a great technique for when you need to show content, but simply need to filter by a particular property etc.
 
