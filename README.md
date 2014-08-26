@@ -1,5 +1,7 @@
 [titanium-badge]:http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png
 [expanded-app]:https://github.com/appcelerator-se/corporate-directory/blob/master/screenshots/directory-expanded.png?raw=true
+[add-bookmark-gif]:https://github.com/appcelerator-se/corporate-directory/blob/master/screenshots/add-bookmark-animated.gif?raw=true
+[bookmark-indicator]:https://github.com/appcelerator-se/corporate-directory/blob/master/screenshots/bookmark-indicator.png?raw=true
 
 Corporate Directory App [![Appcelerator Titanium](http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png)](http://appcelerator.com/titanium/)
 =======================
@@ -36,6 +38,28 @@ Quick Start
 + Click _Finish_
 
 _Note: By default this project will be downloaded and cloned into your existing workspace_
+
+App Navigation
+--------------
+
+Bookmarks
+---------
+To quickly access people that you contact more frequently, this Directory application allows you to easily bookmark a contact for quick reference later. Bookmarked contacts are denoted by a light blue ribbon. 
+
+[bookmark-indicator]
+
+You can access your bookmarked contacts at anytime by clicking on the _book_ icon next to the search bar (on iOS) or in the action bar (on Android). 
+
+Adding a bookmark is easy, as the image below demonstrates.
+
+[add-bookmark-gif]
+
+#### Adding a Bookmark
+1. **Open** the _Directory_ app
+2. **Click** on a contact that is not already bookmarked
+3. On the _Profile_ view, **click** on the _Add to Bookmarks_ button
+4. **Click** on the _Directory_ back button to see your new bookmarked contact
+
 
 Get Help
 ------------
