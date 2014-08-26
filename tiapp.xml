@@ -44,7 +44,7 @@
                         <string>com.appcelerator.directory</string>
                         <key>CFBundleURLSchemes</key>
                         <array>
-                            <string>touchtest-fc63d2a9-8d07-4819-8f63-0bda6b3ebf24</string>
+                            <string>appcdirectory</string>
                         </array>
                     </dict>
                 </array>
@@ -98,8 +98,5 @@
     <sdk-version>3.3.0.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
-        <plugin>com.soasta.touchtest.android</plugin>
     </plugins>
-    <property name="com-soasta-touchtest-version" type="string">7040.132</property>
-    <property name="com-soasta-touchtest-ios-appId" type="string">273176</property>
 </ti:app>
