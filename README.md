@@ -41,6 +41,15 @@ _Note: By default this project will be downloaded and cloned into your existing 
 
 App Navigation
 --------------
+While the Directory app seems pretty full featured, its primarily a basic master / detail view application. 
+
++ MasterView => Directory Listing
++ DetailView => Profile View
+
+There is also one other view, for viewing your bookmarked contacts, but as you can see in the code we are actually _re-using_ the same Directory Listing as the MasterView, and just filtering the contacts based on which ones are bookmarks. This is a great technique for when you need to show content, but simply need to filter by a particular property etc.
+
+
+
 
 Bookmarks
 ---------
@@ -58,6 +67,13 @@ Adding a bookmark is easy, as the image below demonstrates.
 1. **Open** the _Directory_ app
 2. **Click** on a contact that is not already bookmarked
 3. On the _Profile_ view, **click** on the _Add to Bookmarks_ button
+4. **Click** on the _Directory_ back button to see your new bookmarked contact
+5. 
+
+#### Removing a Bookmark
+1. **Open** the _Directory_ app
+2. **Click** on a contact that is bookmarked
+3. On the _Profile_ view, **click** on the _Remove From Bookmarks_ button
 4. **Click** on the _Directory_ back button to see your new bookmarked contact
 
 
