@@ -32,6 +32,13 @@ var _args = arguments[0] || {}, // Any passed in arguments will fall into this p
 	users = null,  // Array placeholder for all users
 	indexes = [];  // Array placeholder for the ListView Index (used by iOS only);
 
+/**
+ * Appcelerator Analytics Call
+ */
+var title = _args.title.toLowerCase() || "directory";
+Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
+
+
 /** 
  * Function to inialize the View, gathers data from the flat file and sets up the ListView
  */
@@ -257,6 +264,12 @@ var preprocessForListView = function(rawData) {
  * @param {Object} Event data passed to the function
  */
 function onItemClick(e){
+	
+	/**
+	 * Appcelerator Analytics Call
+	 */
+	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".contact.clicked");
+	
 	/**
 	 * Get the Item that was clicked
 	 */
@@ -323,7 +336,15 @@ if(OS_IOS){
 	 * @param {Object} Event data passed to the function
 	 */
 	onBookmarkClick = function onClick (e){
-		//Hide the Keyboard if the user searched
+		
+		/**
+		 * Appcelerator Analytics Call
+		 */
+		Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".bookmarks.clicked");
+		
+		/**
+		 * Hide the Keyboard if the user searched
+		 */
 		$.searchBar.blur();
 		
 		/**
@@ -360,15 +381,6 @@ else if(OS_ANDROID){
 		$.closeBtn.visible = false;
 		$.searchBar.value = '';
 		$.searchBar.blur();
-	};
-	/**
-	 * Hides the keyboard when the cancel button is clicked
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onSearchFocus = function onCancel(e){
-		
-		
 	};
 }
 

@@ -110,6 +110,12 @@ bookmarks = Ti.App.Properties.getList("bookmarks", []);
  */
 isBookmark(_args.id) && $.addBookmarkBtn.setTitle("- Remove From Bookmarks");
 
+
+/**
+ * Appcelerator Analytics Call
+ */
+Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.viewed");
+
 /**
  * Determines if the passed in ID of the contact currently exists in the bookmarks array. 
  * Returns TRUE if successful.
@@ -133,6 +139,11 @@ function isBookmark(id){
 function emailContact() {
 	
 	/**
+	 * Appcelerator Analytics Call
+	 */
+	Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.emailButton.clicked");
+	
+	/**
 	 * Create an Email Dialog
 	 * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Titanium.UI.EmailDialog
 	 */
@@ -153,6 +164,11 @@ function emailContact() {
  * Function to quickly call the contact from the Profile Screen
  */
 function callContact(){
+	
+	/**
+	 * Appcelerator Analytics Call
+	 */
+	Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.callContactButton.clicked");
 	
 	/**
 	 * Before we send the phone number to the platform for handling, lets first verify
@@ -199,6 +215,12 @@ function toggleBookmark(){
 	 * If the user is not currently listed as a bookmarked user
 	 */
 	if(!isBookmark(_args.id)){
+		
+		/**
+		 * Appcelerator Analytics Call
+		 */
+		Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.addBookmark.clicked");
+	
 		/**
 		 * Then add this user to the bookmarks array, and update the button title for favorites
 		 */
@@ -206,6 +228,12 @@ function toggleBookmark(){
 	    $.addBookmarkBtn.setTitle("- Remove From Bookmarks");
 	}
 	else{
+		
+		/**
+		 * Appcelerator Analytics Call
+		 */
+		Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.removeBookmark.clicked");
+		
 	    /**
 		 * Else remove the user from the bookmarks array (usess Underscore js difference function), 
 		 * and update the button title accordingly
