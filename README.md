@@ -46,13 +46,13 @@ Bookmarks
 ---------
 To quickly access people that you contact more frequently, this Directory application allows you to easily bookmark a contact for quick reference later. Bookmarked contacts are denoted by a light blue ribbon. 
 
-[bookmark-indicator]
+![Bookmarked Contact][bookmark-indicator]
 
 You can access your bookmarked contacts at anytime by clicking on the _book_ icon next to the search bar (on iOS) or in the action bar (on Android). 
 
 Adding a bookmark is easy, as the image below demonstrates.
 
-[add-bookmark-gif]
+![Adding a Bookmark (animation)][add-bookmark-gif]
 
 #### Adding a Bookmark
 1. **Open** the _Directory_ app
