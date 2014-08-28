@@ -1,6 +1,6 @@
 <Alloy>
 	    <!-- Default App Window -->
-	<Window id="nav" class="container">
+	<Window id="nav" class="container" platform="android,mobileweb,blackberry">
 		
 		<!-- 
 		Menu Item to open the bookmarks view
