@@ -35,7 +35,7 @@ var _args = arguments[0] || {}, // Any passed in arguments will fall into this p
 /**
  * Appcelerator Analytics Call
  */
-var title = _args.title.toLowerCase() || "directory";
+var title = _args.title ? _args.title.toLowerCase() : "directory";
 Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
 
