@@ -21,6 +21,12 @@
 	backgroundColor: "#22C41230"
 }
 
+'.icon-small':{
+	font:{
+		fontFamily: 'FontAwesome', fontSize:12 
+	}
+},
+
 
 "#profilePicture":{
 	height: 125,

@@ -7,31 +7,6 @@
 	width: Ti.UI.FILL
 },
 
-".top":{
-	top:20
-},
-
-".left":{
-	left:10
-},
-
-".right":{
-	right:10
-}
-
-".vgroup":{
-	layout:'vertical',
-},
-
-".hgroup":{
-	layout:'horizontal'
-},
-
-".size":{
-	height: Ti.UI.SIZE,
-	width: Ti.UI.SIZE
-},
-
 ".favorite":{
 	font:{
 		fontSize: 20,
@@ -72,9 +47,10 @@
 
 ".search":{
 	backgroundColor: "#fff",
-	borderWidth:0,
+	borderWidth:1,
+	borderColor: "#fff",
 	tintColor: "#C41230",
-	hintText: "Search",
+	hintText: L("search-text", "Search"),
 	barColor: "#fff",
 	showBookmark:true
 },
@@ -108,5 +84,6 @@
 },
 
 "#listView":{
-	tintColor: "#666"
+	tintColor: "#666",
+	borderWidth:0
 }

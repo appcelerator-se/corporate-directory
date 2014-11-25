@@ -131,12 +131,20 @@ function isBookmark(id){
  * Function to Email the Contact using the native email tool
  */
 function emailContact() {
-	
+
 	/**
 	 * Appcelerator Analytics Call
 	 */
 	Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.emailButton.clicked");
 	
+	/**
+	 * Account for if the user is on iOS and using a simulator - iOS Simulator no 
+	 * longer supports sending email as of iOS 8
+	 */
+	if(OS_IOS && Ti.Platform.model === "Simulator"){
+		alert("Simulator does not support sending emails. Use a device instead");
+		return;
+	}
 	/**
 	 * Create an Email Dialog
 	 * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Titanium.UI.EmailDialog

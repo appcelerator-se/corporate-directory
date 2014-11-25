@@ -30,7 +30,7 @@
 				
 				<!-- UserTemplate - this is the default ListItem template -->
 				<ItemTemplate id="userTemplate" name="userTemplate" class="template">
-					<View class="left">
+					<View class="left-buffer">
 						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
 						<View class="vgroup left size">
 							<Label id="userName" bindId="userName" class="title" />
@@ -43,7 +43,7 @@
 				
 				<!-- favoriteTemplate - this is the ListItem template for contacts that have been bookmarked -->
 				<ItemTemplate id="favoriteTemplate" name="favoriteTemplate" class="template">
-					<View class="left">
+					<View class="left-buffer">
 						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
 						<View class="vgroup left size">
 							<Label id="userName" bindId="userName" class="title" />
