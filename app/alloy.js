@@ -1,76 +1,46 @@
-// The contents of this file will be executed before any of
-// your view controllers are ever executed, including the index.
-// You have access to all functionality on the `Alloy` namespace.
-//
-// This is a great place to do any initialization for your app
-// or create any global variables/functions that you'd like to
-// make available throughout your app. You can easily make things
-// accessible globally by attaching them to the `Alloy.Globals`
-// object. For example:
-//
-// Alloy.Globals.someGlobalFunction = function(){};
-
 /**
- * Name and Geographic location of your company headquarters
+ *                              _                _             
+ *                             | |              | |            
+ *    __ _ _ __  _ __   ___ ___| | ___ _ __ __ _| |_ ___  _ __ 
+ *   / _` | '_ \| '_ \ / __/ _ \ |/ _ \ '__/ _` | __/ _ \| '__|
+ *  | (_| | |_) | |_) | (_|  __/ |  __/ | | (_| | || (_) | |   
+ *   \__,_| .__/| .__/ \___\___|_|\___|_|  \__,_|\__\___/|_|   
+ *        | |   | |                                            
+ *        |_|   |_|  
+ *      
+ *      
+ * @overview
+ * The contents of this file will be executed before any of
+ * your view controllers are ever executed, including the index.
+ * You have access to all functionality on the `Alloy` namespace.
+ *
+ * This is a great place to do any initialization for your app
+ * or create any global variables/functions that you'd like to
+ * make available throughout your app. You can easily make things
+ * accessible globally by attaching them to the `Alloy.Globals`
+ * object. For example:
+ *
+ * Alloy.Globals.someGlobalFunction = function(){};
+ *
+ * @copyright
+ * Copyright (c) 2014 by Appcelerator, Inc. All Rights Reserved.
+ *
+ * @license
+ * Licensed under the terms of the Apache Public License
+ * Please see the LICENSE included with this distribution for details.
  */
-Alloy.Globals.HQ = {
-	latitude: 37.389505,
-	longitude: -122.050252,
-	name: "Appcelerator"
-};
+
+
 
 
 /* 
- * App Singleton
+ * App Singleton Object.
+ * This global object allows us to create a singluar instance to manage application functions across controllers
+ * In this case we are going to primarily use this object to handle cross platform app navigation.
+ * 
  * @type {Object}
  */
 Alloy.Globals.App = {
-	
-	/**
-	 * Applications Settings
-	 */
-	Settings: {
-		menuWidth: "70%"
-	},
-	
-	/**
-	 * Titanium Platform SDK Information
-	 *
-	 * @type {Object}
-	 * @param {String} version The version of the Titanium SDK
-	 * @param {Number} versionMajor The major version of the Titanium SDK
-	 * @param {Number} versionMinor The minor version of the Titanium SDK
-	 */
-	SDK: {
-		version: !OS_BLACKBERRY && Ti.version,
-		versionMajor: !OS_BLACKBERRY && parseInt(Ti.version.split(".")[0], 10),
-		versionMinor: !OS_BLACKBERRY && parseInt(Ti.version.split(".")[1], 10),
-	},
-	
-	/**
-	 * Device information, some come from the Ti API calls and can be referenced
-	 * from here so multiple bridge calls aren't necessary, others generated here
-	 * for ease of calculations and such.
-	 *
-	 * @type {Object}
-	 * @param {String} version The version of the OS
-	 * @param {Number} versionMajor The major version of the OS
-	 * @param {Number} versionMinor The minor version of the OS
-	 * @param {Number} width The width of the device screen
-	 * @param {Number} height The height of the device screen
-	 * @param {Number} dpi The DPI of the device screen
-	 * @param {String} orientation The device orientation, either "landscape" or "portrait"
-	 * @param {String} statusBarOrientation A Ti.UI orientation value
-	 */
-	Device: {
-		version: Ti.Platform.version,
-		versionMajor: !OS_BLACKBERRY && parseInt(Ti.Platform.version.split(".")[0], 10),
-		versionMinor: !OS_BLACKBERRY && parseInt(Ti.Platform.version.split(".")[1], 10),
-		width: null,
-		height: null,
-		dpi: Ti.Platform.displayCaps.dpi,
-		orientation: Ti.Gesture.orientation == Ti.UI.LANDSCAPE_LEFT || Ti.Gesture.orientation == Ti.UI.LANDSCAPE_RIGHT ? "landscape" : "portrait"
-	},
 	
 	/**
 	 * Navigation Widget using for routing controllers
@@ -130,47 +100,7 @@ Alloy.Globals.App = {
 				this.navGroup.openWindow(win,{animated:true});
 				
 			}
-		},
-		 
-		modal: function(_controller, _options) {
-			Ti.API.info('MODAL');
-			if(_controller){
-				/**
-				 * Create a new window to handle the modal dialog
-				 */
-				var modalWin = Ti.UI.createWindow({
-					modal: true,
-					title: "Bookmarks",
-					width: Ti.UI.FILL,
-					height: "60%", 
-					bottom: 0,
-					backgroundColor: 'transparent'
-				});
-				
-				/**
-				 * Create the view controller, and add the primary view to the modal window
-				 */
-				var modalController = Alloy.createController(_controller, _options);
-				modalWin.add(modalController.getView());
-				
-				/**
-				 * Listen for modalController Close Event
-				 */
-				modalController.getView().addEventListener('close', function(e){
-					modalWin.close();
-				});
-				
-				/**
-				 * Open the window as modal
-				 */
-				modalWin.open();
-				
-			}
-			else {
-				Ti.API.error("Mandatory parameter '_controller' not specified");
-			}
-		},
-		
+		}
 	},
 	
 	/**
