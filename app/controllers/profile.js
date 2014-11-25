@@ -43,12 +43,6 @@ $.email.text = _args.email;
 $.im.text = _args.im || _args.firstName+"."+_args.lastName;
 $.about.text = _args.about;
 
-/**
- * FUN! How far away is the contact from your Headquarters! This is calculated using
- * functions from the lib/utilities.js. The HQ is defined in Alloy.js
- */
-var distanceFromAppcelerator = Math.floor($U.getDistanceFromLatLonInMiles(_args.latitude, _args.longitude, 37.389505, -122.050252));
-$.fromHQ.text = distanceFromAppcelerator + " miles from HQ";
 
 /**
  * Add Event Handlers to the IconLabels Widgets

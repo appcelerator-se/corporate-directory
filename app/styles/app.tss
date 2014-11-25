@@ -1,7 +1,17 @@
+
 /**
- * 	Reset - Standardize behavior across platforms and set better defaults
+ * 	Global Styles
+ *  These styles are referenceable from any view in your application. They will be processed first, meaning that they can be 
+ *  can be overridden by file specific TSS styles or inline on the XML attribute.
+ * 
+ *  Credits go to:
+ *  Reset - Standardize behavior across platforms and set better defaults
  *  courtesy of Tony Lukasavage
  *  https://gist.github.com/tonylukasavage/6009423
+ * 
+ *  Alloy-Bootstrap - quick styles for UI behavior patters (similar to twitter bootstrap)
+ *  courtesy of Bert Grantges
+ *  https://github.com/grantges/Alloy-Bootstrap
  *  
  */
 

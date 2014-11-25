@@ -1,8 +1,8 @@
 <Alloy>
 	<!-- Main Container of the View, title of the Window is pulled from the title property on the main view-->
-	<View class="container fill" title="Profile">
+	<!-- <View class="container fill" title="Profile"> -->
 		
-		<View class="vgroup buffer">
+		<View class="container">
 			<!--
 				Top Section of the Profile.
 				- Shows the Contact Image, Name, Title, Company
@@ -11,7 +11,7 @@
 				
 				This is a vertically aligned View
 			-->
-			<View class="vgroup span-width bottom-buffer">
+			<View class="vgroup size top-buffer" height="50%">
 				<View class="span-width">
 					<Widget id="emailBtn" src="net.hoyohoyo.iconiclabel" icon="icon-envelope" class="icon-button left-buffer"/>
 					<ImageView id="profilePicture" class="top-buffer no-touch" />
@@ -22,8 +22,9 @@
 					<Label id="job" class='h5 gray no-touch' >Account Rep</Label>
 					<Label id="company" class='h5 gray no-touch' >Appcelerator, Inc</Label>
 				</View>
+				<Button id="addBookmarkBtn" class="span-width h4" onClick="toggleBookmark">+ Add to Bookmarks</Button>
 			</View>
-			<Button id="addBookmarkBtn" class="span-width h4" onClick="toggleBookmark">+ Add to Bookmarks</Button>
+			
 			
 			<!-- 
 				Bottom Section of the Profile Page
@@ -32,24 +33,24 @@
 				- About View, a blurb of text about the user
 				- MapView shows an annotation of where the user is located
 			-->
-			<ScrollableView class="top-buffer" pagingControlHeight="20">
+			<ScrollView class="vgroup" top="50%">
 				
 				<!-- Information View -->
 				<View class="vgroup size top-buffer">
 					<View class='hgroup span-width'>
 						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-qrcode" />
-						<Label class="h3 red left-buffer right-buffer">Contact Info</Label>
+						<Label class="h3 red left-buffer right-buffer" textid="contact-info"/>
 					</View>
-					<View class='hgroup size top-buffer left-buffer'>
-						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />
+					<View class='hgroup span-width'>
+						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />
 						<Label id="phone" class="h5 gray left-buffer right-buffer">512-555-1212</Label>
 					</View>
-					<View class='hgroup size top-buffer left-buffer'>
-						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-envelope-alt" />
+					<View class='hgroup span-width'>
+						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-envelope-alt" />
 						<Label id="email" class="h5 gray left-buffer right-buffer">kelly.smith@appcelerator.com</Label>
 					</View>
-					<View class='hgroup size top-buffer left-buffer'>
-						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-comment" />
+					<View class='hgroup span-width'>
+						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-comment" />
 						<Label id="im" class="h5 gray left-buffer right-buffer">kelly.smith</Label>
 					</View>
 				</View>
@@ -58,19 +59,18 @@
 				<View class="vgroup size top-buffer" >
 					<View class='hgroup span-width'>
 						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-info-sign" />
-						<Label class="h3 red left-buffer right-buffer">About</Label>
+						<Label class="h3 red left-buffer right-buffer" textid="about"/>
 					</View>
 					<ScrollView class="size">
-						<Label id="about" class="gray normal-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Label>
+						<Label id="about" class="gray normal-text left-buffer right-buffer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Label>
 					</ScrollView>
 				</View>
 				
 				<!-- Map View -->
-				<View class="vgroup size top-buffer">
+				<View class="vgroup buffer">
 					<View class='hgroup span-width'>
 						<Widget class="red icon left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-map-marker" />
-						<Label class="h3 red left-buffer">Location</Label>
-						<Label class="h6 gray right-buffer bottom" id="fromHQ" />
+						<Label class="h3 red left-buffer" textid="location"/>
 					</View>
 					
 					<!-- 
@@ -78,7 +78,7 @@
 					-->
 					<Module id="mapview" module="ti.map" method="createView" class='buffer border-dark-thick no-touch' />
 				</View>
-			</ScrollableView>
+			</ScrollView>
 		</View>
-	</View>
+	<!-- </View> -->
 </Alloy>

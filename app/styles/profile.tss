@@ -1,10 +1,6 @@
-"ScrollableView":{
-	showPagingControl: true,
-}
-
-"ScrollableView[platform=ios]":{
-	showPagingControl: true,
-	pagingControlColor: "#C41230"
+"ScrollView":{
+	scrollType:"vertical",
+	contentWidth:"100%"
 }
 
 ".container":{
@@ -38,11 +34,6 @@
 	width: Ti.UI.SIZE
 }
 
-"ScrollableView":{
-	height: "45%",
-	pagingControlColor: 'transparent'
-}
-
 "Label":{
 	autoLink: Ti.UI.AUTOLINK_ALL
 }
@@ -56,10 +47,4 @@
 "#mapview":{
 	enableZoomControls: false,
 	compassEnabled: false
-}
-
-"#fromHQ":{
-	width: Ti.UI.FILL,
-	height: Ti.UI.SIZE,
-	textAlign:"right"
 }

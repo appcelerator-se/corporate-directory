@@ -35,7 +35,7 @@ var _args = arguments[0] || {}, // Any passed in arguments will fall into this p
 /**
  * Appcelerator Analytics Call
  */
-var title = _args.title ? _args.title.toLowerCase() : "directory";
+var title = _args.title ? _args.title.toLowerCase() : L("directory");
 Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
 
@@ -278,7 +278,7 @@ function onItemClick(e){
 	/**
 	 * Open the profile view, and pass in the user data for this contact
 	 */
-	Alloy.Globals.App.Navigator.open("profile", item.properties.user);
+	App.Navigator.open("profile", item.properties.user);
 }
 
 /**
@@ -350,7 +350,7 @@ if(OS_IOS){
 		/**
 		 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
 		 */
-		App.Navigator.open("directory", {restrictBookmarks:true, title:"Bookmarks"});
+		App.Navigator.open("directory", {restrictBookmarks:true, title:L("bookmarks")});
 	};
 }
 else if(OS_ANDROID){
