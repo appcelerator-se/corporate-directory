@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="uname">Username</string>
+	<string name="pwd">Password</string>
+	<string name="login">LOGIN</string>
+	<string name="stores">Find Nearby Stores</string>	
+	<string name="barcode">Scan Barcode</string>
+	<string name="home">Home</string>
+</resources>
