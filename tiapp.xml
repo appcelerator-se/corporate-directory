@@ -56,7 +56,7 @@
             <application android:theme="@style/Appcelerator">
                 <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
                 <meta-data
-                    android:name="com.google.android.maps.v2.API_KEY" android:value="<YOUR GOOGLE MAP KEY GOES HERE>" />
+                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyACkaMjxhKbemYoBxMM4g05FSIPv-_59kg"/>
             </application>
             <uses-sdk android:minSdkVersion="11"/>
             <uses-sdk android:targetSdkVersion="19"/>
@@ -71,9 +71,9 @@
             <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
             <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
             <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
-            <uses-permission android:name="<YOUR APP ID>.permission.MAPS_RECEIVE"/>
+            <uses-permission android:name="com.appcelerator.directory.permission.MAPS_RECEIVE"/>
             <permission
-                android:name="<YOUR APP ID>.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+                android:name="com.appcelerator.directory.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
         </manifest>
     </android>
     <mobileweb>
@@ -95,7 +95,7 @@
         <target device="iphone">true</target>
         <target device="mobileweb">true</target>
     </deployment-targets>
-    <sdk-version>3.4.0.GA</sdk-version>
+    <sdk-version>3.4.1.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>

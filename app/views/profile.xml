@@ -2,7 +2,7 @@
 	<!-- Main Container of the View, title of the Window is pulled from the title property on the main view-->
 	<View class="container fill" title="Profile">
 		
-		<View class="vgroup buffer">
+		<View class="vgroup top"> 
 			<!--
 				Top Section of the Profile.
 				- Shows the Contact Image, Name, Title, Company
