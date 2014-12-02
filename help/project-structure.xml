@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="App Project Overview">
+   <item
+         title="Item (2)">
+      <description>
+         <b>Body</b>
+      </description>
+      <command
+            required="false"
+            serialization="com.aptana.editor.common.scripting.commands.show"/>
+   </item>
+   <intro>
+      <description>
+         <b>Body</b>
+      </description>
+   </intro>
+   <item
+         title="Item">
+      <description>
+         <b>Body</b>
+      </description>
+   </item>
+   <item
+         title="Item (1)">
+      <description>
+         <b>Body</b>
+      </description>
+   </item>
+</cheatsheet>

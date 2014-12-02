@@ -249,8 +249,12 @@ var preprocessForListView = function(rawData) {
 				user: item,
 			},
 			userName: {text: item.firstName+" "+item.lastName},
-			userCompany: {text: item.company},
 			userPhoto: {image: item.photo},
+			
+			/**
+			 * ADD UI ELEMENT ASSIGNMENTS HERE
+			 */
+			userCompany: {text: item.company},
 			userEmail: {text: item.email} 
 		};
 	});	
