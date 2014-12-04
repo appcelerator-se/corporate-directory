@@ -22,7 +22,7 @@
 					<Label id="job" class='h5 gray no-touch' >Account Rep</Label>
 					<Label id="company" class='h5 gray no-touch' >Appcelerator, Inc</Label>
 				</View>
-				<Button id="addBookmarkBtn" class="span-width h4" onClick="toggleBookmark">+ Add to Bookmarks</Button>
+				<Button id="addBookmarkBtn" class="span-width h4" onClick="toggleBookmark" textid="bookmarkBtn">+ Add To Bookmarks</Button>
 			</View>
 			
 			
@@ -39,7 +39,7 @@
 				<View class="vgroup size top-buffer">
 					<View class='hgroup span-width'>
 						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-qrcode" />
-						<Label class="h4 red left-buffer right-buffer" textid="contact-info"/>
+						<Label class="h4 red left-buffer right-buffer" textid="contactinfo"/>
 					</View>
 					<View class='hgroup span-width'>
 						<Widget class="h6 icon-small red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />

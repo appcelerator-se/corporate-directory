@@ -2,7 +2,8 @@
 <resources>
 	<string name="directory">Directory</string>
 	<string name="bookmarks">Bookmarks</string>
-	<string name="contact-info">Contact Info</string>
+	<string name="contactinfo">Contact Info</string>
 	<string name="about">About</string>	
 	<string name="location">Location</string>
+	<string name="bookmarkBtn">+ Add To Bookmarks</string>
 </resources>
