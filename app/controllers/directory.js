@@ -44,6 +44,7 @@ Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
  */
 function init(){
 	
+	
 	/**
 	 * Access the FileSystem Object to read in the information from a flat file (lib/userData/data.js)
 	 * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Titanium.Filesystem
@@ -393,7 +394,7 @@ init();
 /**
  * Listen for the refresh event, and re-initialize
  */
-Ti.App.addEventListener("refresh-data", function(e){
+Ti.App.addEventListener("refresh-data", function(e){ 
 	
 	/**
 	 * Reset the ListView

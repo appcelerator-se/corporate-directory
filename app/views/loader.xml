@@ -1,0 +1,7 @@
+<Alloy>
+	<Window id="Wrapper">
+		<View id="overlay" />
+		<ImageView id="rocketSmoke" />
+		<ImageView id="rocketFlight" />
+	</Window>
+</Alloy>
