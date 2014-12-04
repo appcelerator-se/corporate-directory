@@ -20,20 +20,21 @@
 
 ".title":{
 	font:{
-		fontSize: 14
+		// fontSize: 14
+		fontSize: 20
 	},
 	left: 85,
 	color: "#444"
 },
 
-".subtitle":{
-	font:{
-		fontSize: 10
-	},
-	left: 85,
-	height: 20,
-	color: "#666"
-},
+// ".subtitle":{
+	// font:{
+		// fontSize: 10
+	// },
+	// left: 85,
+	// height: 20,
+	// color: "#666"
+// },
 
 ".avatar":{
 	border: 1,

@@ -34,8 +34,11 @@
 						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
 						<View class="vgroup left size">
 							<Label id="userName" bindId="userName" class="title" />
-							<Label id="userEmail" bindId="userEmail" class="subtitle" />
-							<Label id="userCompany" bindId="userCompany" class="subtitle" />
+							
+							<!-- ADDITIONAL UI ELEMENTS HERE -->
+							<!-- <Label id="userEmail" bindId="userEmail" class="subtitle" /> -->
+							<!-- <Label id="userCompany" bindId="userCompany" class="subtitle" /> -->
+							
 						</View>
 						<View class="gray-line bottom"/>
 					</View>
@@ -47,8 +50,11 @@
 						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
 						<View class="vgroup left size">
 							<Label id="userName" bindId="userName" class="title" />
-							<Label id="userEmail" bindId="userEmail" class="subtitle" />
-							<Label id="userCompany" bindId="userCompany" class="subtitle" />
+							
+							<!-- ADDITIONAL UI ELEMENTS HERE -->
+							<!-- <Label id="userEmail" bindId="userEmail" class="subtitle" /> -->
+							<!-- <Label id="userCompany" bindId="userCompany" class="subtitle" />  -->
+							
 						</View>
 						<Label class="favorite" />
 						<View class="gray-line bottom"/>
