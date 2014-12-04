@@ -18,6 +18,16 @@
       <onCompletion>
          <b>Conclusion</b>
       </onCompletion>
+      <task kind="cheatsheet" name="Application Walkthrough" skip="false">
+         <intro>
+            <b>Introduction</b>
+         </intro>
+         <onCompletion>
+            <b>Conclusion</b>
+         </onCompletion>
+         <param name="path" value="app-overview.xml">
+         </param>
+      </task>
       <task kind="cheatsheet" name="Step 1: The Project Explorer" skip="false">
          <intro>
             <b>Introduction</b>
@@ -26,16 +36,6 @@
             <b>Conclusion</b>
          </onCompletion>
          <param name="path" value="project-structure.xml">
-         </param>
-      </task>
-      <task kind="cheatsheet" name="Step 2: Application Walkthrough" skip="false">
-         <intro>
-            <b>Introduction</b>
-         </intro>
-         <onCompletion>
-            <b>Conclusion</b>
-         </onCompletion>
-         <param name="path" value="app-overview.xml">
          </param>
       </task>
       <task kind="cheatsheet" name="Step 3: Add Company and Email Labels" skip="false">

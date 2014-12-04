@@ -7,6 +7,15 @@
       </description>
    </intro>
    <item
+         title="Video Walkthrough">
+      <description>
+         <b>Click</b> the button below to watch a video overview of the application. This will walk you through the features and functionality of the Corporate Directory.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.browser.openBrowser(url=file:///Users/bgrantges/Movies/directory-overview-ios.mp4)"/>
+   </item>
+   <item
          title="Build the Corporate Directory Application">
       <description>
          In the <b>Project Explorer</b>, click on the Corporate Directory project title. This will ensures the project is currently the active project, an necessary step for building your app.
