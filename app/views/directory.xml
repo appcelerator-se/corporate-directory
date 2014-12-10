@@ -5,14 +5,14 @@
 	<View id="wrapper" class="vgroup" title="Directory">
 		
 		<!--
-		If you would like the searchbar to scroll up with the listView, you can move this line before the last
-		</ListView> tag. However for our implementation, we want the searchBar to be present at all times so we have moved
-		it outside of the ListView tags.
+		If you would like the searchbar to scroll up with the tableView, you can move this line before the last
+		</TableView> tag. However for our implementation, we want the searchBar to be present at all times so we have moved
+		it outside of the TableView tags.
 		-->
 		<SearchBar id="searchBar" platform="ios" class="search" onBookmark="onBookmarkClick" onFocus="onSearchFocus" onCancel="onSearchCancel"  onChange="onSearchChange" />
 		
 		<!--
-			To create a more customized searchView for Android, we are creating a custom view that ties back to the listView
+			To create a more customized searchView for Android, we are creating a custom view that ties back to the tableView
 			through the onChange event.
 		-->
 		<View platform="android" class="size hgroup">
@@ -21,47 +21,13 @@
 			<Label id="closeBtn" class="icon-close right-buffer" onClick="onSearchCancel" />
 		</View>
 		
-		<!--
-			The Directory list. 
-			This listView leverages two ListItem templates to denote regular contacts and those that are bookmarked.
-		-->
-		<ListView id="listView" defaultItemTemplate="userTemplate" onItemclick="onItemClick">
-			<Templates>
-				
-				<!-- UserTemplate - this is the default ListItem template -->
-				<ItemTemplate id="userTemplate" name="userTemplate" class="template">
-					<View class="left-buffer">
-						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
-						<View class="vgroup left size">
-							<Label id="userName" bindId="userName" class="title" />
-							
-							<!-- ADDITIONAL UI ELEMENTS HERE -->
-							<!-- <Label id="userEmail" bindId="userEmail" class="subtitle" /> -->
-							<!-- <Label id="userCompany" bindId="userCompany" class="subtitle" /> -->
-							
-						</View>
-						<View class="gray-line bottom"/>
-					</View>
-				</ItemTemplate>
-				
-				<!-- favoriteTemplate - this is the ListItem template for contacts that have been bookmarked -->
-				<ItemTemplate id="favoriteTemplate" name="favoriteTemplate" class="template">
-					<View class="left-buffer">
-						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
-						<View class="vgroup left size">
-							<Label id="userName" bindId="userName" class="title" />
-							
-							<!-- ADDITIONAL UI ELEMENTS HERE -->
-							<!-- <Label id="userEmail" bindId="userEmail" class="subtitle" /> -->
-							<!-- <Label id="userCompany" bindId="userCompany" class="subtitle" />  -->
-							
-						</View>
-						<Label class="favorite" />
-						<View class="gray-line bottom"/>
-					</View>
-				</ItemTemplate>	
-			</Templates>
-			
-		</ListView>
+		<TableView id="tableView" onClick="onItemClick">
+			<!-- 
+			  	TableViewRows will be added through the javascript in directory.js
+			  	
+			  	To see the structure of the TableViewRow, and how the data is added
+			  	check out the directoryRow.xml and directory.js files
+			-->
+		</TableView>
 	</View>
 </Alloy>

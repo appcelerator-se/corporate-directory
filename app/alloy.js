@@ -77,7 +77,7 @@ Alloy.Globals.App = {
 				
 				this.currentWindow.addEventListener('open',function(e){
 					
-					if (! win.getActivity()) {
+					if (!win.getActivity()) {
 			            Ti.API.error("Can't access action bar on a lightweight window.");
 			        } else {
 			            var actionBar = win.activity.actionBar;
@@ -87,18 +87,19 @@ Alloy.Globals.App = {
 			                    win.close();
 			                };
 			            }
-			            
 			            win.activity.invalidateOptionsMenu();
 			        }
 				});
 				
 				win.open();
 				
-			} else{
-				
-				
+			} 
+			else if(OS_IOS){
 				this.navGroup.openWindow(win,{animated:true});
-				
+			}
+			else{
+				Ti.API.info(this.navGroup.apiName);
+				this.navGroup.open(win, {animated:true});
 			}
 		}
 	},
@@ -110,7 +111,7 @@ Alloy.Globals.App = {
 	 */
 	init: function(params) {
 		
-		if(OS_IOS && params.navGroup){
+		if(params.navGroup){
 			this.Navigator.navGroup = params.navGroup;
 		}
 		

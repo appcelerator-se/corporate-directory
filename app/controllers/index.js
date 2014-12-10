@@ -14,7 +14,12 @@ loadingView.start();
 
 setTimeout(function(){
 	loadingView.finish(function(){
-		$.nav.open();
+		
+		if(OS_IOS || OS_ANDROID){
+			$.nav.open()
+		} else{
+			$.index.open();
+		} 
 		
 		loadingView.getView().close();
 		loadingView = null;

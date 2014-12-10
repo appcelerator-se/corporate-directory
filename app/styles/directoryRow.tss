@@ -1,0 +1,49 @@
+
+/**
+ * 	Style for The User Template
+ */
+".row":{
+	height: 100,
+	width: Ti.UI.FILL,
+	backgroundColor: "#fff"
+},
+
+"#favorite":{
+	font:{
+		fontSize: 20,
+		fontFamily:"icomoon",
+	},
+	text:"\uf02e",
+	color:"#038BC8",
+	right: 10,
+	top:-2
+},
+/* Uncomment this code! */
+".title":{
+	font:{
+		// fontSize: 14
+		fontSize: 20
+	},
+	left: 85,
+	color: "#444"
+},
+
+
+".subtitle":{
+	font:{
+		fontSize: 10
+	},
+	left: 85,
+	height: 20,
+	color: "#666"
+},
+
+".avatar":{
+	border: 1,
+	borderColor: "#acacac",
+	height: 75,
+	width: Ti.UI.SIZE,
+	top: 12,
+	left: 0,
+	borderRadius: 35
+},

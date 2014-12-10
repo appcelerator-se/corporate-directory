@@ -1,7 +1,7 @@
 var args = arguments[0] || {};
 
 $.start = function() {
-	$.overlay.opacity = 0;
+	//$.overlay.opacity = 0;
 	$.rocketSmoke.opacity = 0.1;
 	$.rocketFlight.opacity = 0;
 	$.rocketFlight.top = null;

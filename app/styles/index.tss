@@ -7,7 +7,11 @@
 ".container[platform=ios]":{
 	navTintColor: "#ae331f"
 },
-"#wrapper":{
+".container[platform=mobileweb]":{
+	navBarHidden:false
+}
+
+".wrapper":{
 	titleAttributes:  {
         color: "#ae331f"
    },

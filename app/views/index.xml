@@ -1,6 +1,6 @@
 <Alloy>
 	    <!-- Default App Window -->
-	<Window id="nav" class="container" platform="android,mobileweb,blackberry">
+	<Window id="nav" class="container" platform="android,blackberry">
 		
 		<!-- 
 		Menu Item to open the bookmarks view
@@ -20,4 +20,16 @@
     		<Require src="directory" />
     	</Window>
     </NavigationWindow>
+    
+    <!-- MobileWeb -->
+    <Window platform="mobileweb">
+    <NavigationGroup id="nav" platform="mobileweb" class="container">
+    	<Window title="Directory" class="wrapper">
+    		<LeftNavButton>
+			 	<Label id="logo" />
+			 </LeftNavButton>
+    		<Require src="directory" />
+    	</Window>
+    </NavigationGroup>
+    </Window>
 </Alloy>

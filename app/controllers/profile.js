@@ -27,7 +27,7 @@
  */
 var _args = arguments[0] || {},
 	App = Alloy.Globals.App,
-	Map = require('ti.map'),
+	Map = OS_MOBILEWEB ? Ti.Map : require('ti.map'),
 	$U = require('utilities'),
 	bookmarks = null;
 
