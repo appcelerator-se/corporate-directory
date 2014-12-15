@@ -18,7 +18,7 @@
    hideShadow: true,
    borderColor: "#fff",
    borderWidth: 1,
-   translucent: true,
+   navBarColor:"#fff",
    extendEdges: Titanium.UI.EXTEND_EDGE_TOP
 },
 "#logo":{
