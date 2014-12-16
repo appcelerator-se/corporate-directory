@@ -25,7 +25,7 @@
 ".container": {
 	backgroundColor:"#fff",
 	orientationModes: [Ti.UI.PORTRAIT,Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT,Ti.UI.UPSIDE_PORTRAIT],
-	navBarHidden: true,
+	//navBarHidden: true,
 	exitOnClose: true
 },
 ".container[platform=ios]":{
@@ -45,11 +45,3 @@
    navBarColor:"#fff",
    extendEdges: Titanium.UI.EXTEND_EDGE_TOP
 },
-"#logo":{
-	text: "\ue601",
-	color: "#C41230",
-	font:{
-		fontFamily:"icomoon",
-		fontSize:36
-	}
-}

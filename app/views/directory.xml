@@ -2,7 +2,7 @@
 	<!--
 		This view wraps all of the child views/lists etc. Creates a base layout, vertically aligned.
 	-->
-	<Window id="wrapper" class="vgroup" title="Directory">
+	<Window id="wrapper" class="vgroup" title="Directory" onOpen="onWindowOpen">
 		
 		<LeftNavButton platform="ios">
 		 	<Label id="logo" />
@@ -19,13 +19,13 @@
 			To create a more customized searchView for Android, we are creating a custom view that ties back to the tableView
 			through the onChange event.
 		-->
-		<View platform="android" class="size hgroup">
+<!--		<View platform="android" class="size hgroup">
 			<Label class="icon-search left-buffer" />
 			<TextField id="searchBar" class="search" onChange="onSearchChange" />
 			<Label id="closeBtn" class="icon-close right-buffer" onClick="onSearchCancel" />
 		</View>
-		
-		<TableView id="tableView" onClick="onItemClick">
+-->		
+		<TableView id="tableView" onClick="onItemClick" searchAsChild="false">
 			<!-- 
 			  	TableViewRows will be added through the javascript in directory.js
 			  	

@@ -38,12 +38,42 @@ var title = _args.title ? _args.title.toLowerCase() : L("directory");
 Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
 
-function onWindowOpen(){
-	
-	
-	
-	
+/*
+	Add ActionBar icons
+*/
+
+if (OS_ANDROID){
+	var search = Ti.UI.Android.createSearchView({
+	    hintText : "Table Search"
+	});
+	search.addEventListener('submit', function(e){
+	    Ti.API.info(search.value);
+	});
+	$.tableView.search = search;	
 }
+
+function onWindowOpen(evt){
+    if (Ti.Platform.name == 'android' && Ti.Platform.Android.API_LEVEL >= 11) {
+        evt.source.activity.onCreateOptionsMenu = function(e) {
+            var searchButton = e.menu.add({
+                title: "Table Search",
+                icon: Ti.Android.R.drawable.ic_menu_search,
+                actionView : search,
+                showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM | Ti.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
+            });
+
+            var bookmarksButton = e.menu.add({
+            	title: "Bookmarks",
+                icon: "/images/ic_action_action_bookmark.png",
+                showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM
+            })
+	        bookmarksButton.addEventListener("click", function(e) {
+	            onBookmarkClick();
+	        });
+        };
+    }
+}
+
 
 /** 
  * Function to inialize the View, gathers data from the flat file and sets up the TableView

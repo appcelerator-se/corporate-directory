@@ -63,3 +63,13 @@
 	tintColor: "#666",
 	borderWidth:0
 }
+
+"#logo":{
+	text: "\ue601",
+	color: "#C41230",
+	font:{
+		fontFamily:"icomoon",
+		fontSize:36
+	}
+}
+
