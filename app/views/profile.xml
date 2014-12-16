@@ -1,8 +1,9 @@
 <Alloy>
 	<!-- Main Container of the View, title of the Window is pulled from the title property on the main view-->
 	
-		<View class="container vgroup" opacity="0.0" title="Profile">
+		<Window class="container vgroup" opacity="0.0" title="Profile">
 			
+			<ActionBar displayHomeAsUp="true" onHomeIconItemSelected="closeWindow" />
 			
 			<!-- 
 				Profile Page
@@ -54,7 +55,6 @@
 					<Widget class="h3 icon-small red left" src="net.hoyohoyo.iconiclabel"  icon="icon-calendar" />
 					<Label id="start_date" class="h6 gray left-buffer right-buffer">July 27, 2001</Label>
 				</View>
-			</ScrollView>
-			
-		</View>
+			</ScrollView>	
+		</Window>
 </Alloy>

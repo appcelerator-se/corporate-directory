@@ -1,9 +1,30 @@
 
-var App = Alloy.Globals.App;
+/**
+ * Global Navigation Handler
+ */
+Alloy.Globals.Navigator = {
+	
+	/**
+	 * Handle to the Navigation Controller
+	 */
+	navGroup: $.nav,
+	
+	open: function(controller, payload){
+		
+		var win = Alloy.createController(controller, payload || {}).getView();
+		
+		if(OS_IOS){
+			$.nav.openWindow(win);
+		}
+		else if(OS_MOBILEWEB){
+			$.nav.open(win);
+		}
+		else {
+			win.open();
+		}
+	}
+};
 
-App.init({
-	navGroup: $.nav
-});
 
 /**
  * Lets add a loading animation - Just for Fun!
@@ -15,10 +36,10 @@ loadingView.start();
 setTimeout(function(){
 	loadingView.finish(function(){
 		
-		if(OS_IOS || OS_ANDROID){
+		if(OS_IOS || OS_MOBILEWEB){
 			$.nav.open()
 		} else{
-			$.index.open();
+			$.index.getView().open();
 		} 
 		
 		loadingView.getView().close();
@@ -40,6 +61,6 @@ if(OS_ANDROID){
 		/**
 		 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
 		 */
-		App.Navigator.open("directory", {restrictBookmarks:true, title:L("bookmarks")});
+		Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:L("bookmarks")});
 	};
 }

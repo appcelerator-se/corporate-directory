@@ -2,8 +2,12 @@
 	<!--
 		This view wraps all of the child views/lists etc. Creates a base layout, vertically aligned.
 	-->
-	<View id="wrapper" class="vgroup" title="Directory">
+	<Window id="wrapper" class="vgroup" title="Directory">
 		
+		<LeftNavButton platform="ios">
+		 	<Label id="logo" />
+		 </LeftNavButton>
+		 
 		<!--
 		If you would like the searchbar to scroll up with the tableView, you can move this line before the last
 		</TableView> tag. However for our implementation, we want the searchBar to be present at all times so we have moved
@@ -29,5 +33,5 @@
 			  	check out the directoryRow.xml and directory.js files
 			-->
 		</TableView>
-	</View>
+	</Window>
 </Alloy>

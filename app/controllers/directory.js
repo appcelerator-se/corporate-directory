@@ -28,16 +28,22 @@
  * Instantiate the local variables for this controller
  */
 var _args = arguments[0] || {}, // Any passed in arguments will fall into this property
-	App = Alloy.Globals.App, // reference to the APP singleton object
 	users = null,  // Array placeholder for all users
 	indexes = [];  // Array placeholder for the TableView Index (used by iOS only)
 
 /**
  * Appcelerator Analytics Call
  */
-var title = _args.title ? _args.title.toLowerCase() : L("directory");
+var title = _args.title ? _args.title.toLowerCase() : L("directory"); 
 Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
+
+function onWindowOpen(){
+	
+	
+	
+	
+}
 
 /** 
  * Function to inialize the View, gathers data from the flat file and sets up the TableView
@@ -262,7 +268,7 @@ function onItemClick(e){
 	/**
 	 * Open the profile view, and pass in the user data for this contact
 	 */
-	App.Navigator.open("profile", e.row.user);
+	Alloy.Globals.Navigator.open("profile", e.row.user);
 }
 
 /**

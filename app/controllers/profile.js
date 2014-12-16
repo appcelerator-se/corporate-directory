@@ -246,6 +246,13 @@ function toggleBookmark(){
 };
 
 /**
+ * Closes the Window
+ */
+function closeWindow(){
+	$.profile.close();
+}
+
+/**
  * Lets do a nice fade in after the view has completely rendered **stylin!**
  */
 $.profile.addEventListener("postlayout", function(e){
