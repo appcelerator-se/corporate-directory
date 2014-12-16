@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cheatsheet
       title="App Project Overview">
+   <intro>
+      <description>
+         <b>Body</b>
+      </description>
+   </intro>
    <item
          title="Item (2)">
       <description>
@@ -8,13 +13,8 @@
       </description>
       <command
             required="false"
-            serialization="com.aptana.editor.common.scripting.commands.show"/>
+            serialization="org.eclipse.ui.cheatsheets.openCheatSheetURL(cheatSheetId=appc.corp.directory.help,name=Corporate DIrectory,url=file:///Users/bgrantges/trees/appcelerator/sample-apps/Corporate Directory/corporate-directory/help/appc-corporate-directory-cheatsheet.xml)"/>
    </item>
-   <intro>
-      <description>
-         <b>Body</b>
-      </description>
-   </intro>
    <item
          title="Item">
       <description>

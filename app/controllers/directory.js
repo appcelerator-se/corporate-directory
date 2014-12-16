@@ -262,7 +262,7 @@ function onItemClick(e){
 	/**
 	 * Open the profile view, and pass in the user data for this contact
 	 */
-	App.Navigator.open("profile", e.rowData.user);
+	App.Navigator.open("profile", e.row.user);
 }
 
 /**

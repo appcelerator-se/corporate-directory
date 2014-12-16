@@ -62,7 +62,7 @@ Alloy.Globals.App = {
 			/**
 			 * Wrap all child views within a window
 			 */
-			var win = Alloy.Globals.App.Navigator.currentWindow = Ti.UI.createWindow({
+			var win = this.currentWindow = Ti.UI.createWindow({
 				title: view.title || "",
 				titleAttributes:  {
 			        color: "#C41230"
@@ -72,6 +72,7 @@ Alloy.Globals.App = {
 			   navTintColor: "C41230"
 			});
 			win.add(view);
+			
 			
 			if (OS_ANDROID){
 				

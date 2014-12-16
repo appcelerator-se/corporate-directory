@@ -1,5 +1,4 @@
 var args = arguments[0] || {};
-Ti.API.info(JSON.stringify(args));
 
 /**
  * Get the Bookmarks array from persistent storage in Ti.App.Properties
@@ -13,7 +12,7 @@ var bookmarks = Ti.App.Properties.getList("bookmarks", []);
 var isBookmark = _.find(bookmarks, function(bookmark){
 	return args.id === bookmark;
 });
-
+Ti.API.info(JSON.stringify(args));
 $.directoryRow.user = args;
 
 $.userPhoto.image = args.photo;

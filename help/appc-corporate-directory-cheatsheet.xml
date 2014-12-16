@@ -7,10 +7,10 @@
 <br/>
 <b>Application Features</b>
 <br/>
-» A master / detail application using a customized ListView<br/>
+» A master / detail application using a customized TableView<br/>
 » Searchable List<br/>
-» ListViewSections created based on last name initial<br/>
-» ListView Indexes (iOS only)<br/>
+» TableViewSections created based on last name initial<br/>
+» TableView Indexes (iOS only)<br/>
 » Native Navigation Patterns<br/>
 » Maps, Email and Phone Access Examples<br/>
 » Loading data from local Filesystem<br/>

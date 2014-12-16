@@ -16,20 +16,20 @@ Key App Features
 ----------------
 
 #### master Branch
-+ A master / detail application using a customized ListView
++ A master / detail application using a customized TableView
 + Searchable List
-+ ListViewSections created based on last name initial
-+ ListView Indexes (iOS only)
++ TableViewSections created based on last name initial
++ TableView Indexes (iOS only)
 + Native Navigation Patterns using NavigationWindow for iOS and standard Windows for Android
 + Includes native hooks to Maps, Email and Phone applications
 + Loading data from local Filesystem
 
 #### data-binding Branch
-+ Collection data binding to ListView
++ Collection data binding to TableView
 + Model / View binding on the Profile Page
 + Uses Alloy Models to sync sample data to the SQLite database
 
-_Note: The data-binding branch does not create ListViewSections in the directory view._
+_Note: The data-binding branch does not create TableViewSections in the directory view._
 
 Quick Start
 -----------

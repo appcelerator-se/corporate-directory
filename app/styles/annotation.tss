@@ -1,0 +1,21 @@
+
+".container" : {
+}
+
+"#avatar":{
+	borderColor: "#038BC8",
+	borderWidth: 5,
+	borderRadius: 37.5,
+	height: 75,
+	width: 75,
+},
+
+"#carat":{
+	font:{
+		fontSize: 48,
+		fontFamily:"FontAwesome",
+	},
+	text:"\uf0dd",
+	color:"#038BC8",
+	top:-33,
+}

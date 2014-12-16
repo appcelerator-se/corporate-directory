@@ -2,29 +2,14 @@
 	<!-- Main Container of the View, title of the Window is pulled from the title property on the main view-->
 	<!-- <View class="container fill" title="Profile"> -->
 		
-		<View class="container">
-			<!--
-				Top Section of the Profile.
-				- Shows the Contact Image, Name, Title, Company
-				- Buttons to Call / Email the contact
-				- Button to Add/Remove the contact as a favorite
-				
-				This is a vertically aligned View
-			-->
-			<View class="vgroup top-buffer" height="250">
-				<View  height="150">
-					<Widget id="emailBtn" src="net.hoyohoyo.iconiclabel" icon="icon-envelope" class="icon-button left-buffer"/>
-					<ImageView id="profilePicture" class="top-buffer no-touch" />
-					<Widget id="callBtn" src="net.hoyohoyo.iconiclabel" icon="icon-phone" class="icon-button right-buffer"/>
-				</View>
-				<View class="vgroup" height="100">
-					<Label id="name" class='h3 red top-buffer no-touch' >Kelly Smith</Label>
-					<Label id="job" class='h5 gray no-touch' >Account Rep</Label>
-					<Label id="company" class='h5 gray no-touch' >Appcelerator, Inc</Label>
-				</View>
-				<Button id="addBookmarkBtn" class="h4" onClick="toggleBookmark" textid="bookmarkBtn">+ Add To Bookmarks</Button>
-			</View>
+		<View class="container vgroup" opacity="0.0">
 			
+			<!-- 
+				Map View 
+				Leverages the Map Module, allowing for v2 of Google Maps and latest codebase unifying Google v2 and IOS
+			-->
+			<Module id="mapview" module="ti.map" method="createView" platform="android,ios" class='no-touch top' />
+			<View ns="Ti.Map" id="mapview" platform="mobileweb" class='buffer border-dark-thick no-touch top' />
 			
 			<!-- 
 				Bottom Section of the Profile Page
@@ -33,54 +18,40 @@
 				- About View, a blurb of text about the user
 				- MapView shows an annotation of where the user is located
 			-->
-			<ScrollView class="vgroup" top="300">
-				
-				<!-- Information View -->
-				<View class="vgroup size top-buffer">
-					<View class='hgroup span-width'>
-						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-qrcode" />
-						<Label class="h4 red left-buffer right-buffer" textid="contactinfo"/>
+			
+			<View id="userInfo" class="vgroup top-buffer">
+				<Label id="name" class='h3 red top-buffer no-touch' >Kelly Smith</Label>
+				<Label id="job" class='h5 gray no-touch' >Account Rep</Label>
+				<Label id="company" class='h5 gray no-touch' >Appcelerator, Inc</Label>
+				<Button id="addBookmarkBtn" class="h4 span-width top-buffer" onClick="toggleBookmark" textid="bookmarkBtn">+ Add To Bookmarks</Button>
+			</View>
+			
+			<View id="userActions" class="hgroup top">
+				<Widget id="callBtn" src="net.hoyohoyo.iconiclabel" icon="icon-phone" class="icon-button"/>
+				<Widget id="emailBtn" src="net.hoyohoyo.iconiclabel" icon="icon-envelope-alt" class="icon-button"/>
+				<Widget id="msgBtn" src="net.hoyohoyo.iconiclabel" icon="icon-comment" class="icon-button"/>
+				<Widget id="moreBtn" src="net.hoyohoyo.iconiclabel" icon="fa-ellipsis-h" class="icon-button"/>
+			</View>
+			
+			<!-- Contact Information -->
+			<View id="contactInfo" class='vgroup size top-buffer'> 
+					<View class='hgroup size left top-buffer'>
+						<Widget class="h3 icon-small red left top" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />
+						<Label id="phone" class="h6 gray left-buffer">512-555-1212</Label>
 					</View>
-					<View class='hgroup span-width'>
-						<Widget class="h6 icon-small red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />
-						<Label id="phone" class="h6 gray left-buffer right-buffer">512-555-1212</Label>
+					<View class='hgroup size left top-buffer'>
+						<Widget class="h3 icon-small red left top" src="net.hoyohoyo.iconiclabel"  icon="icon-envelope-alt" />
+						<Label id="email" class="h6 gray left-buffer">kelly.smith@appcelerator.com</Label>
 					</View>
-					<View class='hgroup span-width'>
-						<Widget class="h6 icon-small red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-envelope-alt" />
-						<Label id="email" class="h6 gray left-buffer right-buffer">kelly.smith@appcelerator.com</Label>
-					</View>
-					<View class='hgroup span-width'>
-						<Widget class="h6 icon-small red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-comment" />
+					<View class='hgroup size left top-buffer'>
+						<Widget class="h3 icon-small red left" src="net.hoyohoyo.iconiclabel"  icon="icon-comment" />
 						<Label id="im" class="h6 gray left-buffer right-buffer">kelly.smith</Label>
 					</View>
-				</View>
-				
-				<!-- About View -->
-				<View class="vgroup size top-buffer" >
-					<View class='hgroup span-width top-buffer'>
-						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-info-sign" />
-						<Label class="h4 red left-buffer right-buffer" textid="about"/>
+					<View class='hgroup size left top-buffer'>
+						<Widget class="h3 icon-small red left" src="net.hoyohoyo.iconiclabel"  icon="icon-calendar" />
+						<Label id="start_date" class="h6 gray left-buffer right-buffer">July 27, 2001</Label>
 					</View>
-					<ScrollView class="size">
-						<Label id="about" class="gray normal-text left-buffer right-buffer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Label>
-					</ScrollView>
-				</View>
-				
-				<!-- Map View -->
-				<View class="vgroup buffer">
-					<View class='hgroup span-width'>
-						<Widget class="red icon left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-map-marker" />
-						<Label class="h4 red left-buffer" textid="location"/>
-					</View>
-					
-					<!-- 
-						Leverages the Map Module, allowing for v2 of Google Maps and latest codebase unifying Google v2 and IOS	
-					-->
-					<Module id="mapview" module="ti.map" method="createView" platform="android,ios" class='buffer border-dark-thick no-touch' />
-					
-					<View ns="Ti.Map" id="mapview" platform="mobileweb" class='buffer border-dark-thick no-touch' />
-				</View>
-			</ScrollView>
+			</View>
+			
 		</View>
-	<!-- </View> -->
 </Alloy>
