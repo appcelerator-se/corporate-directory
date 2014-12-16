@@ -55,32 +55,15 @@ $.callBtn.icon.addEventListener('click', callContact);
  * Set the Map Region for the Map Module so that it is at the right zoom level
  * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Modules.Map
  */
-if(!OS_ANDROID){
-	
+	var lat = OS_ANDROID ? _args.latitude+0.75 : _args.latitude;
 	$.mapview.setRegion({
-		latitude: _args.latitude || 30.631256,
+		latitude: lat || 30.631256,
 		longitude: _args.longitude || -97.675422,
-		leftImage: _args.photo, 
-		title: _args.firstName + " " + _args.lastName,
-		subtitle: "Account Rep",
 		latitudeDelta:2,
 		longitudeDelta:2,
+		zoom:5,
+		tilt:45
 	});
-	
-}
-else {
-	
-	/**
-	 * Android leverages a zoom / tilt property to adjust the view so we 
-	 * branched the code accordingly
-	 */
-	$.mapview.setRegion({
-		latitude: _args.latitude || 30.631256,
-		longitude: _args.longitude || -97.675422,
-		zoom: 6,
-		tilt:0
-	});
-}
 
 /**
  * Create the Map Annotation to the latitude and longitude assigned to the user.

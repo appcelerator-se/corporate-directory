@@ -1,8 +1,17 @@
-
 /**
- * 	Global Styles
- *  These styles are referenceable from any view in your application. They will be processed first, meaning that they can be 
- *  can be overridden by file specific TSS styles or inline on the XML attribute.
+ *                              _                _             
+ *                             | |              | |            
+ *    __ _ _ __  _ __   ___ ___| | ___ _ __ __ _| |_ ___  _ __ 
+ *   / _` | '_ \| '_ \ / __/ _ \ |/ _ \ '__/ _` | __/ _ \| '__|
+ *  | (_| | |_) | |_) | (_|  __/ |  __/ | | (_| | || (_) | |   
+ *   \__,_| .__/| .__/ \___\___|_|\___|_|  \__,_|\__\___/|_|   
+ *        | |   | |                                            
+ *        |_|   |_|  
+ *      
+ *      
+ * @overview
+ *  These styles can be referenced from any view in your application. They will be processed first, meaning that they can be 
+ *  can be overridden by file specific TSS styles or in-line on the XML attribute.
  * 
  *  Credits go to:
  *  Reset - Standardize behavior across platforms and set better defaults

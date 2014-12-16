@@ -1,4 +1,25 @@
-
+/**
+ *                              _                _             
+ *                             | |              | |            
+ *    __ _ _ __  _ __   ___ ___| | ___ _ __ __ _| |_ ___  _ __ 
+ *   / _` | '_ \| '_ \ / __/ _ \ |/ _ \ '__/ _` | __/ _ \| '__|
+ *  | (_| | |_) | |_) | (_|  __/ |  __/ | | (_| | || (_) | |   
+ *   \__,_| .__/| .__/ \___\___|_|\___|_|  \__,_|\__\___/|_|   
+ *        | |   | |                                            
+ *        |_|   |_|  
+ *      
+ *      
+ * @overview
+ * This is the corresponding style sheet for the Profile View. All
+ * class, ID, and element tag references can be found here.
+ *
+ * @copyright
+ * Copyright (c) 2014 by Appcelerator, Inc. All Rights Reserved.
+ *
+ * @license
+ * Licensed under the terms of the Apache Public License
+ * Please see the LICENSE included with this distribution for details.
+ */
 
 ".container":{
 	backgroundColor: "#fff"
@@ -7,22 +28,7 @@
 "#mapview":{
 	enableZoomControls: false,
 	compassEnabled: false,
-	height: "25%",
-}
-
-"#userInfo":{
-	height: 130,
-	width: "100%"
-}
-
-"#userActions":{
-	backgroundColor: "#fff",
-	height:75,
-	width: "100%"
-}
-
-"#contactInfo":{
-	left: "7%"
+	height: "30%",
 }
 
 ".icon-button":{
@@ -37,8 +43,7 @@
 	font:{
 		fontSize: 24 
 	},
-	left:"7%",
-	top: 7
+	left:"10%"
 }
 
 '.icon-small':{
@@ -52,7 +57,7 @@
 	autoLink: Ti.UI.AUTOLINK_ALL
 }
 
-"#addBookmarkBtn[platform=android]":{
+"#addBookmarkBtn[platform=android, mobileweb]":{
 	backgroundColor: 'transparent',
 	color: "#C41230",
 	borderWidth:0
