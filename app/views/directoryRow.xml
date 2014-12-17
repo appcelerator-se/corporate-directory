@@ -1,5 +1,5 @@
 <Alloy>
-	<TableViewRow class="row">
+	<TableViewRow class="row" title="">
 		<View class="left-buffer">
 			<ImageView id="userPhoto" class="avatar" />
 			<View class="vgroup left size">

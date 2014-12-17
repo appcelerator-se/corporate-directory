@@ -15,6 +15,7 @@ var isBookmark = _.find(bookmarks, function(bookmark){
 Ti.API.info(JSON.stringify(args));
 $.directoryRow.user = args;
 
+$.directoryRow.title= args.firstName + " " + args.lastName;
 $.userPhoto.image = args.photo;
 $.userCompany.text = args.company;
 $.userEmail.text = args.email;
