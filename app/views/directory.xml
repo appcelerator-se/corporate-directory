@@ -4,9 +4,9 @@
 	-->
 	<Window id="wrapper" class="vgroup" title="Directory" onOpen="onWindowOpen">
 		
-		<LeftNavButton platform="ios">
+		<!--<LeftNavButton platform="ios">
 		 	<Label id="logo" />
-		 </LeftNavButton>
+		 </LeftNavButton>-->
 		 
 		<!--
 		If you would like the searchbar to scroll up with the tableView, you can move this line before the last

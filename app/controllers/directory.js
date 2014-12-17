@@ -296,10 +296,11 @@ function onItemClick(e){
 	
 	/**
 	 * Open the profile view, and pass in the user data for this contact
+	 * Adding displayHomeAsUp to the payload so the navigator knows this is a child window
 	 */
-	// we'll need to add this property to the payload
-	// e.row.user.displayHomeAsUp=true;
-	Alloy.Globals.Navigator.open("profile", e.row.user);
+	var payload=e.row.user;
+	payload.displayHomeAsUp=true;
+	Alloy.Globals.Navigator.open("profile", payload);
 }
 
 /**
