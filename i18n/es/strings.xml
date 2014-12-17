@@ -6,4 +6,5 @@
 	<string name="about">Descripción</string>	
 	<string name="location">Ubicación</string>
 	<string name="bookmarkBtn">+ Añadir a Favoritos</string>
+	<string name="searchContacts">Buscar contactos</string>
 </resources>

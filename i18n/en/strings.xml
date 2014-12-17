@@ -6,4 +6,5 @@
 	<string name="about">About</string>	
 	<string name="location">Location</string>
 	<string name="bookmarkBtn">+ Add To Bookmarks</string>
+	<string name="searchContacts">Search Contacts</string>
 </resources>

@@ -38,41 +38,38 @@ var title = _args.title ? _args.title.toLowerCase() : L("directory");
 Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
 
-/*
-	Add ActionBar icons
-*/
-
+/**
+ * Setup Android SearchView
+ */
 if (OS_ANDROID){
 	var search = Ti.UI.Android.createSearchView({
-	    hintText : "Table Search"
-	});
-	search.addEventListener('submit', function(e){
-	    Ti.API.info(search.value);
+	    hintText : L('searchContacts')
 	});
 	$.tableView.search = search;	
 }
 
 function onWindowOpen(evt){
-    if (OS_ANDROID && Ti.Platform.Android.API_LEVEL >= 11) {
+    if (OS_ANDROID) {
         evt.source.activity.onCreateOptionsMenu = function(e) {
             var searchButton = e.menu.add({
                 title: "Table Search",
-                icon: Ti.Android.R.drawable.ic_menu_search,
+                //icon: Ti.Android.R.drawable.ic_menu_search, // there's a bug here
                 actionView : search,
-                showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM | Ti.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
+                showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS
             });
 
             if (!_args.restrictBookmarks){
             	var bookmarksButton = e.menu.add({
 	            	title: "Bookmarks",
 	                icon: "/images/ic_action_action_bookmark.png",
-	                showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM
+	                showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS
 	            })
 		        bookmarksButton.addEventListener("click", function(e) {
 		            onBookmarkClick();
 		        });
             }
         };
+        evt.source.activity.invalidateOptionsMenu();
     }
 }
 
@@ -362,7 +359,7 @@ else if(OS_ANDROID){
 	 * 
 	 * @param {Object} Event data passed to the function
 	 */
-	onSearchChange = function onChange(e){
+	/*onSearchChange = function onChange(e){
 		if($.searchBar.value !==''){
 			$.closeBtn.visible = true;
 		}
@@ -371,17 +368,17 @@ else if(OS_ANDROID){
 		}
 		
 		$.tableView.searchText = $.searchBar.value;
-	};
+	};*/
 	/**
 	 * Hides the keyboard when the cancel button is clicked
 	 * 
 	 * @param {Object} Event data passed to the function
 	 */
-	onSearchCancel = function onCancel(e){
+	/*onSearchCancel = function onCancel(e){
 		$.closeBtn.visible = false;
 		$.searchBar.value = '';
 		$.searchBar.blur();
-	};
+	};*/
 }
 
 /**
