@@ -15,7 +15,11 @@ var isBookmark = _.find(bookmarks, function(bookmark){
 Ti.API.info(JSON.stringify(args));
 $.directoryRow.user = args;
 
-$.directoryRow.title= args.firstName + " " + args.lastName;
+if (OS_ANDROID){ 
+	// not entirely sure about this, but it appears as though this is the text used by Android to search on the TableView, but on iOS the text is showing
+	$.directoryRow.title= args.firstName + " " + args.lastName;
+}
+
 $.userPhoto.image = args.photo;
 $.userCompany.text = args.company;
 $.userEmail.text = args.email;
