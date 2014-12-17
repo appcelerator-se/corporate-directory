@@ -53,7 +53,7 @@ if (OS_ANDROID){
 }
 
 function onWindowOpen(evt){
-    if (Ti.Platform.name == 'android' && Ti.Platform.Android.API_LEVEL >= 11) {
+    if (OS_ANDROID && Ti.Platform.Android.API_LEVEL >= 11) {
         evt.source.activity.onCreateOptionsMenu = function(e) {
             var searchButton = e.menu.add({
                 title: "Table Search",
@@ -62,14 +62,16 @@ function onWindowOpen(evt){
                 showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM | Ti.Android.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
             });
 
-            var bookmarksButton = e.menu.add({
-            	title: "Bookmarks",
-                icon: "/images/ic_action_action_bookmark.png",
-                showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM
-            })
-	        bookmarksButton.addEventListener("click", function(e) {
-	            onBookmarkClick();
-	        });
+            if (!_args.restrictBookmarks){
+            	var bookmarksButton = e.menu.add({
+	            	title: "Bookmarks",
+	                icon: "/images/ic_action_action_bookmark.png",
+	                showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM
+	            })
+		        bookmarksButton.addEventListener("click", function(e) {
+		            onBookmarkClick();
+		        });
+            }
         };
     }
 }
@@ -215,7 +217,7 @@ function init(){
 	 * Check to see if the `restrictBookmarks` flag has been passed in as an argument, and 
 	 * hide the bookmark icon accordingly
 	 */
-	if(_args.restrictBookmarks){
+	if(_args.restrictBookmarks && ! OS_ANDROID){
 		$.searchBar.showBookmark = false;
 	}
 };
@@ -298,6 +300,8 @@ function onItemClick(e){
 	/**
 	 * Open the profile view, and pass in the user data for this contact
 	 */
+	// we'll need to add this property to the payload
+	// e.row.user.displayHomeAsUp=true;
 	Alloy.Globals.Navigator.open("profile", e.row.user);
 }
 
@@ -348,30 +352,6 @@ if(OS_IOS){
 		}	
 		$.searchBar.blur();
 	};
-	
-	/**
-	 * Handles the Bookmark icon click event. Launches this same control as a child window, but limits the view
-	 * to only bookmarked items.
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onBookmarkClick = function onClick (e){
-		
-		/**
-		 * Appcelerator Analytics Call
-		 */
-		Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".bookmarks.clicked");
-		
-		/**
-		 * Hide the Keyboard if the user searched
-		 */
-		$.searchBar.blur();
-		
-		/**
-		 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
-		 */
-		App.Navigator.open("directory", {restrictBookmarks:true, title:L("bookmarks")});
-	};
 }
 else if(OS_ANDROID){
 	/**
@@ -404,6 +384,29 @@ else if(OS_ANDROID){
 	};
 }
 
+/**
+ * Handles the Bookmark icon click event. Launches this same control as a child window, but limits the view
+ * to only bookmarked items.
+ * 
+ * @param {Object} Event data passed to the function
+ */
+onBookmarkClick = function onClick (e){
+	
+	/**
+	 * Appcelerator Analytics Call
+	 */
+	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".bookmarks.clicked");
+	
+	/**
+	 * Hide the Keyboard if the user searched
+	 */
+	if (OS_IOS) $.searchBar.blur();
+	
+	/**
+	 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
+	 */
+	Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:L("bookmarks"),displayHomeAsUp:true});
+};
 /**
  * Initialize View
  */
