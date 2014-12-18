@@ -1,6 +1,6 @@
 <Alloy>
-	<TableViewRow class="row" title="">
-		<View class="left-buffer">
+	<TableViewRow class="row">
+		<View class="container" class="left-buffer">
 			<ImageView id="userPhoto" class="avatar" />
 			<View class="vgroup left size">
 				<Label id="userName" class="title" />

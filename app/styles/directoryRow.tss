@@ -28,6 +28,10 @@
 	backgroundColor: "#fff"
 },
 
+".container":{
+	backgroundColor: "#fff"
+},
+
 "#favorite":{
 	font:{
 		fontSize: 20,

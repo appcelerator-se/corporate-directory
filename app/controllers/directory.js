@@ -39,21 +39,35 @@ Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
 
 /**
- * Setup Android SearchView
+ * Setup TableView Search
  */
-if (OS_ANDROID){
-	var search = Ti.UI.Android.createSearchView({
+
+var search;
+if(OS_ANDROID){
+	search = Ti.UI.Android.createSearchView({
 	    hintText : L('searchContacts')
 	});
-	$.tableView.search = search;	
+	$.tableView.search = search;
+}
+else {
+	search = $.searchBar;
+	$.tableView.search = search;
+	$.tableView.filterAttribute = "search";
 }
 
+$.tableView.filterAnchored=true;
+ 
+
+
+/**
+ * Setup for the ActionBar on Android
+ */
 function onWindowOpen(evt){
     if (OS_ANDROID) {
         evt.source.activity.onCreateOptionsMenu = function(e) {
             var searchButton = e.menu.add({
                 title: "Table Search",
-                //icon: Ti.Android.R.drawable.ic_menu_search, // there's a bug here
+                icon: Ti.Android.R.drawable.ic_menu_search, // there's a bug here
                 actionView : search,
                 showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS
             });
@@ -63,7 +77,7 @@ function onWindowOpen(evt){
 	            	title: "Bookmarks",
 	                icon: "/images/ic_action_action_bookmark.png",
 	                showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS
-	            })
+	            });
 		        bookmarksButton.addEventListener("click", function(e) {
 		            onBookmarkClick();
 		        });
@@ -320,7 +334,7 @@ if(OS_IOS){
 	 * @param {Object} Event data passed to the function
 	 */
 	onSearchChange = function onChange(e){
-		$.tableView.searchText = $.searchBar.value;
+		//$.tableView.search = $.searchBar.value;
 	};
 	
 	/**

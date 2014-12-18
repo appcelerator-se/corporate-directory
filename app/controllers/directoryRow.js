@@ -12,14 +12,7 @@ var bookmarks = Ti.App.Properties.getList("bookmarks", []);
 var isBookmark = _.find(bookmarks, function(bookmark){
 	return args.id === bookmark;
 });
-Ti.API.info(JSON.stringify(args));
 $.directoryRow.user = args;
-
-if (OS_ANDROID){ 
-	// not entirely sure about this, but it appears as though this is the text used by Android to search on the TableView, but on iOS the text is showing
-	$.directoryRow.title= args.firstName + " " + args.lastName;
-}
-
 $.userPhoto.image = args.photo;
 $.userCompany.text = args.company;
 $.userEmail.text = args.email;
@@ -35,4 +28,9 @@ $.favorite.visible = isBookmark;
  * For our purposes here, we'll just use the title attribute. This attribute is hidden when you
  * have alternate views leveraged within the TableViewRow
  */
-//$.directoryRow.title = args.firstName + " " + args.lastName;
+if (OS_ANDROID){ 
+	// not entirely sure about this, but it appears as though this is the text used by Android to search on the TableView, but on iOS the text is showing
+	$.directoryRow.title= args.firstName + " " + args.lastName;
+}else {
+	$.directoryRow.search = args.firstName + " " + args.lastName;	
+}

@@ -22,7 +22,8 @@
  */
 
 ".container":{
-	backgroundColor: "#fff"
+	backgroundColor: "#fff",
+	theme: "Appcelerator"
 }
 
 "#mapview":{
