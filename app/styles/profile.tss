@@ -30,6 +30,10 @@
 	enableZoomControls: false,
 	compassEnabled: false,
 	height: "30%",
+},
+
+"#contactInfo":{
+	contentHeight:"100%"
 }
 
 ".icon-button":{
@@ -53,6 +57,12 @@
 	}
 },
 
+'.separator':{
+	top:25,
+	height: 1,
+	width: "90%",
+	backgroundColor:"#acacac"
+},
 
 "Label":{
 	autoLink: Ti.UI.AUTOLINK_ALL
