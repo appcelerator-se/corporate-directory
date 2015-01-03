@@ -1,0 +1,14 @@
+<Alloy>
+	<TableViewRow class="row">
+		<View class="container" class="left-buffer">
+			<ImageView id="userPhoto" class="avatar" />
+			<View class="vgroup left size">
+				<Label id="userName" class="title" />
+				<Label id="userEmail" class="subtitle" />
+				<Label id="userCompany" class="subtitle" />
+			</View>
+			<Label id="favorite" />
+			<View class="gray-line bottom"/>
+		</View>
+	</TableViewRow>
+</Alloy>

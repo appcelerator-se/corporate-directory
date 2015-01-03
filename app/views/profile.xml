@@ -1,84 +1,63 @@
 <Alloy>
 	<!-- Main Container of the View, title of the Window is pulled from the title property on the main view-->
-	<View class="container fill" title="Profile">
-		
-		<View class="vgroup top"> 
-			<!--
-				Top Section of the Profile.
-				- Shows the Contact Image, Name, Title, Company
-				- Buttons to Call / Email the contact
-				- Button to Add/Remove the contact as a favorite
-				
-				This is a vertically aligned View
-			-->
-			<View class="vgroup span-width bottom-buffer">
-				<View class="span-width">
-					<Widget id="emailBtn" src="net.hoyohoyo.iconiclabel" icon="icon-envelope" class="icon-button left-buffer"/>
-					<ImageView id="profilePicture" class="top-buffer no-touch" />
-					<Widget id="callBtn" src="net.hoyohoyo.iconiclabel" icon="icon-phone" class="icon-button right-buffer"/>
-				</View>
-				<View class="vgroup size">
-					<Label id="name" class='h3 red top-buffer no-touch' >Kelly Smith</Label>
-					<Label id="job" class='h5 gray no-touch' >Account Rep</Label>
-					<Label id="company" class='h5 gray no-touch' >Appcelerator, Inc</Label>
-				</View>
-			</View>
-			<Button id="addBookmarkBtn" class="span-width h4" onClick="toggleBookmark">+ Add to Bookmarks</Button>
+	
+		<Window class="container vgroup" opacity="0.0" title="Profile">
+			
+			<ActionBar displayHomeAsUp="true" onHomeIconItemSelected="closeWindow" />
 			
 			<!-- 
-				Bottom Section of the Profile Page
-				- A Scrollable View that an end user can swipe to show more information about the user.
+				Profile Page
+				- A ScrollView that an end user can swipe to show more information about the user.
 				- Information View, shows phone, email, IM
 				- About View, a blurb of text about the user
 				- MapView shows an annotation of where the user is located
 			-->
-			<ScrollableView class="top-buffer" pagingControlHeight="20">
+			<ScrollView id="contactInfo" class='vgroup top'>
 				
-				<!-- Information View -->
-				<View class="vgroup size top-buffer">
-					<View class='hgroup span-width'>
-						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-qrcode" />
-						<Label class="h3 red left-buffer right-buffer">Contact Info</Label>
-					</View>
-					<View class='hgroup size top-buffer left-buffer'>
-						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />
-						<Label id="phone" class="h5 gray left-buffer right-buffer">512-555-1212</Label>
-					</View>
-					<View class='hgroup size top-buffer left-buffer'>
-						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-envelope-alt" />
-						<Label id="email" class="h5 gray left-buffer right-buffer">kelly.smith@appcelerator.com</Label>
-					</View>
-					<View class='hgroup size top-buffer left-buffer'>
-						<Widget class="icon red" src="net.hoyohoyo.iconiclabel"  icon="icon-comment" />
-						<Label id="im" class="h5 gray left-buffer right-buffer">kelly.smith</Label>
-					</View>
+				<!-- 
+					Map View 
+					Leverages the Map Module, allowing for v2 of Google Maps and latest codebase unifying Google v2 and IOS
+				-->
+				<Module id="mapview" module="ti.map" method="createView" platform="android,ios" class='no-touch top' />
+				<View ns="Ti.Map" id="mapview" platform="mobileweb" class='buffer border-dark-thick no-touch top' />
+			
+			
+				<!-- User Information -->
+				<View class="vgroup top size">
+					<Label id="name" class='h3 red top-buffer no-touch' >Kelly Smith</Label>
+					<Label id="job" class='h5 gray no-touch' >Account Rep</Label>
+					<Label id="company" class='h5 gray no-touch' >Appcelerator, Inc</Label>
+					<Button id="addBookmarkBtn" class="h4 span-width top-buffer" onClick="toggleBookmark" textid="bookmarkBtn">+ Add To Bookmarks</Button>
 				</View>
 				
-				<!-- About View -->
-				<View class="vgroup size top-buffer" >
-					<View class='hgroup span-width'>
-						<Widget class="icon red left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-info-sign" />
-						<Label class="h3 red left-buffer right-buffer">About</Label>
-					</View>
-					<ScrollView class="size">
-						<Label id="about" class="gray normal-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Label>
-					</ScrollView>
+				<!-- User Actions --->
+				<View class="hgroup top-buffer size">
+					<Widget id="callBtn" src="net.hoyohoyo.iconiclabel" icon="icon-phone" class="icon-button"/>
+					<Widget id="emailBtn" src="net.hoyohoyo.iconiclabel" icon="icon-envelope-alt" class="icon-button"/>
+					<Widget id="msgBtn" src="net.hoyohoyo.iconiclabel" icon="icon-comment" class="icon-button"/>
 				</View>
 				
-				<!-- Map View -->
-				<View class="vgroup size top-buffer">
-					<View class='hgroup span-width'>
-						<Widget class="red icon left-buffer" src="net.hoyohoyo.iconiclabel"  icon="icon-map-marker" />
-						<Label class="h3 red left-buffer">Location</Label>
-						<Label class="h6 gray right-buffer bottom" id="fromHQ" />
+				<View class='separator' />
+				
+				<!-- Contact Information -->
+			 	<View class='buffer vgroup size'>
+					<View class='hgroup size left-buffer top-buffer'>
+						<Widget class="h3 icon-small red left top" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />
+						<Label id="phone" class="h6 gray left-buffer">512-555-1212</Label>
 					</View>
-					
-					<!-- 
-						Leverages the Map Module, allowing for v2 of Google Maps and latest codebase unifying Google v2 and IOS	
-					-->
-					<Module id="mapview" module="ti.map" method="createView" class='buffer border-dark-thick no-touch' />
+					<View class='hgroup size left-buffer top-buffer'>
+						<Widget class="h3 icon-small red left top" src="net.hoyohoyo.iconiclabel"  icon="icon-envelope-alt" />
+						<Label id="email" class="h6 gray left-buffer">kelly.smith@appcelerator.com</Label>
+					</View>
+					<View class='hgroup size left-buffer top-buffer'>
+						<Widget class="h3 icon-small red left" src="net.hoyohoyo.iconiclabel"  icon="icon-comment" />
+						<Label id="im" class="h6 gray left-buffer right-buffer">kelly.smith</Label>
+					</View>
+					<View class='hgroup size left-buffer top-buffer'>
+						<Widget class="h3 icon-small red left" src="net.hoyohoyo.iconiclabel"  icon="icon-calendar" />
+						<Label id="start_date" class="h6 gray left-buffer right-buffer">July 27, 2001</Label>
+					</View>
 				</View>
-			</ScrollableView>
-		</View>
-	</View>
+			</ScrollView>	
+		</Window>
 </Alloy>

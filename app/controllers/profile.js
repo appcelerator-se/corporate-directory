@@ -27,7 +27,7 @@
  */
 var _args = arguments[0] || {},
 	App = Alloy.Globals.App,
-	Map = require('ti.map'),
+	Map = OS_MOBILEWEB ? Ti.Map : require('ti.map'),
 	$U = require('utilities'),
 	bookmarks = null;
 
@@ -35,20 +35,14 @@ var _args = arguments[0] || {},
  * Check for passed in properties of the contact, and update the 
  * Label text and ImageView image values as required
  */
-$.profilePicture.image = _args.photo;
+//$.profilePicture.image = _args.photo;
 $.name.text = _args.firstName + " " + _args.lastName;
 $.company.text = _args.company;
 $.phone.text = _args.phone;
 $.email.text = _args.email;
 $.im.text = _args.im || _args.firstName+"."+_args.lastName;
-$.about.text = _args.about;
+//$.about.text = _args.about;
 
-/**
- * FUN! How far away is the contact from your Headquarters! This is calculated using
- * functions from the lib/utilities.js. The HQ is defined in Alloy.js
- */
-var distanceFromAppcelerator = Math.floor($U.getDistanceFromLatLonInMiles(_args.latitude, _args.longitude, 37.389505, -122.050252));
-$.fromHQ.text = distanceFromAppcelerator + " miles from HQ";
 
 /**
  * Add Event Handlers to the IconLabels Widgets
@@ -61,37 +55,25 @@ $.callBtn.icon.addEventListener('click', callContact);
  * Set the Map Region for the Map Module so that it is at the right zoom level
  * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Modules.Map
  */
-if(!OS_ANDROID){
-	
+	var lat = OS_ANDROID ? _args.latitude+0.75 : _args.latitude;
 	$.mapview.setRegion({
-		latitude: _args.latitude || 30.631256,
+		latitude: lat || 30.631256,
 		longitude: _args.longitude || -97.675422,
 		latitudeDelta:2,
 		longitudeDelta:2,
-	});
-	
-}
-else {
-	
-	/**
-	 * Android leverages a zoom / tilt property to adjust the view so we 
-	 * branched the code accordingly
-	 */
-	$.mapview.setRegion({
-		latitude: _args.latitude || 30.631256,
-		longitude: _args.longitude || -97.675422,
-		zoom: 6,
+		zoom:5,
 		tilt:45
 	});
-}
 
 /**
  * Create the Map Annotation to the latitude and longitude assigned to the user.
  */
+
 var mapAnnotation = Map.createAnnotation({
     latitude: _args.latitude || 30.631256,
     longitude: _args.longitude || -97.675422,
-    pincolor: Map.ANNOTATION_RED,
+    customView: Alloy.createController("annotation", {image: _args.photo}).getView(),
+    animate:true
 });
 
 /**
@@ -137,12 +119,20 @@ function isBookmark(id){
  * Function to Email the Contact using the native email tool
  */
 function emailContact() {
-	
+
 	/**
 	 * Appcelerator Analytics Call
 	 */
 	Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.emailButton.clicked");
 	
+	/**
+	 * Account for if the user is on iOS and using a simulator - iOS Simulator no 
+	 * longer supports sending email as of iOS 8
+	 */
+	if(OS_IOS && Ti.Platform.model === "Simulator"){
+		alert("Simulator does not support sending emails. Use a device instead");
+		return;
+	}
 	/**
 	 * Create an Email Dialog
 	 * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Titanium.UI.EmailDialog
@@ -254,4 +244,22 @@ function toggleBookmark(){
 	
 	
 };
+
+/**
+ * Closes the Window
+ */
+function closeWindow(){
+	$.profile.close();
+}
+
+/**
+ * Lets do a nice fade in after the view has completely rendered **stylin!**
+ */
+$.profile.addEventListener("postlayout", function(e){
+	$.profile.animate({
+		opacity: 1.0,
+		duration: 250,
+		curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
+	});
+});
 

@@ -2,8 +2,15 @@
 	<!--
 		This view wraps all of the child views/lists etc. Creates a base layout, vertically aligned.
 	-->
-	<View id="wrapper" class="vgroup" title="Directory">
+	<Window id="wrapper" class="vgroup" title="Directory">
 		
+		<!-- 
+		Menu Item to open the bookmarks view
+		-->
+		<Menu id="menu" platform="android">
+            <MenuItem id="bookmarkBtn" title="Bookmarks" icon="/images/bookmark.png" onClick="onBookmarkClick" showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM"/>
+        </Menu>
+        
 		<!--
 		If you would like the searchbar to scroll up with the listView, you can move this line before the last
 		</ListView> tag. However for our implementation, we want the searchBar to be present at all times so we have moved
@@ -57,5 +64,5 @@
 			</Templates>
 			
 		</ListView>
-	</View>
+	</Window>
 </Alloy>

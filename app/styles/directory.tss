@@ -6,30 +6,32 @@
 	height: 100,
 	width: Ti.UI.FILL
 },
-
-".top":{
-	top:20
+".wrapper": {
+	backgroundColor:"#fff",
+	orientationModes: [Ti.UI.PORTRAIT,Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT,Ti.UI.UPSIDE_PORTRAIT],
+	//navBarHidden: true,
+	exitOnClose: true,
+	titleAttributes:  {
+        color: "#ae331f"
+   },
+   hideShadow: true,
+   borderColor: "#fff",
+   borderWidth: 1,
+   translucent: true,
+   extendEdges: Titanium.UI.EXTEND_EDGE_TOP
 },
 
-".left":{
-	left:10
-},
-
-".right":{
-	right:10
+".wrapper[platform=ios]":{
+	navTintColor: "#ae331f"
 }
 
-".vgroup":{
-	layout:'vertical',
-},
-
-".hgroup":{
-	layout:'horizontal'
-},
-
-".size":{
-	height: Ti.UI.SIZE,
-	width: Ti.UI.SIZE
+".logo":{
+	text: "\ue601",
+	color: "#C41230",
+	font:{
+		fontFamily:"icomoon",
+		fontSize:36
+	}
 },
 
 ".favorite":{
@@ -70,9 +72,10 @@
 	borderRadius: 35
 },
 
-".search":{
+".search":{ 
 	backgroundColor: "#fff",
 	borderWidth:0,
+	borderColor:"#fff",
 	tintColor: "#C41230",
 	hintText: "Search",
 	barColor: "#fff",

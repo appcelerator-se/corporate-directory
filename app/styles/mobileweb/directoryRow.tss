@@ -1,0 +1,73 @@
+/**
+ *                              _                _             
+ *                             | |              | |            
+ *    __ _ _ __  _ __   ___ ___| | ___ _ __ __ _| |_ ___  _ __ 
+ *   / _` | '_ \| '_ \ / __/ _ \ |/ _ \ '__/ _` | __/ _ \| '__|
+ *  | (_| | |_) | |_) | (_|  __/ |  __/ | | (_| | || (_) | |   
+ *   \__,_| .__/| .__/ \___\___|_|\___|_|  \__,_|\__\___/|_|   
+ *        | |   | |                                            
+ *        |_|   |_|  
+ *      
+ *      
+ * @overview
+ * This is the corresponding style sheet for the TableViewRow 
+ * in the Directory Table. All class, ID, and element tag references can
+ * be found here.
+ *
+ * @copyright
+ * Copyright (c) 2014 by Appcelerator, Inc. All Rights Reserved.
+ *
+ * @license
+ * Licensed under the terms of the Apache Public License
+ * Please see the LICENSE included with this distribution for details.
+ */
+
+".row":{
+	height: 100,
+	width: Ti.UI.FILL,
+	backgroundColor: "#fff"
+},
+
+".container":{
+	backgroundColor: "#fff"
+},
+
+"#favorite":{
+	font:{
+		fontSize: 20,
+		fontFamily:"icomoon",
+	},
+	text:"\uf02e",
+	color:"#038BC8",
+	right: 10,
+	top:-2
+},
+
+".title":{
+	font:{
+		// fontSize: 14
+		fontSize: 20
+	},
+	left: 85,
+	color: "#444"
+},
+
+
+".subtitle":{
+	font:{
+		fontSize: 10
+	},
+	left: 85,
+	height: 20,
+	color: "#666"
+},
+
+".avatar":{
+	border: 1,
+	borderColor: "#acacac",
+	height: 75,
+	width: Ti.UI.SIZE,
+	top: 12,
+	left: 0,
+	borderRadius: 35
+},

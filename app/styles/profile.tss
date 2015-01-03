@@ -1,14 +1,39 @@
-"ScrollableView":{
-	showPagingControl: true,
-}
-
-"ScrollableView[platform=ios]":{
-	showPagingControl: true,
-	pagingControlColor: "#C41230"
-}
+/**
+ *                              _                _             
+ *                             | |              | |            
+ *    __ _ _ __  _ __   ___ ___| | ___ _ __ __ _| |_ ___  _ __ 
+ *   / _` | '_ \| '_ \ / __/ _ \ |/ _ \ '__/ _` | __/ _ \| '__|
+ *  | (_| | |_) | |_) | (_|  __/ |  __/ | | (_| | || (_) | |   
+ *   \__,_| .__/| .__/ \___\___|_|\___|_|  \__,_|\__\___/|_|   
+ *        | |   | |                                            
+ *        |_|   |_|  
+ *      
+ *      
+ * @overview
+ * This is the corresponding style sheet for the Profile View. All
+ * class, ID, and element tag references can be found here.
+ *
+ * @copyright
+ * Copyright (c) 2014 by Appcelerator, Inc. All Rights Reserved.
+ *
+ * @license
+ * Licensed under the terms of the Apache Public License
+ * Please see the LICENSE included with this distribution for details.
+ */
 
 ".container":{
-	backgroundColor: "#fff"
+	backgroundColor: "#fff",
+	theme: "Appcelerator"
+}
+
+"#mapview":{
+	enableZoomControls: false,
+	compassEnabled: false,
+	height: "30%",
+},
+
+"#contactInfo":{
+	//contentHeight:"100%"
 }
 
 ".icon-button":{
@@ -16,50 +41,37 @@
 	width: 60,
 	color: "#C41230",
 	borderRadius: 30,
-	borderWidth: 1,
+	borderWidth: 2,
 	borderColor: "#C41230",
+	backgroundColor: "#33C41230",
 	textAlign: "center",
 	font:{
 		fontSize: 24 
 	},
-	backgroundColor: "#22C41230"
+	left:"10%"
 }
 
+'.icon-small':{
+	font:{
+		fontFamily: 'FontAwesome', fontSize:18 
+	}
+},
 
-"#profilePicture":{
-	height: 125,
-	width: 125,
-	borderRadius: 63,
-	borderWidth: 1,
-	borderColor: "#22C41230"
-}
-
-"#about":{
-	width: Ti.UI.SIZE
-}
-
-"ScrollableView":{
-	height: "45%",
-	pagingControlColor: 'transparent'
-}
+'.separator':{
+	top:25,
+	height: 1,
+	width: "90%",
+	backgroundColor:"#acacac"
+},
 
 "Label":{
 	autoLink: Ti.UI.AUTOLINK_ALL
 }
 
-"#addBookmarkBtn[platform=android]":{
+"#addBookmarkBtn[platform=android, mobileweb]":{
 	backgroundColor: 'transparent',
 	color: "#C41230",
 	borderWidth:0
 }
 
-"#mapview":{
-	enableZoomControls: false,
-	compassEnabled: false
-}
 
-"#fromHQ":{
-	width: Ti.UI.FILL,
-	height: Ti.UI.SIZE,
-	textAlign:"right"
-}

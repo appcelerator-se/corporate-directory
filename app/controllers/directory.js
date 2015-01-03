@@ -188,6 +188,19 @@ function init(){
 	if(_args.restrictBookmarks){
 		$.searchBar.showBookmark = false;
 	}
+	else {
+			
+		if(OS_IOS){
+			$.wrapper.leftNavButton = Ti.UI.createLabel({
+				text: "\ue601",
+				color: "#C41230",
+				font:{
+					fontFamily:"icomoon",
+					fontSize:36
+				}
+			});
+		}
+	}
 };
 
 /**
@@ -278,7 +291,7 @@ function onItemClick(e){
 	/**
 	 * Open the profile view, and pass in the user data for this contact
 	 */
-	Alloy.Globals.App.Navigator.open("profile", item.properties.user);
+	Alloy.Globals.Navigator.open("profile", item.properties.user);
 }
 
 /**
@@ -345,12 +358,12 @@ if(OS_IOS){
 		/**
 		 * Hide the Keyboard if the user searched
 		 */
-		$.searchBar.blur();
+		$.searchBar.blur(); 
 		
 		/**
 		 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
 		 */
-		App.Navigator.open("directory", {restrictBookmarks:true, title:"Bookmarks"});
+		Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:"Bookmarks"});
 	};
 }
 else if(OS_ANDROID){
@@ -394,11 +407,6 @@ init();
  * Listen for the refresh event, and re-initialize
  */
 Ti.App.addEventListener("refresh-data", function(e){
-	
-	/**
-	 * Reset the ListView
-	 */
-	$.listView.sections[0].items = null;
 	init();
 });
 

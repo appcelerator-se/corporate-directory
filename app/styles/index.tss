@@ -1,27 +1,4 @@
-".container": {
-	backgroundColor:"#fff",
-	orientationModes: [Ti.UI.PORTRAIT,Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT,Ti.UI.UPSIDE_PORTRAIT],
-	navBarHidden: true,
-	exitOnClose: true
-},
-".container[platform=ios]":{
-	navTintColor: "#ae331f"
-},
-"#wrapper":{
-	titleAttributes:  {
-        color: "#ae331f"
-   },
-   hideShadow: true,
-   borderColor: "#fff",
-   borderWidth: 1,
-   translucent: true,
-   extendEdges: Titanium.UI.EXTEND_EDGE_TOP
-},
-"#logo":{
-	text: "\ue601",
-	color: "#C41230",
-	font:{
-		fontFamily:"icomoon",
-		fontSize:36
-	}
+
+".container":{
+	backgroundColor:"#fff"
 }
