@@ -307,7 +307,7 @@ var onSearchChange, onSearchFocus, onSearchCancel;
  * 
  * @param {Object} Event data passed to the function
  */
-onBookmarkClick = function onClick (e){
+var onBookmarkClick = function onClick (e){
 	
 	/**
 	 * Appcelerator Analytics Call
