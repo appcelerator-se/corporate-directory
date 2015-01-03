@@ -299,7 +299,32 @@ function onItemClick(e){
  * then assigning them to functions within an iOS Block. On MobileWeb, Android, etc this code block will not
  * exist
  */
-var onSearchChange, onSearchFocus, onSearchCancel, onBookmarkClick;
+var onSearchChange, onSearchFocus, onSearchCancel;
+
+/**
+ * Handles the Bookmark icon click event. Launches this same control as a child window, but limits the view
+ * to only bookmarked items.
+ * 
+ * @param {Object} Event data passed to the function
+ */
+onBookmarkClick = function onClick (e){
+	
+	/**
+	 * Appcelerator Analytics Call
+	 */
+	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".bookmarks.clicked");
+	
+	/**
+	 * Hide the Keyboard if the user searched
+	 */
+	$.searchBar.blur(); 
+	
+	/**
+	 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
+	 */
+	Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:"Bookmarks"});
+};
+	
 if(OS_IOS){
 	
 	/**
@@ -340,30 +365,6 @@ if(OS_IOS){
 			$.searchBar.showCancel = false;
 		}	
 		$.searchBar.blur();
-	};
-	
-	/**
-	 * Handles the Bookmark icon click event. Launches this same control as a child window, but limits the view
-	 * to only bookmarked items.
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onBookmarkClick = function onClick (e){
-		
-		/**
-		 * Appcelerator Analytics Call
-		 */
-		Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".bookmarks.clicked");
-		
-		/**
-		 * Hide the Keyboard if the user searched
-		 */
-		$.searchBar.blur(); 
-		
-		/**
-		 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
-		 */
-		Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:"Bookmarks"});
 	};
 }
 else if(OS_ANDROID){
