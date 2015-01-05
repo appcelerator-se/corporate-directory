@@ -26,7 +26,6 @@
  * Instantiate the variables assocaited with this controller
  */
 var _args = arguments[0] || {},
-	App = Alloy.Globals.App,
 	Map = OS_MOBILEWEB ? Ti.Map : require('ti.map'),
 	$U = require('utilities'),
 	bookmarks = null;
@@ -92,6 +91,25 @@ bookmarks = Ti.App.Properties.getList("bookmarks", []);
  */
 isBookmark(_args.id) && $.addBookmarkBtn.setTitle("- Remove From Bookmarks");
 
+
+/**
+ * MOBILEWEB : In order to override the standard button style in the Navigation Bar, we will create our own
+ * view to use
+ */
+if(OS_MOBILEWEB){
+	var backBtn = Ti.UI.createLabel({
+		text:"\uf104 Back",
+		color: "#C41230",
+		font:{
+			fontFamily:"icomoon",
+			fontSize:20
+		}
+	});
+	backBtn.addEventListener("click", function(e){
+		Alloy.Globals.Navigator.navGroup.close($.profile);
+	});
+	$.profile.leftNavButton = backBtn;
+}
 
 /**
  * Appcelerator Analytics Call
