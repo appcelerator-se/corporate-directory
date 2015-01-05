@@ -44,9 +44,13 @@ loadingView.start();
 setTimeout(function(){
 	loadingView.finish(function(){
 		
-		if(OS_IOS || OS_MOBILEWEB){
+		if(OS_IOS){
 			$.nav.open()
-		} else{
+		}
+		else if(OS_MOBILEWEB){
+			$.index.open();
+		}
+		else{
 			$.index.getView().open();
 		} 
 		

@@ -1,6 +1,6 @@
 <Alloy>
 	<!-- Default App Window -->
-	<Require id="index" src="directory" /> 
+	<Require id="index" src="directory" platform="android" /> 
 	
     <!-- iOS Window -->
     <NavigationWindow id="nav" platform="ios" class="container">

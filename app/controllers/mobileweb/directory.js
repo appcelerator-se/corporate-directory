@@ -44,8 +44,6 @@ Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
  */
 function init(){
 	
-	alert("mobileweb");
-	
 	/**
 	 * Access the FileSystem Object to read in the information from a flat file (lib/userData/data.js)
 	 * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Titanium.Filesystem
