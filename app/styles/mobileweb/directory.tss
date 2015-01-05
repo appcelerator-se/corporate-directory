@@ -31,17 +31,12 @@
    barColor:"#fff"
 },
 
-".title":{
-    color: "#ae331f",
-    font:{
-    	fontSize: 20
-    },
-    width: Ti.UI.SIZE
-}
-
-"#tableView":{
-	tintColor: "#666",
-	borderWidth:0
+".navbtn":{
+	color: "#C41230",
+	font:{
+		fontFamily:"icomoon",
+		fontSize:36
+	}
 }
 
 ".logo":{
@@ -49,7 +44,30 @@
 	color: "#C41230",
 	font:{
 		fontFamily:"icomoon",
-		fontSize:36
+		fontSize:28
 	}
+},
+".bookmark":{
+	//text:"\uf02e"
+	text: "\ue601",
+	color: "#C41230",
+	font:{
+		fontFamily:"icomoon",
+		fontSize:28
+	}
+}
+
+"#winTitle":{
+    color: "#ae331f",
+    text: "\ue601 Directory",
+    font:{
+    	fontSize: 20,
+    	fontFamily:"icomoon"
+    }
+}
+
+"#tableView":{
+	tintColor: "#666",
+	borderWidth:0
 }
 

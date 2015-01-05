@@ -27,15 +27,15 @@
 /**
  * Instantiate the local variables for this controller
  */
-var _args = arguments[0] || {}, // Any passed in arguments will fall into this property
+var _args = arguments[0] || {}, // Any passed in arguments will fall into this propert
 	users = null,  // Array placeholder for all users
 	indexes = [];  // Array placeholder for the TableView Index (used by iOS only)
-
+	_args.title = _args.title || L("directory");
+	
 /**
  * Appcelerator Analytics Call
  */
-var title = _args.title ? _args.title.toLowerCase() : L("directory"); 
-Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
+Ti.Analytics.featureEvent(Ti.Platform.osname+"."+_args.title+".viewed");
 
 
 /** 
@@ -155,7 +155,7 @@ function init(){
 	 * Update the Window title if required (only used when we create the Bookmarks View)
 	 */
 	if(_args.title){
-		$.wrapper.title = _args.title;
+		$.winTitle.text = _args.title;
 	}
 };
 
@@ -232,7 +232,7 @@ function onItemClick(e){
 	/**
 	 * Appcelerator Analytics Call
 	 */
-	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".contact.clicked");
+	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+_args.title+".contact.clicked");
 	
 	/**
 	 * Open the profile view, and pass in the user data for this contact
@@ -254,12 +254,7 @@ var onBookmarkClick = function onClick (e){
 	/**
 	 * Appcelerator Analytics Call
 	 */
-	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".bookmarks.clicked");
-	
-	/**
-	 * Hide the Keyboard if the user searched
-	 */
-	if (OS_IOS) $.searchBar.blur();
+	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+_args.title+".bookmarks.clicked");
 	
 	/**
 	 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
@@ -268,32 +263,40 @@ var onBookmarkClick = function onClick (e){
 };
 
 /*
- * Add Logo and Buttons to Navbar if needed
+ * Custom NavBar Buttons
  */
 if(!_args.restrictBookmarks){
 	
-	/**
-	 * Add the logo to the navbar
-	 */
-	$.wrapper.leftNavButton = Ti.UI.createLabel({
-		text: "\ue601",
-		color: "#C41230",
-		font:{
-			fontFamily:"icomoon",
-			fontSize:36
-		}
-	});
-
 	var bookmarkBtn = Ti.UI.createLabel({
-		text: "\ue601",
+		text:"\uf02e",
 		color: "#C41230",
 		font:{
 			fontFamily:"icomoon",
-			fontSize:36
+			fontSize:28
 		}
 	});
 	bookmarkBtn.addEventListener("click", onBookmarkClick);
 	$.wrapper.rightNavButton = bookmarkBtn;
+}
+else {
+	
+	/**
+	 * In order to override the standard button style in the Navigation Bar, we will create our own
+	 * view to use
+	 */
+	var backBtn = Ti.UI.createLabel({
+		text:"\uf104 Back",
+		color: "#C41230",
+		font:{
+			fontFamily:"icomoon",
+			fontSize:20
+		}
+	});
+	backBtn.addEventListener("click", function(e){
+		Alloy.Globals.Navigator.navGroup.close($.wrapper);
+	});
+	$.wrapper.leftNavButton = backBtn;
+	
 }
 
 /**
@@ -310,7 +313,7 @@ Ti.App.addEventListener("refresh-data", function(e){
 	/**
 	 * Reset the TableView
 	 */
-	$.tableView.sections[0].items = null;
+	//$.tableView.sections[0].items = null;
 	init();
 });
 

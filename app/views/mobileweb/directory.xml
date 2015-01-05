@@ -4,7 +4,7 @@
 	-->
 	<Window id="wrapper" class="vgroup">
 		<TitleControl>
-			<Label class="title">Directory</Label>
+			<View class="hgroup size"><Label class="logo size" /><Label id="winTitle" class="size left-buffer" /></View>
 		</TitleControl>
 		
 		<TableView id="tableView" onClick="onItemClick">
