@@ -3,7 +3,11 @@
 	
 		<Window class="container vgroup" opacity="0.0" title="Profile">
 			
-			<ActionBar displayHomeAsUp="true" onHomeIconItemSelected="closeWindow" />
+			<TitleControl platform="mobileweb">
+				<Label class="title">Profile</Label>
+			</TitleControl>
+		
+			<ActionBar platfor="android" displayHomeAsUp="true" onHomeIconItemSelected="closeWindow" />
 			
 			<!-- 
 				Profile Page

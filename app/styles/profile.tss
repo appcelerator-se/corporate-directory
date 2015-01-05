@@ -20,7 +20,6 @@
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  */
-
 ".container":{
 	backgroundColor: "#fff",
 	theme: "Appcelerator"
@@ -74,4 +73,24 @@
 	borderWidth:0
 }
 
+/**
+ * 	MobileWeb Specific Styles
+ */
+"Window[platform=mobileweb]": {
+	backgroundColor:"#fff",
+	orientationModes: [Ti.UI.PORTRAIT,Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT,Ti.UI.UPSIDE_PORTRAIT],
+	titleAttributes:  {
+        color: "#ae331f"
+   },
+   hideShadow: true,
+   barColor:"#fff"
+},
+
+".title[platform=mobileweb]":{
+    color: "#ae331f",
+    font:{
+    	fontSize: 20
+    },
+    width: Ti.UI.SIZE
+}
 

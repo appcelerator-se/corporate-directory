@@ -38,7 +38,6 @@ var title = _args.title ? _args.title.toLowerCase() : L("directory");
 Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
 
-
 /** 
  * Function to inialize the View, gathers data from the flat file and sets up the TableView
  */
@@ -150,21 +149,6 @@ function init(){
 		 * Add the TableViewSections and data elements created above to the TableView
 		 */
 		$.tableView.data = sections;
-		
-		/**
-		 * For iOS, we add an event listener on the swipe of the TableView to display the index of the TableView we 
-		 * created above. The `sectionIndexTitles` property is only valid on iOS, so we put these handlers in the iOS block.
-		 */
-		if(OS_IOS) {
-			$.wrapper.addEventListener("swipe", function(e){
-				if(e.direction === "left"){
-					$.tableView.index = indexes;
-				}
-				if(e.direction === "right"){
-					$.tableView.index = null;
-				}
-			});
-		}
 	}
 	
 	/**
@@ -172,14 +156,6 @@ function init(){
 	 */
 	if(_args.title){
 		$.wrapper.title = _args.title;
-	}
-	
-	/**
-	 * Check to see if the `restrictBookmarks` flag has been passed in as an argument, and 
-	 * hide the bookmark icon accordingly
-	 */
-	if(_args.restrictBookmarks && ! OS_ANDROID){
-		$.searchBar.showBookmark = false;
 	}
 };
 
@@ -268,91 +244,12 @@ function onItemClick(e){
 }
 
 /**
- * This code is only relevant to iOS - to make it cleaner, we are declaring variables, and
- * then assigning them to functions within an iOS Block. On MobileWeb, Android, etc this code block will not
- * exist
- */
-var onSearchChange, onSearchFocus, onSearchCancel, onBookmarkClick;
-if(OS_IOS){
-	
-	/**
-	 * Handles the SearchBar OnChange event
-	 * 
-	 * @description On iOS we want the search bar to always be on top, so we use the onchange event to tie it back
-	 * 				to the TableView
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onSearchChange = function onChange(e){
-		//$.tableView.search = $.searchBar.value;
-	};
-	
-	/**
-	 * Updates the UI when the SearchBar gains focus. Hides the Bookmark icon and shows
-	 * the Cancel button.
-	 * 
-	 * @description We want to use both the bookmark feature and Cancel, but don't want them to show up together (EWW!)
-	 * 				so we use the focus event to show the Cancel button and hide the bookmark
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onSearchFocus = function onFocus(e){
-			$.searchBar.showBookmark = false;
-			$.searchBar.showCancel = true;
-	};
-	
-	/**
-	 * Updates the UI when the Cancel button is clicked within the search bar. Hides the Cancel button and shows
-	 * the Bookmark icon
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onSearchCancel = function onCancel(e){
-		if(!_args.restrictBookmarks){
-			$.searchBar.showBookmark = true;
-			$.searchBar.showCancel = false;
-		}	
-		$.searchBar.blur();
-	};
-}
-else if(OS_ANDROID){
-	/**
-	 * Handles the SearchBar OnChange event
-	 * 
-	 * @description On iOS we want the search bar to always be on top, so we use the onchange event to tie it back
-	 * 				to the TableView
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	/*onSearchChange = function onChange(e){
-		if($.searchBar.value !==''){
-			$.closeBtn.visible = true;
-		}
-		else{
-			$.closeBtn.visible = false;
-		}
-		
-		$.tableView.searchText = $.searchBar.value;
-	};*/
-	/**
-	 * Hides the keyboard when the cancel button is clicked
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	/*onSearchCancel = function onCancel(e){
-		$.closeBtn.visible = false;
-		$.searchBar.value = '';
-		$.searchBar.blur();
-	};*/
-}
-
-/**
  * Handles the Bookmark icon click event. Launches this same control as a child window, but limits the view
  * to only bookmarked items.
  * 
  * @param {Object} Event data passed to the function
  */
-onBookmarkClick = function onClick (e){
+var onBookmarkClick = function onClick (e){
 	
 	/**
 	 * Appcelerator Analytics Call
@@ -369,6 +266,36 @@ onBookmarkClick = function onClick (e){
 	 */
 	Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:L("bookmarks"),displayHomeAsUp:true});
 };
+
+/*
+ * Add Logo and Buttons to Navbar if needed
+ */
+if(!_args.restrictBookmarks){
+	
+	/**
+	 * Add the logo to the navbar
+	 */
+	$.wrapper.leftNavButton = Ti.UI.createLabel({
+		text: "\ue601",
+		color: "#C41230",
+		font:{
+			fontFamily:"icomoon",
+			fontSize:36
+		}
+	});
+
+	var bookmarkBtn = Ti.UI.createLabel({
+		text: "\ue601",
+		color: "#C41230",
+		font:{
+			fontFamily:"icomoon",
+			fontSize:36
+		}
+	});
+	bookmarkBtn.addEventListener("click", onBookmarkClick);
+	$.wrapper.rightNavButton = bookmarkBtn;
+}
+
 /**
  * Initialize View
  */

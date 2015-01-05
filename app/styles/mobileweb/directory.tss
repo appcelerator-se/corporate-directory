@@ -21,15 +21,23 @@
  * Please see the LICENSE included with this distribution for details.
  */
 
-".search":{
-	backgroundColor: "#fff",
-	borderWidth:1,
-	borderColor: "#fff",
-	tintColor: "#C41230",
-	hintText: L("search-text", "Search"),
-	barColor: "#fff",
-	showBookmark:true
+"Window": {
+	backgroundColor:"#fff",
+	orientationModes: [Ti.UI.PORTRAIT,Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT,Ti.UI.UPSIDE_PORTRAIT],
+	titleAttributes:  {
+        color: "#ae331f"
+   },
+   hideShadow: true,
+   barColor:"#fff"
 },
+
+".title":{
+    color: "#ae331f",
+    font:{
+    	fontSize: 20
+    },
+    width: Ti.UI.SIZE
+}
 
 "#tableView":{
 	tintColor: "#666",

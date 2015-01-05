@@ -1,10 +1,13 @@
 <Alloy>
 	<!--
-		This view wraps all of the child views/lists etc. Creates a base layout, vertically aligned.
+		This Window wraps all of the child views/lists etc. Creates a base layout, vertically aligned.
 	-->
-	<Window id="wrapper" class="vgroup" title="Directory">
+	<Window id="wrapper" class="vgroup">
+		<TitleControl>
+			<Label class="title">Directory</Label>
+		</TitleControl>
 		
-		<TableView id="tableView" onClick="onItemClick" searchAsChild="false">
+		<TableView id="tableView" onClick="onItemClick">
 			
 			<!-- 
 			  	TableViewRows will be added through the javascript in directory.js
