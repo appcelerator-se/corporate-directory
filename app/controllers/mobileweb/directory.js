@@ -16,6 +16,7 @@
  * that you have a marked the contact as a Bookmark (or Favorite). Also, the Directory View
  * can be filtered so that it only displays bookmarked or favorited contacts.
  * 
+ * Note:
  * This file is an override of the directory view for iOS and Android, as ListView is not supported for MobileWeb
  * so we are using the TableView component instead.
  *
