@@ -15,6 +15,9 @@
  * The Directory has two TableView Templates, one for standard contacts, the other to denote
  * that you have a marked the contact as a Bookmark (or Favorite). Also, the Directory View
  * can be filtered so that it only displays bookmarked or favorited contacts.
+ * 
+ * This file is an override of the directory view for iOS and Android, as ListView is not supported for MobileWeb
+ * so we are using the TableView component instead.
  *
  * @copyright
  * Copyright (c) 2014 by Appcelerator, Inc. All Rights Reserved.
@@ -29,14 +32,20 @@
  */
 var _args = arguments[0] || {}, // Any passed in arguments will fall into this propert
 	users = null,  // Array placeholder for all users
-	indexes = [];  // Array placeholder for the TableView Index (used by iOS only)
-	_args.title = _args.title || L("directory");
+	indexes = [],  // Array placeholder for the TableView Index (used by iOS only)
+	title = _args.title || L("Directory");
 	
 /**
  * Appcelerator Analytics Call
  */
-Ti.Analytics.featureEvent(Ti.Platform.osname+"."+_args.title+".viewed");
+Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
+/**
+ * Update the Window title if required (only used when we create the Bookmarks View)
+ */
+if(title){
+	$.winTitle.text = title;
+}
 
 /** 
  * Function to inialize the View, gathers data from the flat file and sets up the TableView
@@ -58,7 +67,7 @@ function init(){
 	 * Sorts the `users` array by the lastName property of the user (leverages UnderscoreJS _.sortBy function)
 	 */
 	users = _.sortBy(users, function(user){
-		return user.lastName
+		return user.lastName;
 	});
 	
 	/**
@@ -88,6 +97,18 @@ function init(){
 		_.each(userGroups, function(group){
 			
 			/**
+			 * Take the group data that is passed into the function, and parse/transform
+			 * it for use in the ListView templates as defined in the directory.xml file.
+			 */
+			var dataToAdd = preprocessForTableView(group);
+
+			/**
+			 * Check to make sure that there is data to add to the table,
+			 * if not lets exit
+			 */
+			if(dataToAdd.length < 1) return;
+			
+			/**
 			 * Lets take the first Character of the LastName and push it onto the index
 			 * Array - this will be used to generate the indices for the TableView on IOS
 			 */
@@ -95,6 +116,7 @@ function init(){
 				index: indexes.length,
 				title: group[0].lastName.charAt(0)
 			});
+		
 
 			/**
 			 * Create the TableViewSection header view
@@ -130,12 +152,8 @@ function init(){
 			/**
 			 * Add Data to the TableViewSection
 			 */
-			_.each(group, function(userData){
-				/**
-				 * Create the new user object which is added to the Array that is returned by the _.map function. 
-				 */
-				var row = Alloy.createController("directoryRow", userData);
-				section.add(row.getView());
+			_.each(dataToAdd, function(row){				
+				section.add(row);
 			});
 			
 			/**
@@ -149,13 +167,6 @@ function init(){
 		 * Add the TableViewSections and data elements created above to the TableView
 		 */
 		$.tableView.data = sections;
-	}
-	
-	/**
-	 * Update the Window title if required (only used when we create the Bookmarks View)
-	 */
-	if(_args.title){
-		$.winTitle.text = _args.title;
 	}
 };
 
@@ -204,17 +215,14 @@ var preprocessForTableView = function(rawData) {
 		 * Need to check to see if this user item is a bookmark. If it is, we will use the `favoriteTemplate` in the TableView.
 		 * (leverages the _.find function of UnderscoreJS)
 		 */
-		var isBookmark = _.find(bookmarks, function(bookmark){
+		item.isBookmark = _.find(bookmarks, function(bookmark){
 			return item.id === bookmark;
 		});
 		
 		/**
 		 * Create the new user object which is added to the Array that is returned by the _.map function. 
 		 */
-		var row = Alloy.createController("directoryRow", {
-			bookmark: isBookmark,
-			user: item
-		});
+		var row = Alloy.createController("directoryRow", item);
 		
 		return row.getView();
 	});	
@@ -232,7 +240,7 @@ function onItemClick(e){
 	/**
 	 * Appcelerator Analytics Call
 	 */
-	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+_args.title+".contact.clicked");
+	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".contact.clicked");
 	
 	/**
 	 * Open the profile view, and pass in the user data for this contact
@@ -254,12 +262,12 @@ var onBookmarkClick = function onClick (e){
 	/**
 	 * Appcelerator Analytics Call
 	 */
-	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+_args.title+".bookmarks.clicked");
+	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".bookmarks.clicked");
 	
 	/**
 	 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
 	 */
-	Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:L("bookmarks"),displayHomeAsUp:true});
+	Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:L("Bookmarks"),displayHomeAsUp:true});
 };
 
 /*
@@ -313,7 +321,6 @@ Ti.App.addEventListener("refresh-data", function(e){
 	/**
 	 * Reset the TableView
 	 */
-	//$.tableView.sections[0].items = null;
 	init();
 });
 
