@@ -1,6 +1,6 @@
 <Alloy>
 	<View class="container vgroup size">
 		<ImageView id="avatar" />
-		<Label id="carat" />
+		<Label class="icon-carat" />
 	</View>
 </Alloy>

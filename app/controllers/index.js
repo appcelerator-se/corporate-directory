@@ -18,8 +18,10 @@ Alloy.Globals.Navigator = {
 			$.nav.open(win);
 		}
 		else {
+			
 			// added this property to the payload to know if the window is a child
 			if (payload.displayHomeAsUp){
+				
 				win.addEventListener('open',function(evt){
 					var activity=win.activity;
 					activity.actionBar.displayHomeAsUp=payload.displayHomeAsUp;
@@ -58,21 +60,3 @@ setTimeout(function(){
 		loadingView = null;
 	});
 }, 1500);
-
-
-/**
- * Handles the Bookmark icon click event. Launches this same control as a child window, but limits the view
- * to only bookmarked items.
- * 
- * @param {Object} Event data passed to the function
- */
-var onBookmarkClick = null;
-if(OS_ANDROID){
-	onBookmarkClick = function(e){
-		Ti.API.info('BOOKMAKR MENU ITEM CLICKED');
-		/**
-		 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
-		 */
-		Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:L("bookmarks")});
-	};
-}

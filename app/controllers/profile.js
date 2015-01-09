@@ -46,8 +46,8 @@ $.im.text = _args.im || _args.firstName+"."+_args.lastName;
 /**
  * Add Event Handlers to the IconLabels Widgets
  */
-$.emailBtn.icon.addEventListener('click', emailContact);
-$.callBtn.icon.addEventListener('click', callContact);
+//$.emailBtn.icon.addEventListener('click', emailContact);
+//$.callBtn.icon.addEventListener('click', callContact);
 
 
 /**

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="App Project Overview">
+   <intro>
+      <description>
+         <b>Body</b>
+      </description>
+   </intro>
+   <item
+         title="Item (2)">
+      <description>
+         <b>Body</b>
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.cheatsheets.openCheatSheetURL(cheatSheetId=appc.corp.directory.help,name=Corporate DIrectory,url=file:///Users/bgrantges/trees/appcelerator/sample-apps/Corporate Directory/corporate-directory/help/appc-corporate-directory-cheatsheet.xml)"/>
+   </item>
+   <item
+         title="Item">
+      <description>
+         <b>Body</b>
+      </description>
+   </item>
+   <item
+         title="Item (1)">
+      <description>
+         <b>Body</b>
+      </description>
+   </item>
+</cheatsheet>

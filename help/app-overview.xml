@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Corporate Directory Overview">
+   <intro>
+      <description>
+         This application provides a simple introduction to developing applications using Appcelerator Studio and Mobile SDK. During this tutorial, we will walk through the app features and functionality which we will look at in more depth in the next tutorial
+      </description>
+   </intro>
+   <item
+         title="Video Walkthrough">
+      <description>
+         <b>Click</b> the button below to watch a video overview of the application. This will walk you through the features and functionality of the Corporate Directory.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.browser.openBrowser(url=file:///Users/bgrantges/Movies/directory-overview-ios.mp4)"/>
+   </item>
+   <item
+         title="Build the Corporate Directory Application">
+      <description>
+         In the <b>Project Explorer</b>, click on the Corporate Directory project title. This will ensures the project is currently the active project, an necessary step for building your app.
+      </description>
+      <subitem
+            label="Click on the Target drop-down menu in the upper right corner of Studio, and select either an iOS or Android Simulator Targets">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.browser.openBrowser(url=http://docs.appcelerator.com/platform/latest/#!/guide/Running_Titanium_Applications,browserId=appc.help)"/>
+      </subitem>
+      <subitem
+            label="Click on the Launch Button to build and run the application in the simulator">
+      </subitem>
+   </item>
+  
+   <item
+         title="Filtering the Directory with Search">
+      <description>
+         Click on the <b>Search Bar</b> to filter the list based on typed in text.
+
+
+      </description>
+   </item> <item
+         title="The Directory Listing">
+      <description>
+         The directory listing is the primary view of your application. All employees are listed here.
+		 <br/><br/>
+		 It consists of a Title bar, a Directory List and the ability to search the list. 
+		 <br/><br/>
+		 Also there is an icon for accessing your bookmarked contacts.
+         
+      </description>
+   </item>
+           <item
+                 title="Filtering the List with Search">
+              <description>
+                 Click on th
+              </description>
+           </item>
+</cheatsheet>

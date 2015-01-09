@@ -1,5 +1,8 @@
 var args = arguments[0] || {};
 
+/**
+ * function to start the loading animation
+ */
 $.start = function() {
 	//$.overlay.opacity = 0;
 	$.rocketSmoke.opacity = 0.1;
@@ -20,6 +23,9 @@ $.start = function() {
 	});
 };
 
+/*
+ * exposed function to finish the loading animation. Animates the rocket off the screen.
+ */
 $.finish = function(_callback) {
 	$.rocketFlight.opacity = 0.1;
 	

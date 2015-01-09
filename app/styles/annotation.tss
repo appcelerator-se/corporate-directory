@@ -30,17 +30,12 @@
 	width: 75,
 },
 
-"#carat":{
+".icon-carat":{
 	font:{
-		fontSize: 48,
-		fontFamily:"FontAwesome",
+		fontSize: 30,
+		fontFamily:"icomoon"
 	},
-	text:"\uf0dd",
+	text:"\uf0d7",
 	color:"#038BC8",
-	top:-33,
-}
-"#carat[platform=android]":{
-	font:{
-		fontFamily:"fontawesome-webfont"
-	}
+	top:-14, 
 }

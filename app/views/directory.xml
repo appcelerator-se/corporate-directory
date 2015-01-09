@@ -8,7 +8,7 @@
 		Menu Item to open the bookmarks view
 		-->
 		<Menu id="menu" platform="android">
-            <MenuItem id="bookmarkBtn" title="Bookmarks" icon="/images/bookmark.png" onClick="onBookmarkClick" showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM"/>
+            <MenuItem id="bookmarkBtn" title="Bookmarks" icon="/images/ic_action_action_bookmark.png" onClick="onBookmarkClick" showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM"/>
         </Menu>
         
 		<!--
@@ -23,7 +23,7 @@
 			through the onChange event.
 		-->
 		<View platform="android" class="size hgroup">
-			<Label class="icon-search left-buffer" />
+			<Label class="icon icon-search left-buffer" />
 			<TextField id="searchBar" class="search" onChange="onSearchChange" />
 			<Label id="closeBtn" class="icon-close right-buffer" onClick="onSearchCancel" />
 		</View>

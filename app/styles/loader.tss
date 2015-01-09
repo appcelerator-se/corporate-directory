@@ -24,6 +24,7 @@
 
 ".container":{
 	backgroundColor: "#C41230",
+	theme:"Appcelerator.NoActionBar"
 }
 
 "#overlay": {

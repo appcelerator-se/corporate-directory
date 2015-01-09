@@ -348,7 +348,8 @@
 
 '.icon':{
 	font:{
-		fontFamily: 'FontAwesome', fontSize: 20 
+		fontFamily: 'icomoon', 
+		fontSize: 20 
 	}
 },
 

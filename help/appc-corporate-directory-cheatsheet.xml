@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compositeCheatsheet name="Example App : Corporate Directory">
+   <taskGroup kind="set" name="Application Overview" skip="false">
+      <intro>
+         Everyone needs to have quick and easy access to their business contacts. This corporate directory application showcases how you can easily build a high quality, cross platform application using the Appcelerator Mobile Platform.
+<br/>
+<br/>
+<b>Application Features</b>
+<br/>
+» A master / detail application using a customized TableView<br/>
+» Searchable List<br/>
+» TableViewSections created based on last name initial<br/>
+» TableView Indexes (iOS only)<br/>
+» Native Navigation Patterns<br/>
+» Maps, Email and Phone Access Examples<br/>
+» Loading data from local Filesystem<br/>
+      </intro>
+      <onCompletion>
+         <b>Conclusion</b>
+      </onCompletion>
+      <task kind="cheatsheet" name="Application Walkthrough" skip="false">
+         <intro>
+            <b>Introduction</b>
+         </intro>
+         <onCompletion>
+            <b>Conclusion</b>
+         </onCompletion>
+         <param name="path" value="app-overview.xml">
+         </param>
+      </task>
+      <task kind="cheatsheet" name="Step 1: The Project Explorer" skip="false">
+         <intro>
+            <b>Introduction</b>
+         </intro>
+         <onCompletion>
+            <b>Conclusion</b>
+         </onCompletion>
+         <param name="path" value="project-structure.xml">
+         </param>
+      </task>
+      <task kind="cheatsheet" name="Step 3: Add Company and Email Labels" skip="false">
+         <intro>
+            <b>Introduction</b>
+         </intro>
+         <onCompletion>
+            <b>Conclusion</b>
+         </onCompletion>
+         <param name="path" value="app-add-ui-elements.xml">
+         </param>
+      </task>
+   </taskGroup>
+</compositeCheatsheet>

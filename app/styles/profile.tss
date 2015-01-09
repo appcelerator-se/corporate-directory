@@ -31,11 +31,27 @@
 	height: "30%",
 },
 
-"#contactInfo":{
-	//contentHeight:"100%"
-}
+/**
+ * 	Action Button Styles
+ */
 
-".icon-button":{
+".icon-phone":{
+	text: "\uf095"
+},
+
+".icon-email":{
+	text:"\uf0e0"	
+},
+
+".icon-message":{
+	text:"\uf075"
+},
+
+".icon-calendar":{
+	text: "\uf073"
+},
+
+".icon-btn":{
 	height: 60,
 	width: 60,
 	color: "#C41230",
@@ -45,14 +61,14 @@
 	backgroundColor: "#33C41230",
 	textAlign: "center",
 	font:{
-		fontSize: 24 
+		fontSize: 24
 	},
 	left:"10%"
 }
 
 '.icon-small':{
 	font:{
-		fontFamily: 'FontAwesome', fontSize:18 
+		fontSize:18 
 	}
 },
 

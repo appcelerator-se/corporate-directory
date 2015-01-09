@@ -36,9 +36,9 @@
 				
 				<!-- User Actions --->
 				<View class="hgroup top-buffer size">
-					<Widget id="callBtn" src="net.hoyohoyo.iconiclabel" icon="icon-phone" class="icon-button"/>
-					<Widget id="emailBtn" src="net.hoyohoyo.iconiclabel" icon="icon-envelope-alt" class="icon-button"/>
-					<Widget id="msgBtn" src="net.hoyohoyo.iconiclabel" icon="icon-comment" class="icon-button"/>
+					<Label id="callBtn" class="icon icon-btn icon-phone"  onClick="callContact" />
+					<Label id="emailBtn" class="icon icon-btn icon-email" onClick="emailContact" />
+					<Label id="msgBtn" class="icon icon-btn icon-message"  />
 				</View>
 				
 				<View class='separator' />
@@ -46,19 +46,19 @@
 				<!-- Contact Information -->
 			 	<View class='buffer vgroup size'>
 					<View class='hgroup size left-buffer top-buffer'>
-						<Widget class="h3 icon-small red left top" src="net.hoyohoyo.iconiclabel"  icon="icon-phone" />
+						<Label class="h3 icon icon-phone icon-small red left top" />
 						<Label id="phone" class="h6 gray left-buffer">512-555-1212</Label>
 					</View>
 					<View class='hgroup size left-buffer top-buffer'>
-						<Widget class="h3 icon-small red left top" src="net.hoyohoyo.iconiclabel"  icon="icon-envelope-alt" />
+						<Label class="h3 icon icon-email icon-small red left top" />
 						<Label id="email" class="h6 gray left-buffer">kelly.smith@appcelerator.com</Label>
 					</View>
 					<View class='hgroup size left-buffer top-buffer'>
-						<Widget class="h3 icon-small red left" src="net.hoyohoyo.iconiclabel"  icon="icon-comment" />
+						<Label class="h3 icon icon-message icon-small red left top" />
 						<Label id="im" class="h6 gray left-buffer right-buffer">kelly.smith</Label>
 					</View>
 					<View class='hgroup size left-buffer top-buffer'>
-						<Widget class="h3 icon-small red left" src="net.hoyohoyo.iconiclabel"  icon="icon-calendar" />
+						<Label class="h3 icon icon-calendar icon-small red left top" />
 						<Label id="start_date" class="h6 gray left-buffer right-buffer">July 27, 2001</Label>
 					</View>
 				</View>
