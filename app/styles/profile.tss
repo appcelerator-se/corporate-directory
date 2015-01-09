@@ -20,10 +20,13 @@
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  */
-".container":{
-	backgroundColor: "#fff",
-	theme: "Appcelerator"
-}
+
+/**
+ * 	General element and UI styles
+ */
+"Label":{
+	autoLink: Ti.UI.AUTOLINK_ALL
+},
 
 "#mapview":{
 	enableZoomControls: false,
@@ -31,8 +34,29 @@
 	height: "30%",
 },
 
+"#addBookmarkBtn[platform=android, mobileweb]":{
+	backgroundColor: 'transparent',
+	color: "#C41230",
+	borderWidth:0
+},
+
+".container":{
+	backgroundColor: "#fff",
+	theme: "Appcelerator"
+},
+
+'.separator':{
+	top:25,
+	height: 1,
+	width: "90%",
+	backgroundColor:"#acacac"
+},
+
+
 /**
  * 	Action Button Styles
+ *  These styles represent unicode character codes for the icon fonts
+ *  being used to represent the icons on the profile view
  */
 
 ".icon-phone":{
@@ -64,30 +88,13 @@
 		fontSize: 24
 	},
 	left:"10%"
-}
+},
 
 '.icon-small':{
 	font:{
 		fontSize:18 
 	}
 },
-
-'.separator':{
-	top:25,
-	height: 1,
-	width: "90%",
-	backgroundColor:"#acacac"
-},
-
-"Label":{
-	autoLink: Ti.UI.AUTOLINK_ALL
-}
-
-"#addBookmarkBtn[platform=android, mobileweb]":{
-	backgroundColor: 'transparent',
-	color: "#C41230",
-	borderWidth:0
-}
 
 /**
  * 	MobileWeb Specific Styles

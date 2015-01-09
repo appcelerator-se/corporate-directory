@@ -26,7 +26,7 @@
 }
 
 ".logo":{
-	text: "\ue601",
+	text: "\ue601",		// Unicode for Appcelerator Logo icon font
 	color: "#C41230",
 	font:{
 		fontFamily:"icomoon",
@@ -39,7 +39,7 @@
 		fontSize: 20,
 		fontFamily:"icomoon",
 	},
-	text:"\uf02e",
+	text:"\uf02e",		// Unicode for bookmark icon font
 	color:"#038BC8",
 	right: 10,
 	top:-2
@@ -87,7 +87,7 @@
 		fontFamily:"icomoon",
 		fontSize:24,
 	},
-	text: "\uf002",
+	text: "\uf002",		//Unicode for Search icon font
 	color: "#999",
 	width:"7%",
 },
@@ -97,7 +97,7 @@
 		fontFamily:"icomoon",
 		fontSize:24,
 	},
-	text: "\uf057",
+	text: "\uf057",		// Unicode for close icon font
 	color: "#999",
 	height: 40,
 	width:"7%",

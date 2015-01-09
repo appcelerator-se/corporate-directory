@@ -35,7 +35,7 @@
 		fontSize: 30,
 		fontFamily:"icomoon"
 	},
-	text:"\uf0d7",
+	text:"\uf0d7",		// Unicode character representation for the bookmark icon font
 	color:"#038BC8",
 	top:-14, 
 }
