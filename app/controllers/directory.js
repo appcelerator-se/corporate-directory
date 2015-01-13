@@ -400,12 +400,6 @@ else if(OS_ANDROID){
 }
 
 /**
- * Initialize View
- */
-
-init();
-
-/**
  * Hide Bookmark Icon (Android)
  */
 $.wrapper.addEventListener("open", function onWindowOpen(){
@@ -425,4 +419,10 @@ $.wrapper.addEventListener("open", function onWindowOpen(){
 Ti.App.addEventListener("refresh-data", function(e){
 	init();
 });
+
+
+/**
+ * Initialize View
+ */
+init();
 
