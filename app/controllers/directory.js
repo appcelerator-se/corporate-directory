@@ -38,7 +38,6 @@ var _args = arguments[0] || {}, // Any passed in arguments will fall into this p
 var title = _args.title ? _args.title.toLowerCase() : "directory";
 Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
-
 /** 
  * Function to inialize the View, gathers data from the flat file and sets up the ListView
  */
@@ -186,7 +185,8 @@ function init(){
 	 * hide the bookmark icon accordingly
 	 */
 	if(_args.restrictBookmarks){
-		$.searchBar.showBookmark = false;
+		OS_IOS && ($.searchBar.showBookmark = false);
+		
 	}
 	else {
 			
@@ -201,6 +201,7 @@ function init(){
 			});
 		}
 	}
+
 };
 
 /**
@@ -403,6 +404,20 @@ else if(OS_ANDROID){
  */
 
 init();
+
+/**
+ * Hide Bookmark Icon (Android)
+ */
+$.wrapper.addEventListener("open", function onWindowOpen(){
+	if(OS_ANDROID && _args.restrictBookmarks){
+		
+		var activity = $.wrapper.getActivity();
+		activity.onCreateOptionsMenu = function(e) {
+	 		e.menu.clear();
+		};	
+		activity.invalidateOptionsMenu();
+	}
+});
 
 /**
  * Listen for the refresh event, and re-initialize
