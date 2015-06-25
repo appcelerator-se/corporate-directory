@@ -1,14 +1,14 @@
 /**
- *                              _                _             
- *                             | |              | |            
- *    __ _ _ __  _ __   ___ ___| | ___ _ __ __ _| |_ ___  _ __ 
+ *                              _                _
+ *                             | |              | |
+ *    __ _ _ __  _ __   ___ ___| | ___ _ __ __ _| |_ ___  _ __
  *   / _` | '_ \| '_ \ / __/ _ \ |/ _ \ '__/ _` | __/ _ \| '__|
- *  | (_| | |_) | |_) | (_|  __/ |  __/ | | (_| | || (_) | |   
- *   \__,_| .__/| .__/ \___\___|_|\___|_|  \__,_|\__\___/|_|   
- *        | |   | |                                            
- *        |_|   |_|  
- *      
- *      
+ *  | (_| | |_) | |_) | (_|  __/ |  __/ | | (_| | || (_) | |
+ *   \__,_| .__/| .__/ \___\___|_|\___|_|  \__,_|\__\___/|_|
+ *        | |   | |
+ *        |_|   |_|
+ *
+ *
  * @overview
  * This is the corresponding style sheet for the Rocket Loader. All
  * class, ID, and element tag references can be found here.
@@ -24,7 +24,7 @@
 
 ".container":{
 	backgroundColor: "#C41230",
-	theme:"Appcelerator.NoActionBar"
+	theme:"Theme.NoActionBar"
 }
 
 "#overlay": {
