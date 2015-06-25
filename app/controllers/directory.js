@@ -38,6 +38,7 @@ var _args = arguments[0] || {}, // Any passed in arguments will fall into this p
 var title = _args.title ? _args.title.toLowerCase() : "directory";
 Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
+
 /** 
  * Function to inialize the View, gathers data from the flat file and sets up the ListView
  */
@@ -316,11 +317,6 @@ var onBookmarkClick = function onClick (e){
 	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".bookmarks.clicked");
 	
 	/**
-	 * Hide the Keyboard if the user searched
-	 */
-	$.searchBar.blur(); 
-	
-	/**
 	 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
 	 */
 	Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:"Bookmarks", displayHomeAsUp:true});
@@ -378,25 +374,9 @@ else if(OS_ANDROID){
 	 * @param {Object} Event data passed to the function
 	 */
 	onSearchChange = function onChange(e){
-		if($.searchBar.value !==''){
-			$.closeBtn.visible = true;
-		}
-		else{
-			$.closeBtn.visible = false;
-		}
-		
-		$.listView.searchText = $.searchBar.value;
+		$.listView.searchText = e.source.value; 
 	};
-	/**
-	 * Hides the keyboard when the cancel button is clicked
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onSearchCancel = function onCancel(e){
-		$.closeBtn.visible = false;
-		$.searchBar.value = '';
-		$.searchBar.blur();
-	};
+	
 }
 
 /**

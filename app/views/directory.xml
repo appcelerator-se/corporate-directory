@@ -8,6 +8,11 @@
 		Menu Item to open the bookmarks view
 		-->
 		<Menu id="menu" platform="android">
+			<MenuItem showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM" title="Search" icon="Ti.Android.R.drawable.ic_menu_search">
+				<ActionView>
+                    <SearchView ns="Ti.UI.Android" id="searchBar" platform="android" onChange="onSearchChange" />
+                </ActionView>
+            </MenuItem>
             <MenuItem id="bookmarkBtn" title="Bookmarks" icon="/images/ic_action_action_bookmark.png" onClick="onBookmarkClick" showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM"/>
         </Menu>
         
@@ -22,11 +27,12 @@
 			To create a more customized searchView for Android, we are creating a custom view that ties back to the listView
 			through the onChange event.
 		-->
-		<View platform="android" class="size hgroup">
+		
+		<!-- <View platform="android" class="size hgroup">
 			<Label class="icon icon-search left-buffer" />
 			<TextField id="searchBar" class="search" onChange="onSearchChange" />
 			<Label id="closeBtn" class="icon-close right-buffer" onClick="onSearchCancel" />
-		</View>
+		</View> -->
 		
 		<!--
 			The Directory list. 
