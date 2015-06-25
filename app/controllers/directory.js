@@ -60,7 +60,7 @@ function init(){
 	 */
 	users = _.sortBy(users, function(user){
 		return user.lastName
-	})
+	});
 	
 	/**
 	 * IF the users array exists
