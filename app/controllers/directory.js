@@ -321,20 +321,20 @@ var onBookmarkClick = function onClick (e){
 	 */
 	Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:"Bookmarks", displayHomeAsUp:true});
 };
+
+/**
+ * Handles the SearchBar OnChange event
+ * 
+ * @description On iOS we want the search bar to always be on top, so we use the onchange event to tie it back
+ * 				to the ListView
+ * 
+ * @param {Object} Event data passed to the function
+ */
+onSearchChange = function onChange(e){
+	$.listView.searchText = e.source.value;
+};
 	
 if(OS_IOS){
-	
-	/**
-	 * Handles the SearchBar OnChange event
-	 * 
-	 * @description On iOS we want the search bar to always be on top, so we use the onchange event to tie it back
-	 * 				to the ListView
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onSearchChange = function onChange(e){
-		$.listView.searchText = $.searchBar.value;
-	};
 	
 	/**
 	 * Updates the UI when the SearchBar gains focus. Hides the Bookmark icon and shows
@@ -364,20 +364,7 @@ if(OS_IOS){
 		$.searchBar.blur();
 	};
 }
-else if(OS_ANDROID){
-	/**
-	 * Handles the SearchBar OnChange event
-	 * 
-	 * @description On iOS we want the search bar to always be on top, so we use the onchange event to tie it back
-	 * 				to the ListView
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onSearchChange = function onChange(e){
-		$.listView.searchText = e.source.value; 
-	};
-	
-}
+
 
 /**
  * Hide Bookmark Icon (Android)
