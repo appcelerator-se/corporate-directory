@@ -8,6 +8,18 @@
 		Menu Item to open the bookmarks view
 		-->
 		<Menu id="menu" platform="android">
+			
+			<!-- 
+				Adding the SearchView to the ActionBar via the Menu feature. Leveraging the standard Android Resource for the search
+				icon. Uses shared onChange function with iOS to update listView search text.
+			-->
+			<MenuItem showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM" title="Search" icon="Ti.Android.R.drawable.ic_menu_search">
+				<ActionView>
+                    <SearchView ns="Ti.UI.Android" id="searchBar" platform="android" onChange="onSearchChange" />
+                </ActionView>
+            </MenuItem>
+            
+            <!-- Android Menu item for accessing the Bookmarks view-->
             <MenuItem id="bookmarkBtn" title="Bookmarks" icon="/images/ic_action_action_bookmark.png" onClick="onBookmarkClick" showAsAction="Ti.Android.SHOW_AS_ACTION_IF_ROOM"/>
         </Menu>
         
@@ -17,16 +29,6 @@
 		it outside of the ListView tags.
 		-->
 		<SearchBar id="searchBar" platform="ios" class="search" onBookmark="onBookmarkClick" onFocus="onSearchFocus" onCancel="onSearchCancel"  onChange="onSearchChange" />
-		
-		<!--
-			To create a more customized searchView for Android, we are creating a custom view that ties back to the listView
-			through the onChange event.
-		-->
-		<View platform="android" class="size hgroup">
-			<Label class="icon icon-search left-buffer" />
-			<TextField id="searchBar" class="search" onChange="onSearchChange" />
-			<Label id="closeBtn" class="icon-close right-buffer" onClick="onSearchCancel" />
-		</View>
 		
 		<!--
 			The Directory list. 

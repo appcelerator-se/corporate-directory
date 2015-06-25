@@ -36,13 +36,12 @@
 
 ".favorite":{
 	font:{
-		fontSize: 20,
+		fontSize: 25,
 		fontFamily:"icomoon",
 	},
-	text:"\uf02e",		// Unicode for bookmark icon font
 	color:"#038BC8",
-	right: 10,
-	top:-2
+	text:"\uf005",	
+	right: 10
 },
 
 ".title":{

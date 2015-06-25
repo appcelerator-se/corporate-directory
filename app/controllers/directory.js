@@ -38,6 +38,7 @@ var _args = arguments[0] || {}, // Any passed in arguments will fall into this p
 var title = _args.title ? _args.title.toLowerCase() : "directory";
 Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".viewed");
 
+
 /** 
  * Function to inialize the View, gathers data from the flat file and sets up the ListView
  */
@@ -59,7 +60,7 @@ function init(){
 	 */
 	users = _.sortBy(users, function(user){
 		return user.lastName
-	})
+	});
 	
 	/**
 	 * IF the users array exists
@@ -316,29 +317,24 @@ var onBookmarkClick = function onClick (e){
 	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".bookmarks.clicked");
 	
 	/**
-	 * Hide the Keyboard if the user searched
-	 */
-	$.searchBar.blur(); 
-	
-	/**
 	 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
 	 */
 	Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:"Bookmarks", displayHomeAsUp:true});
 };
+
+/**
+ * Handles the SearchBar OnChange event
+ * 
+ * @description On iOS we want the search bar to always be on top, so we use the onchange event to tie it back
+ * 				to the ListView
+ * 
+ * @param {Object} Event data passed to the function
+ */
+onSearchChange = function onChange(e){
+	$.listView.searchText = e.source.value;
+};
 	
 if(OS_IOS){
-	
-	/**
-	 * Handles the SearchBar OnChange event
-	 * 
-	 * @description On iOS we want the search bar to always be on top, so we use the onchange event to tie it back
-	 * 				to the ListView
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onSearchChange = function onChange(e){
-		$.listView.searchText = $.searchBar.value;
-	};
 	
 	/**
 	 * Updates the UI when the SearchBar gains focus. Hides the Bookmark icon and shows
@@ -368,36 +364,7 @@ if(OS_IOS){
 		$.searchBar.blur();
 	};
 }
-else if(OS_ANDROID){
-	/**
-	 * Handles the SearchBar OnChange event
-	 * 
-	 * @description On iOS we want the search bar to always be on top, so we use the onchange event to tie it back
-	 * 				to the ListView
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onSearchChange = function onChange(e){
-		if($.searchBar.value !==''){
-			$.closeBtn.visible = true;
-		}
-		else{
-			$.closeBtn.visible = false;
-		}
-		
-		$.listView.searchText = $.searchBar.value;
-	};
-	/**
-	 * Hides the keyboard when the cancel button is clicked
-	 * 
-	 * @param {Object} Event data passed to the function
-	 */
-	onSearchCancel = function onCancel(e){
-		$.closeBtn.visible = false;
-		$.searchBar.value = '';
-		$.searchBar.blur();
-	};
-}
+
 
 /**
  * Hide Bookmark Icon (Android)
