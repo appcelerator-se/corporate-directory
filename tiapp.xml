@@ -13,6 +13,7 @@
     <analytics>true</analytics>
     <guid>11111111-1111-1111-1111-111111111111</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
+    <property name="ti.windows.publishername" type="string">CN=Appcelerator Inc.</property>
     <ios>
         <plist>
             <dict>
@@ -55,8 +56,7 @@
         <manifest>
             <application android:theme="@style/appcelerator">
                 <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
-                <meta-data
-                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyACkaMjxhKbemYoBxMM4g05FSIPv-_59kg"/>
+                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyACkaMjxhKbemYoBxMM4g05FSIPv-_59kg"/>
             </application>
             <uses-sdk android:minSdkVersion="14"/>
             <uses-sdk android:targetSdkVersion="21"/>
@@ -72,8 +72,7 @@
             <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
             <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
             <uses-permission android:name="com.appcelerator.directory.permission.MAPS_RECEIVE"/>
-            <permission
-                android:name="com.appcelerator.directory.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+            <permission android:name="com.appcelerator.directory.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
         </manifest>
     </android>
     <mobileweb>
@@ -84,17 +83,26 @@
         </splash>
         <theme>default</theme>
     </mobileweb>
+    <windows>
+        <manifest>
+            <Capabilities>
+                <Capability Name="internetClient"/>
+                <DeviceCapability Name="location"/>
+            </Capabilities>
+        </manifest>
+    </windows>
     <modules>
         <module platform="android">ti.map</module>
         <module platform="iphone">ti.map</module>
     </modules>
     <deployment-targets>
+        <target device="windows">true</target>
         <target device="android">true</target>
         <target device="ipad">false</target>
         <target device="iphone">true</target>
         <target device="mobileweb">true</target>
     </deployment-targets>
-    <sdk-version>4.0.0.GA</sdk-version>
+    <sdk-version>4.1.0.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>

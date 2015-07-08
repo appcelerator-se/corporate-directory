@@ -81,7 +81,7 @@
 	showBookmark:true
 },
 
-".icon-search[platform=android]":{
+".icon-search[platform=android,windows]":{
 	font:{
 		fontFamily:"icomoon",
 		fontSize:24,
@@ -91,7 +91,7 @@
 	width:"7%",
 },
 
-".icon-close[platform=android]":{
+".icon-close[platform=android,windows]":{
 	font:{
 		fontFamily:"icomoon",
 		fontSize:24,
@@ -103,7 +103,7 @@
 	visible: false
 },
 
-"#searchBar[platform=android]":{
+"#searchBar[platform=android,windows]":{
 	height: 40,
 	left: 10,
 	width: "76%"

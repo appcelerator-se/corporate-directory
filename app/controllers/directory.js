@@ -117,7 +117,7 @@ function init(){
 
 			 var sectionHeader = Ti.UI.createView({
 			 	backgroundColor: "#ececec",
-			 	width: Ti.UI.FIll,
+			 	width: Ti.UI.FILL,
 			 	height: 30
 			 });
 
@@ -260,7 +260,7 @@ var preprocessForListView = function(rawData) {
 		return {
 			template: isBookmark ? "favoriteTemplate" : "userTemplate",
 			properties: {
-				searchableText: item.name + ' ' + item.company + ' ' + item.email,
+				searchableText: item.firstName + ' ' + item.lastName + ' ' + item.company + ' ' + item.email,
 				user: item,
 			},
 			userName: {text: item.firstName+" "+item.lastName},

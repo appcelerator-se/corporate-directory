@@ -22,7 +22,7 @@
 					Map View 
 					Leverages the Map Module, allowing for v2 of Google Maps and latest codebase unifying Google v2 and IOS
 				-->
-				<Module id="mapview" module="ti.map" method="createView" platform="android,ios" class='no-touch top' />
+				<Module id="mapview" module="ti.map" method="createView" platform="android,ios,windows" class='no-touch top' />
 				<View ns="Ti.Map" id="mapview" platform="mobileweb" class='buffer border-dark-thick no-touch top' />
 			
 			
