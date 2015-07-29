@@ -29,7 +29,7 @@
  */
 var _args = arguments[0] || {}, // Any passed in arguments will fall into this property
 	App = Alloy.Globals.App, // reference to the APP singleton object
-	$FM = require('utilities').FavoritesManager,  // FavoritesManager object (see lib/utilities.js)
+	$FM = require('favoritesmgr'),  // FavoritesManager object (see lib/utilities.js)
 	users = null,  // Array placeholder for all users
 	indexes = [];  // Array placeholder for the ListView Index (used by iOS only);
 	

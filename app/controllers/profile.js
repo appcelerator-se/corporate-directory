@@ -27,7 +27,7 @@
  */
 var _args = arguments[0] || {},
 	Map = OS_MOBILEWEB ? Ti.Map : require('ti.map'),  // Reference to the MAP API
-	$FM = require('utilities').FavoritesManager;	  // FavoritesManager helper class for managing favorites
+	$FM = require('favoritesmgr');	  // FavoritesManager helper class for managing favorites
 
 /**
  * Check for passed in properties of the contact, and update the 
