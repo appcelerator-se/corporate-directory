@@ -29,8 +29,10 @@
  */
 var _args = arguments[0] || {}, // Any passed in arguments will fall into this property
 	App = Alloy.Globals.App, // reference to the APP singleton object
+	$FM = require('utilities').FavoritesManager,  // FavoritesManager object (see lib/utilities.js)
 	users = null,  // Array placeholder for all users
 	indexes = [];  // Array placeholder for the ListView Index (used by iOS only);
+	
 
 /**
  * Appcelerator Analytics Call
@@ -182,10 +184,10 @@ function init(){
 	}
 	
 	/**
-	 * Check to see if the `restrictBookmarks` flag has been passed in as an argument, and 
-	 * hide the bookmark icon accordingly
+	 * Check to see if the `restrictToFavorites` flag has been passed in as an argument, and 
+	 * hide the favorite icon accordingly
 	 */
-	if(_args.restrictBookmarks){
+	if(_args.restrictToFavorites){
 		OS_IOS && ($.searchBar.showBookmark = false);
 		
 	}
@@ -211,32 +213,24 @@ function init(){
  * 	@param {Object} Raw data elements from the JSON file.
  */
 var preprocessForListView = function(rawData) {
-	
+	 
 	/**
-	 * Get the Bookmarks array from persistent storage in Ti.App.Properties
-	 * DOCS: http://docs.appcelerator.com/platform/latest/#!/api/Titanium.App.Properties
+	 * If we need to filter the view to only show bookmars, check to see if the `restrictToFavorites` 
+	 * flag has been passed in as an argument to the controller, and only show users that are favorites
 	 */
-	var bookmarks = Ti.App.Properties.getList("bookmarks", []);
-	
-	/**
-	 * If we need to filter the view to only show bookmars, check to see if the `restrictBookmarks` 
-	 * flag has been passed in as an argument to the controller, and only show users that are bookmarked
-	 */
-	if(_args.restrictBookmarks) {
+	if(_args.restrictToFavorites) {
 		
 		/**
-		 * redefines the collection to only have users that are currently listed as bookmarks (leverages
+		 * redefines the collection to only have users that are currently listed as favorites (leverages
 		 * 	the UnderscoreJS _.filter function )
 		 */
 		rawData = _.filter(rawData, function(item){
 			
 			/**
-			 * each item (or user) that is referenced, we look to see if the user id is included in bookmarks array
+			 * each item (or user) that is referenced, we look to see if the user id is included in favorites array
 			 * retrieved from persistent storage above
 			 */
-			return _.find(bookmarks, function(bookmark){
-				return item.id === bookmark;
-			});
+			return $FM.exists(item.id);
 		});
 	}
 	
@@ -247,21 +241,23 @@ var preprocessForListView = function(rawData) {
 	return _.map(rawData, function(item) {
 		
 		/**
-		 * Need to check to see if this user item is a bookmark. If it is, we will use the `favoriteTemplate` in the ListView.
+		 * Need to check to see if this user item is a favorite. If it is, we will use the `favoriteTemplate` in the ListView.
 		 * (leverages the _.find function of UnderscoreJS)
 		 */
-		var isBookmark = _.find(bookmarks, function(bookmark){
-			return item.id === bookmark;
-		});
+		var isFavorite = $FM.exists(item.id);
 		
 		/**
 		 * Create the new user object which is added to the Array that is returned by the _.map function. 
 		 */
 		return {
-			template: isBookmark ? "favoriteTemplate" : "userTemplate",
+			template: isFavorite ? "favoriteTemplate" : "userTemplate",
 			properties: {
 				searchableText: item.name + ' ' + item.company + ' ' + item.email,
 				user: item,
+				editActions: [
+					{title: isFavorite ? "- Favorite" : "+ Favorite", color: isFavorite ? "#C41230" : "#038BC8" }
+				],
+				canEdit:true
 			},
 			userName: {text: item.firstName+" "+item.lastName},
 			userCompany: {text: item.company},
@@ -304,8 +300,8 @@ function onItemClick(e){
 var onSearchChange, onSearchFocus, onSearchCancel;
 
 /**
- * Handles the Bookmark icon click event. Launches this same control as a child window, but limits the view
- * to only bookmarked items.
+ * Handles the favorite icon click event. Launches this same control as a child window, but limits the view
+ * to only favoitems.
  * 
  * @param {Object} Event data passed to the function
  */
@@ -314,12 +310,12 @@ var onBookmarkClick = function onClick (e){
 	/**
 	 * Appcelerator Analytics Call
 	 */
-	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".bookmarks.clicked");
+	Ti.Analytics.featureEvent(Ti.Platform.osname+"."+title+".favorites.clicked");
 	
 	/**
-	 * Open this same controller into a new page, pass the flag to restrict the list only to Bookmarked Contacts and force the title
+	 * Open this same controller into a new page, pass the flag to restrict the list only to favorite Contacts and force the title
 	 */
-	Alloy.Globals.Navigator.open("directory", {restrictBookmarks:true, title:"Bookmarks", displayHomeAsUp:true});
+	Alloy.Globals.Navigator.open("directory", {restrictToFavorites:true, title:"Favorites", displayHomeAsUp:true});
 };
 
 /**
@@ -357,20 +353,37 @@ if(OS_IOS){
 	 * @param {Object} Event data passed to the function
 	 */
 	onSearchCancel = function onCancel(e){
-		if(!_args.restrictBookmarks){
+		if(!_args.restrictToFavorites){
 			$.searchBar.showBookmark = true;
 			$.searchBar.showCancel = false;
 		}	
 		$.searchBar.blur();
 	};
+	
+	// FIXME - Add Comments
+	function onRowAction(e){
+		
+		var row = e.section.getItemAt(e.itemIndex);
+		var id = row.properties.user.id;
+		
+		if(e.action === "+ Favorite") {
+			$FM.add(id);
+		}
+		else {
+			$FM.remove(id);
+		}
+		
+		$.listView.editing = false;
+		init();
+	}
+	$.listView.addEventListener("rowAction", onRowAction);
 }
-
 
 /**
  * Hide Bookmark Icon (Android)
  */
 $.wrapper.addEventListener("open", function onWindowOpen(){
-	if(OS_ANDROID && _args.restrictBookmarks){
+	if(OS_ANDROID && _args.restrictToFavorites){
 		
 		var activity = $.wrapper.getActivity();
 		activity.onCreateOptionsMenu = function(e) {

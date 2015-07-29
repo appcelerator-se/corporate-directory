@@ -1,51 +1,72 @@
-/**
- * Returns the distance in kilometers between two lat/long points
- * @param {Float} lat1
- * @param {Float} lon1
- * @param {Float} lat2
- * @param {Float} lon2
- */
-
-function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-  var R = 6371; // Radius of the earth in km
-  var dLat = deg2rad(lat2-lat1);  // deg2rad below
-  var dLon = deg2rad(lon2-lon1); 
-  var a = 
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-    Math.sin(dLon/2) * Math.sin(dLon/2)
-    ; 
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-  var d = R * c; // Distance in km
-  return d;
-}
-exports.getDistanceFromLatLonInKm = getDistanceFromLatLonInKm;
 
 /**
- * Returns the distance in miles between two lat/long points
- * @param {Float} lat1
- * @param {Float} lon1
- * @param {Float} lat2
- * @param {Float} lon2
+ * FavoritesManager
  */
-function getDistanceFromLatLonInMiles(lat1,lon1,lat2,lon2) {
-  return kilometersToMiles(getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2));
-}
-exports.getDistanceFromLatLonInMiles = getDistanceFromLatLonInMiles;
 
+var FavoritesManager = (function _FavoritesManager(){
+	var _instance = null;
+	
+	function _create(){
+		return {
+			favorites: Ti.App.Properties.getList("favorites", []),
+			
+			/**
+			 * Determines if the passed in ID of the contact currently exists in the bookmarks array. 
+			 * Returns TRUE if successful.
+			 * 
+			 * @param {Object} id - the ID of the contact that is used to search the bookmarks array
+			 */
+			exists: function _exists(id){
+				
+				/**
+				 * Return the result of the search for the user id in the bookmarks
+				 * array. (Uses the UnderscoreJS _.find() function )
+				 */
+				return _.find(this.favorites, function(item){
+					return id === item;
+				});
+			},
+			
+			add: function _push(id){
+				
+				
+				if(!this.exists(id)){
+					/**
+					 * Then add this user to the bookmarks array, and update the button title for favorites
+					 */
+					this.favorites.push(id);
+				}
+				
+				/**
+				 * Update the bookmarks array in Ti.App.Properties
+				 */
+				Ti.App.Properties.setList("favorites", this.favorites);
+			},
+			
+			remove: function _remove(id){
+				
+				Ti.API.info(this.favorites);
+				/**
+				 * Else remove the user from the bookmarks array (usess Underscore js difference function), 
+				 * and update the button title accordingly
+				 */
+				this.favorites = _.difference(this.favorites, [id]);
+			    
+			    /**
+				 * Update the bookmarks array in Ti.App.Properties
+				 */
+				Ti.App.Properties.setList("favorites", this.favorites); 
+			}
+			
+		};
+	}
+	
+	if(!_instance){
+		_instance = _create();
+	}
+	
+	return _instance;
+	
+})();
+exports.FavoritesManager = FavoritesManager;
 
-/**
- * Simple function to convert degrees to radians
- * @param {Float} deg
- */
-function deg2rad(deg) {
-  return deg * (Math.PI/180);
-}
-
-/**
- * Simple function to convert kilometers to miles
- * @param {Float} km
- */
-function kilometersToMiles(km){
-	return km / 1.609344;
-}

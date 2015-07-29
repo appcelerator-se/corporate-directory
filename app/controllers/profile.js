@@ -26,28 +26,18 @@
  * Instantiate the variables assocaited with this controller
  */
 var _args = arguments[0] || {},
-	Map = OS_MOBILEWEB ? Ti.Map : require('ti.map'),
-	$U = require('utilities'),
-	bookmarks = null;
+	Map = OS_MOBILEWEB ? Ti.Map : require('ti.map'),  // Reference to the MAP API
+	$FM = require('utilities').FavoritesManager;	  // FavoritesManager helper class for managing favorites
 
 /**
  * Check for passed in properties of the contact, and update the 
  * Label text and ImageView image values as required
  */
-//$.profilePicture.image = _args.photo;
 $.name.text = _args.firstName + " " + _args.lastName;
 $.company.text = _args.company;
 $.phone.text = _args.phone;
 $.email.text = _args.email;
 $.im.text = _args.im || _args.firstName+"."+_args.lastName;
-//$.about.text = _args.about;
-
-
-/**
- * Add Event Handlers to the IconLabels Widgets
- */
-//$.emailBtn.icon.addEventListener('click', emailContact);
-//$.callBtn.icon.addEventListener('click', callContact);
 
 
 /**
@@ -81,15 +71,10 @@ var mapAnnotation = Map.createAnnotation({
 $.mapview.addAnnotation(mapAnnotation);
 
 /**
- * Get the Bookmarks from Ti.App.Properties
- */
-bookmarks = Ti.App.Properties.getList("bookmarks", []);
-
-/**
- * Check that the contact is not already a bookmark, and update the bookmarks button
+ * Check that the contact is not already a favorite, and update the favorites button
  * title as required.
  */
-isBookmark(_args.id) && $.addBookmarkBtn.setTitle("- Remove From Bookmarks");
+$FM.exists(_args.id) && $.addFavoriteBtn.setTitle("- Remove From Favorites");
 
 
 /**
@@ -115,23 +100,6 @@ if(OS_MOBILEWEB){
  * Appcelerator Analytics Call
  */
 Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.viewed");
-
-/**
- * Determines if the passed in ID of the contact currently exists in the bookmarks array. 
- * Returns TRUE if successful.
- * 
- * @param {Object} id - the ID of the contact that is used to search the bookmarks array
- */
-function isBookmark(id){
-	
-	/**
-	 * Return the result of the search for the user id in the bookmarks
-	 * array. (Uses the UnderscoreJS _.find() function )
-	 */
-	return _.find(bookmarks, function(mark){
-		return id === mark;
-	});
-};
 
 /**
  * Function to Email the Contact using the native email tool
@@ -215,51 +183,45 @@ function callContact(){
 };
 
 /**
- * Add Bookmark
+ * Toggle favorites Status
  */
-function toggleBookmark(){
+function toggleFavorite(){
 
 	/**
-	 * If the user is not currently listed as a bookmarked user
+	 * If the user is not currently listed as a favorite user
 	 */
-	if(!isBookmark(_args.id)){
+	if(!$FM.exists(_args.id)){
 		
 		/**
 		 * Appcelerator Analytics Call
 		 */
-		Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.addBookmark.clicked");
+		Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.addToFavorites.clicked");
 	
 		/**
-		 * Then add this user to the bookmarks array, and update the button title for favorites
+		 * Then add this user to the favorites array, and update the button title for favorites
 		 */
-		bookmarks.push(_args.id);
-	    $.addBookmarkBtn.setTitle("- Remove From Bookmarks");
+		$FM.add(_args.id);
+	    $.addFavoriteBtn.setTitle("- Remove From Favorites");
 	}
 	else{
 		
 		/**
 		 * Appcelerator Analytics Call
 		 */
-		Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.removeBookmark.clicked");
+		Ti.Analytics.featureEvent(Ti.Platform.osname+".profile.removeFromFavorites.clicked");
 		
 	    /**
-		 * Else remove the user from the bookmarks array (usess Underscore js difference function), 
+		 * Else remove the user from the favorites array (usess Underscore js difference function), 
 		 * and update the button title accordingly
 		 */
-		bookmarks = _.difference(bookmarks, [_args.id]);
-	    $.addBookmarkBtn.setTitle("+ Add To Bookmarks"); 
+		$FM.remove(_args.id);
+	    $.addFavoriteBtn.setTitle("+ Add To Favorites"); 
 	}
-	
-	/**
-	 * Update the bookmarks array in Ti.App.Properties
-	 */
-	Ti.App.Properties.setList("bookmarks", bookmarks);
 	
 	/**
 	 * Fire event to trigger a data refresh in the directory view
 	 */
 	Ti.App.fireEvent("refresh-data");
-	
 	
 };
 

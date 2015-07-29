@@ -36,27 +36,34 @@ Alloy.Globals.Navigator = {
 };
 
 
-/**
- * Lets add a loading animation - Just for Fun!
- */
-var loadingView = Alloy.createController("loader");
-loadingView.getView().open();
-loadingView.start(); 
-
-setTimeout(function(){
-	loadingView.finish(function(){
-		
-		if(OS_IOS){
-			$.nav.open()
-		}
-		else if(OS_MOBILEWEB){
-			$.index.open();
-		}
-		else{
-			$.index.getView().open();
-		} 
-		
-		loadingView.getView().close();
-		loadingView = null;
-	});
-}, 1500);
+/** Open appropriate start window **/
+if(OS_IOS){
+	$.nav.open();
+}
+else {
+	/**
+	 * FIXME Removing Loading Animation on IOS until TIMOB-19214 is fixed
+	 * https://jira.appcelerator.org/browse/TIMOB-19214
+	 */
+	 var loadingView = Alloy.createController("loader");
+	 loadingView.getView().open();
+	 loadingView.start(); 
+	
+	 setTimeout(function(){
+		loadingView.finish(function(){
+			
+			if(OS_IOS){
+				$.nav.open()
+			}
+			else if(OS_MOBILEWEB){
+				$.index.open();
+			}
+			else{
+				$.index.getView().open();
+			} 
+			
+			loadingView.getView().close();
+			loadingView = null;
+		});
+	  }, 1500);
+}
