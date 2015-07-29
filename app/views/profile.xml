@@ -31,7 +31,7 @@
 					<Label id="name" class='h3 red top-buffer no-touch' >Kelly Smith</Label>
 					<Label id="job" class='h5 gray no-touch' >Account Rep</Label>
 					<Label id="company" class='h5 gray no-touch' >Appcelerator, Inc</Label>
-					<Button id="addBookmarkBtn" class="h4 span-width top-buffer" onClick="toggleBookmark" textid="bookmarkBtn">+ Add To Bookmarks</Button>
+					<Button id="addFavoriteBtn" class="h4 span-width top-buffer" onClick="toggleFavorite" textid="bookmarkBtn">+ Add To Favorites</Button>
 				</View>
 				
 				<!-- User Actions --->

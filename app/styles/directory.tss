@@ -62,14 +62,25 @@
 },
 
 ".avatar":{
-	border: 1,
+	borderWidth: 1,
 	borderColor: "#acacac",
 	height: 75,
-	width: Ti.UI.SIZE,
+	width: 75,
 	top: 12,
 	left: 0,
 	borderRadius: 35
 },
+
+".smoothAvatarBorderRadius": {
+	borderWidth: 1.5,
+	borderColor: "#acacac",
+	height: 75,
+	width: 75,
+	top: 12,
+	left: 0,
+	borderRadius: 35,
+	opacity: 0.6
+}
 
 ".search":{ 
 	backgroundColor: "#fff",

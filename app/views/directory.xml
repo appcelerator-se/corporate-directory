@@ -41,6 +41,7 @@
 				<ItemTemplate id="userTemplate" name="userTemplate" class="template">
 					<View class="left-buffer">
 						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
+						<View platform="android" class="smoothAvatarBorderRadius" />
 						<View class="vgroup left size">
 							<Label id="userName" bindId="userName" class="title" />
 							<Label id="userEmail" bindId="userEmail" class="subtitle" />
@@ -54,6 +55,7 @@
 				<ItemTemplate id="favoriteTemplate" name="favoriteTemplate" class="template">
 					<View class="left-buffer">
 						<ImageView id="userPhoto" bindId="userPhoto" class="avatar" />
+						<View platform="android" class="smoothAvatarBorderRadius" />
 						<View class="vgroup left size">
 							<Label id="userName" bindId="userName" class="title" />
 							<Label id="userEmail" bindId="userEmail" class="subtitle" />

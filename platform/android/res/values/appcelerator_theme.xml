@@ -6,15 +6,9 @@
 		<item name="android:statusBarColor">#A30A00</item>
 		<item name="android:navigationBarColor">#CD1625</item>
 	</style>
-	<style name="Theme.NoActionBar" parent="@style/Theme.AppCompat">
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-
+	<style name="appcelerator.NoActionBar" parent="@style/Theme.AppCompat">
         <!-- AppCompat Compatibility -->
         <item name="windowActionBar">false</item>
-
-        <item name="colorPrimary">#CD1625</item>
-		<item name="colorAccent">#333333</item>
-
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>
