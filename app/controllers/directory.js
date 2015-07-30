@@ -119,7 +119,7 @@ function init(){
 
 			 var sectionHeader = Ti.UI.createView({
 			 	backgroundColor: "#ececec",
-			 	width: Ti.UI.FIll,
+			 	width: Ti.UI.FILL,
 			 	height: 30
 			 });
 
@@ -252,7 +252,7 @@ var preprocessForListView = function(rawData) {
 		return {
 			template: isFavorite ? "favoriteTemplate" : "userTemplate",
 			properties: {
-				searchableText: item.name + ' ' + item.company + ' ' + item.email,
+				searchableText: item.firstName + ' ' + item.lastName + ' ' + item.company + ' ' + item.email,
 				user: item,
 				editActions: [
 					{title: isFavorite ? "- Favorite" : "+ Favorite", color: isFavorite ? "#C41230" : "#038BC8" }
