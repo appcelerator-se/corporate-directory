@@ -360,7 +360,11 @@ if(OS_IOS){
 		$.searchBar.blur();
 	};
 	
-	// FIXME - Add Comments
+	/**
+	 * Updates user record favorite classification and the list elements
+	 * 
+	 *  @param {Object} e  Event data passed to the function
+	 */
 	function onRowAction(e){
 		
 		var row = e.section.getItemAt(e.itemIndex);
@@ -376,7 +380,15 @@ if(OS_IOS){
 		$.listView.editing = false;
 		init();
 	}
-	$.listView.addEventListener("rowAction", onRowAction);
+	
+	/* 
+	 * Assign `editaction` event listener to ListView 
+	 * 
+	 * NOTE: Updated to 'editaction' instead of 'rowAction' per
+	 * ticket
+	 * https://jira.appcelerator.org/browse/TIMOB-19096
+	 */
+	$.listView.addEventListener("editaction", onRowAction);
 }
 
 /**
