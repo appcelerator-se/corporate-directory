@@ -1,109 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ti:app xmlns:ti="http://ti.appcelerator.org">
-    <id>com.appcelerator.directory</id>
-    <name>Directory</name>
-    <version>1.5</version>
-    <publisher>Appcelerator, Inc.</publisher>
-    <url>http://www.appcelerator.com</url>
-    <description>A cross platform application for viewing your corporate directory listing, individual profiles and creating bookmarked entries.</description>
-    <copyright>2014 by Appcelerator, Inc.</copyright>
-    <icon>appicon.png</icon>
-    <fullscreen>false</fullscreen>
-    <navbar-hidden>false</navbar-hidden>
-    <analytics>true</analytics>
-    <guid>11111111-1111-1111-1111-111111111111</guid>
-    <property name="ti.ui.defaultunit" type="string">dp</property>
-    <property name="ti.windows.publishername" type="string">CN=Appcelerator Inc.</property>
-    <ios>
-        <plist>
-            <dict>
-                <key>UISupportedInterfaceOrientations~iphone</key>
-                <array>
-                    <string>UIInterfaceOrientationPortrait</string>
-                </array>
-                <key>UISupportedInterfaceOrientations~ipad</key>
-                <array>
-                    <string>UIInterfaceOrientationPortrait</string>
-                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
-                    <string>UIInterfaceOrientationLandscapeLeft</string>
-                    <string>UIInterfaceOrientationLandscapeRight</string>
-                </array>
-                <key>UIRequiresPersistentWiFi</key>
-                <false/>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-                <key>UIStatusBarHidden</key>
-                <false/>
-                <key>UIStatusBarStyle</key>
-                <string>UIStatusBarStyleDefault</string>
-                <key>CFBundleURLTypes</key>
-                <array>
-                    <dict>
-                        <key>CFBundleTypeRole</key>
-                        <string>Editor</string>
-                        <key>CFBundleURLName</key>
-                        <string>com.appcelerator.directory</string>
-                        <key>CFBundleURLSchemes</key>
-                        <array>
-                            <string>appcdirectory</string>
-                        </array>
-                    </dict>
-                </array>
-            </dict>
-        </plist>
-    </ios>
-    <android xmlns:android="http://schemas.android.com/apk/res/android">
-        <manifest>
-            <application android:theme="@style/appcelerator">
-                <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
-                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyACkaMjxhKbemYoBxMM4g05FSIPv-_59kg"/>
-            </application>
-            <uses-sdk android:minSdkVersion="14"/>
-            <uses-sdk android:targetSdkVersion="21"/>
-            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-            <uses-permission android:name="android.permission.INTERNET"/>
-            <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-            <uses-permission android:name="android.permission.GET_TASKS"/>
-            <!-- GOOGLE MAP REQUIREMENTS -->
-            <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
-            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-            <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-            <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
-            <uses-permission android:name="com.appcelerator.directory.permission.MAPS_RECEIVE"/>
-            <permission android:name="com.appcelerator.directory.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
-        </manifest>
-    </android>
-    <mobileweb>
-        <precache/>
-        <splash>
-            <enabled>true</enabled>
-            <inline-css-images>true</inline-css-images>
-        </splash>
-        <theme>default</theme>
-    </mobileweb>
-    <windows>
-        <manifest>
-            <Capabilities>
-                <Capability Name="internetClient"/>
-                <DeviceCapability Name="location"/>
-            </Capabilities>
-        </manifest>
-    </windows>
-    <modules>
-        <module platform="android">ti.map</module>
-        <module platform="iphone">ti.map</module>
-    </modules>
-    <deployment-targets>
-        <target device="windows">true</target>
-        <target device="android">true</target>
-        <target device="ipad">false</target>
-        <target device="iphone">true</target>
-        <target device="mobileweb">true</target>
-    </deployment-targets>
-    <sdk-version>5.0.0.GA</sdk-version>
-    <plugins>
-        <plugin version="1.0">ti.alloy</plugin>
-    </plugins>
+<ti:app 
+  xmlns:ti="http://ti.appcelerator.org">
+  <id>com.appcelerator.directory</id>
+  <name>Directory</name>
+  <version>1.5</version>
+  <publisher>Appcelerator, Inc.</publisher>
+  <url>http://www.appcelerator.com</url>
+  <description>A cross platform application for viewing your corporate directory listing, individual profiles and creating bookmarked entries.</description>
+  <copyright>2014 by Appcelerator, Inc.</copyright>
+  <icon>appicon.png</icon>
+  <fullscreen>false</fullscreen>
+  <navbar-hidden>false</navbar-hidden>
+  <analytics>true</analytics>
+  <guid>a35a8a49-5eaa-4b23-9eee-bfe8329fa08a</guid>
+  <property name="ti.ui.defaultunit" type="string">dp</property>
+  <property name="ti.windows.publishername" type="string">CN=Appcelerator Inc.</property>
+  <ios>
+    <plist>
+      <dict>
+        <key>UISupportedInterfaceOrientations~iphone</key>
+        <array>
+          <string>UIInterfaceOrientationPortrait</string>
+        </array>
+        <key>UISupportedInterfaceOrientations~ipad</key>
+        <array>
+          <string>UIInterfaceOrientationPortrait</string>
+          <string>UIInterfaceOrientationPortraitUpsideDown</string>
+          <string>UIInterfaceOrientationLandscapeLeft</string>
+          <string>UIInterfaceOrientationLandscapeRight</string>
+        </array>
+        <key>UIRequiresPersistentWiFi</key>
+        <false/>
+        <key>UIPrerenderedIcon</key>
+        <false/>
+        <key>UIStatusBarHidden</key>
+        <false/>
+        <key>UIStatusBarStyle</key>
+        <string>UIStatusBarStyleDefault</string>
+        <key>CFBundleURLTypes</key>
+        <array>
+          <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>com.appcelerator.directory</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+              <string>appcdirectory</string>
+            </array>
+          </dict>
+        </array>
+      </dict>
+    </plist>
+  </ios>
+  <android 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <manifest>
+      <application android:theme="@style/appcelerator">
+        <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyACkaMjxhKbemYoBxMM4g05FSIPv-_59kg"/>
+      </application>
+      <uses-sdk android:minSdkVersion="19"/>
+      <uses-sdk android:targetSdkVersion="23"/>
+      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+      <uses-permission android:name="android.permission.INTERNET"/>
+      <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+      <uses-permission android:name="android.permission.GET_TASKS"/>
+      <!-- Required for Google v6 -->
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+      <!-- GOOGLE MAP REQUIREMENTS -->
+      <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+      <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+      <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+      <uses-permission android:name="com.appcelerator.directory.permission.MAPS_RECEIVE"/>
+      <permission android:name="com.appcelerator.directory.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+    </manifest>
+  </android>
+  <mobileweb>
+    <precache/>
+    <splash>
+      <enabled>true</enabled>
+      <inline-css-images>true</inline-css-images>
+    </splash>
+    <theme>default</theme>
+  </mobileweb>
+  <windows>
+    <manifest>
+      <Capabilities>
+        <Capability Name="internetClient"/>
+        <DeviceCapability Name="location"/>
+      </Capabilities>
+    </manifest>
+  </windows>
+  <modules>
+    <module platform="android">ti.map</module>
+    <module platform="iphone">ti.map</module>
+  </modules>
+  <deployment-targets>
+    <target device="windows">true</target>
+    <target device="android">true</target>
+    <target device="ipad">false</target>
+    <target device="iphone">true</target>
+    <target device="mobileweb">true</target>
+  </deployment-targets>
+  <sdk-version>5.1.2.GA</sdk-version>
+  <plugins>
+    <plugin version="1.0">ti.alloy</plugin>
+  </plugins>
+  <property name="appc-app-id" type="string">56980a6e75577fec04727a0e</property>
 </ti:app>

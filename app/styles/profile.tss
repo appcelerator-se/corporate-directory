@@ -34,7 +34,7 @@
 	height: "30%",
 },
 
-"#addBookmarkBtn[platform=android, mobileweb]":{
+"#addFavoriteBtn[platform=android, mobileweb]":{
 	backgroundColor: 'transparent',
 	color: "#C41230",
 	borderWidth:0

@@ -5,6 +5,7 @@
  */
 
 exports.cliVersion = '>=3.X';
+exports.version = '1.0.0';
 var SILENT = true;
 
 exports.init = function (logger, config, cli, appc) {
@@ -141,7 +142,7 @@ exports.init = function (logger, config, cli, appc) {
 
 				// execute alloy in os-specific manner
 				var child;
-				if (process.platform === 'win32') {
+				if (process.platform === 'win32' && paths.alloy === 'alloy.cmd') {
 					cmd.shift();
 					logger.info(__('Executing Alloy compile: %s',
 						['cmd','/s','/c'].concat(cmd).join(' ').cyan));
@@ -173,6 +174,9 @@ exports.init = function (logger, config, cli, appc) {
 						process.exit(1);
 					} else {
 						logger.info(__('Alloy compiler completed successfully'));
+
+						afs.exists(path.join(cli.argv["project-dir"], 'build', 'i18n')) && process.argv.push('--i18n-dir', 'build');
+						afs.exists(path.join(cli.argv["project-dir"], 'build', 'platform')) && (cli.argv['platform-dir'] = 'build/platform');
 					}
 					finished();
 				});
