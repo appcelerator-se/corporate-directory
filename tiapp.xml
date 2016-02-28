@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ti:app 
+<ti:app
   xmlns:ti="http://ti.appcelerator.org">
   <id>com.appcelerator.directory</id>
   <name>Directory</name>
-  <version>1.5</version>
+  <version>1.6</version>
   <publisher>Appcelerator, Inc.</publisher>
   <url>http://www.appcelerator.com</url>
   <description>A cross platform application for viewing your corporate directory listing, individual profiles and creating bookmarked entries.</description>
-  <copyright>2014 by Appcelerator, Inc.</copyright>
+  <copyright>2016 by Appcelerator, Inc.</copyright>
   <icon>appicon.png</icon>
   <fullscreen>false</fullscreen>
   <navbar-hidden>false</navbar-hidden>
   <analytics>true</analytics>
-  <guid>a35a8a49-5eaa-4b23-9eee-bfe8329fa08a</guid>
+  <guid>11111111-1111-1111-1111-111111111111</guid>
   <property name="ti.ui.defaultunit" type="string">dp</property>
   <property name="ti.windows.publishername" type="string">CN=Appcelerator Inc.</property>
   <ios>
@@ -53,7 +53,7 @@
       </dict>
     </plist>
   </ios>
-  <android 
+  <android
     xmlns:android="http://schemas.android.com/apk/res/android">
     <manifest>
       <application android:theme="@style/appcelerator">
@@ -107,9 +107,8 @@
     <target device="iphone">true</target>
     <target device="mobileweb">true</target>
   </deployment-targets>
-  <sdk-version>5.1.2.GA</sdk-version>
+  <sdk-version>5.2.0.GA</sdk-version>
   <plugins>
     <plugin version="1.0">ti.alloy</plugin>
   </plugins>
-  <property name="appc-app-id" type="string">56980a6e75577fec04727a0e</property>
 </ti:app>
