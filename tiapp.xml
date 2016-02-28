@@ -111,5 +111,4 @@
   <plugins>
     <plugin version="1.0">ti.alloy</plugin>
   </plugins>
-  <property name="appc-app-id" type="string">56980a6e75577fec04727a0e</property>
 </ti:app>
