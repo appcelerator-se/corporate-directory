@@ -12,7 +12,6 @@
   <fullscreen>false</fullscreen>
   <navbar-hidden>false</navbar-hidden>
   <analytics>true</analytics>
-  <guid>a35a8a49-5eaa-4b23-9eee-bfe8329fa08a</guid>
   <property name="ti.ui.defaultunit" type="string">dp</property>
   <property name="ti.windows.publishername" type="string">CN=Appcelerator Inc.</property>
   <ios>
