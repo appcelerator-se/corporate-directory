@@ -34,7 +34,7 @@
 					<Button id="addFavoriteBtn" class="h4 span-width top-buffer" onClick="toggleFavorite" textid="bookmarkBtn">+ Add To Favorites</Button>
 				</View>
 				
-				<!-- User Actions --->
+				<!-- User Actions -->
 				<View class="hgroup top-buffer size">
 					<Label id="callBtn" class="icon icon-btn icon-phone"  onClick="callContact" />
 					<Label id="emailBtn" class="icon icon-btn icon-email" onClick="emailContact" />
