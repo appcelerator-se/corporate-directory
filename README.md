@@ -88,6 +88,10 @@ Adding a bookmark is easy, as the image below demonstrates.
 4. **Click** on the _Directory_ back button to see your new bookmarked contact
 
 
+> For a more detailed overview, check out the repo [wiki](https://github.com/appcelerator-se/corporate-directory/wiki)
+
+
+
 Get Help
 ------------
 
