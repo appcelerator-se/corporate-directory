@@ -3,7 +3,7 @@
   xmlns:ti="http://ti.appcelerator.org">
   <id>com.appcelerator.directory</id>
   <name>Directory</name>
-  <version>1.6</version>
+  <version>1.1.0</version>
   <publisher>Appcelerator, Inc.</publisher>
   <url>http://www.appcelerator.com</url>
   <description>A cross platform application for viewing your corporate directory listing, individual profiles and creating bookmarked entries.</description>
