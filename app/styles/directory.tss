@@ -121,5 +121,6 @@
 },
 
 "#listView":{
-	tintColor: "#666"
+	tintColor: "#666",
+	backgroundColor:"#fff"
 }

@@ -12,9 +12,9 @@
   <fullscreen>false</fullscreen>
   <navbar-hidden>false</navbar-hidden>
   <analytics>true</analytics>
-  <guid>11111111-1111-1111-1111-111111111111</guid>
   <property name="ti.ui.defaultunit" type="string">dp</property>
   <property name="ti.windows.publishername" type="string">CN=Appcelerator Inc.</property>
+  <guid>11111111-1111-1111-1111-111111111111</guid>
   <ios>
     <plist>
       <dict>
