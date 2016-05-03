@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="appcelerator" parent="@style/Theme.AppCompat">
+		<item name="colorPrimary">#CD1625</item>
+		<item name="colorAccent">#333333</item>
+		<item name="android:statusBarColor">#A30A00</item>
+		<item name="android:navigationBarColor">#CD1625</item>
+	</style>
+	<style name="appcelerator.NoActionBar" parent="@style/Theme.AppCompat">
+        <!-- AppCompat Compatibility -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>
