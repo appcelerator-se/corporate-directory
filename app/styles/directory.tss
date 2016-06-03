@@ -40,7 +40,7 @@
 		fontFamily:"icomoon",
 	},
 	color:"#038BC8",
-	text:"\uf005",	
+	text:"\uf005",
 	right: 10
 },
 
@@ -68,7 +68,8 @@
 	width: 75,
 	top: 12,
 	left: 0,
-	borderRadius: 35
+	borderRadius: 35,
+	defaultImage: "/images/default_profile_image.jpg"
 },
 
 ".smoothAvatarBorderRadius": {
@@ -82,7 +83,7 @@
 	opacity: 0.6
 }
 
-".search":{ 
+".search":{
 	backgroundColor: "#fff",
 	borderWidth:0,
 	borderColor:"#fff",

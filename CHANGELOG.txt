@@ -1,1 +1,5 @@
-Place your change log text here.  This file will be incorporated with your app at package time.
+# Changelog
+
+* updated to Titanium v5.3.0GA
+* added a default profile image
+* cleaned up the folder structure

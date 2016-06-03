@@ -4,3 +4,4 @@ build.log
 Resources/
 MakeAppTouchTestable*
 modules/
+.DS_Store
