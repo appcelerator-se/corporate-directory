@@ -5,3 +5,5 @@ Resources/
 MakeAppTouchTestable*
 modules/
 .DS_Store
+platform/
+i18n/

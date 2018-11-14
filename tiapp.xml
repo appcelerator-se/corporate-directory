@@ -60,8 +60,6 @@
         <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
         <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyACkaMjxhKbemYoBxMM4g05FSIPv-_59kg"/>
       </application>
-      <uses-sdk android:minSdkVersion="19"/>
-      <uses-sdk android:targetSdkVersion="23"/>
       <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
       <uses-permission android:name="android.permission.INTERNET"/>
       <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
@@ -107,7 +105,7 @@
     <target device="iphone">true</target>
     <target device="mobileweb">true</target>
   </deployment-targets>
-  <sdk-version>5.3.0.GA</sdk-version>
+  <sdk-version>7.4.1.GA</sdk-version>
   <plugins>
     <plugin version="1.0">ti.alloy</plugin>
   </plugins>
